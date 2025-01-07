@@ -1,1 +1,26 @@
+:root {
+    --bulma-primary-h: 128deg;
+    --bulma-primary-s: 67%;
+    --bulma-primary-l: 42%;
+    --bulma-link-h: 128deg;
+    --bulma-link-s: 67%;
+    --bulma-link-l: 50%;
+    --bulma-info-h: 128deg;
+    --bulma-info-s: 71%;
+    --bulma-info-l: 52%;
+    --bulma-success-h: 202deg;
+    --bulma-success-s: 100%;
+    --bulma-success-l: 61%;
+    --bulma-warning-h: 128deg;
+    --bulma-warning-s: 66%;
+    --bulma-warning-l: 34%;
+    --bulma-danger-h: 128deg;
+    --bulma-danger-s: 66%;
+    --bulma-danger-l: 26%;
+    --bulma-family-primary: Open Sans, sans serif;
+    --bulma-family-code: Open Sans, sans serif;
+    --bulma-size-medium: 1.5rem;
+    --bulma-size-large: 2rem;
+}
+
 
