@@ -1,1 +1,12 @@
+.bg-footer {
+    background-color: #166D21;
+    color: black;
+}
 
+.bg-footer-top {
+    background-color: #2CDB43;
+}
+
+button:hover {
+    background-color: #8C8C8C;
+}
