@@ -18,8 +18,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     $courses[] = $row;
 }
 
-print_r($courses);
-
 mysqli_close($db);
 
 ?>
@@ -52,7 +50,25 @@ mysqli_close($db);
     </div>
 </nav>
 <header></header>
-<main></main>
+<main>
+    <?php if (isset($courses)):
+
+        foreach ($courses as $course):
+            ?>
+            <section class="course-container mx-2 my-2">
+                <h1><?= $course['title'] ?></h1>
+                <p><?= $course['short_info'] ?></p>
+                <div class="image is-128x128">
+                    <img src="/includes/images/<?= $course['image'] ?>" alt="image">
+                </div>
+                <a href="#">Details</a>
+            </section>
+        <?php
+        endforeach;
+    endif;
+    ?>
+
+</main>
 <footer></footer>
 </body>
 </html>
