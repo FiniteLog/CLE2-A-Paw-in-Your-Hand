@@ -1,5 +1,5 @@
 <?php
-$courseId = $_GET['course_id'];
+$courseId = $_GET["course_id"];
 
 $host = "127.0.0.1";
 $user = "root";
@@ -26,6 +26,7 @@ if(!isset($courseId) || $courseId == ""){
 }
 
 if(isset($courseData)):
+
 ?>
 <!doctype html>
 <html lang="nl">
@@ -34,16 +35,22 @@ if(isset($courseData)):
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?=$courseData[0]['title']?></title>
+    <title> aanpassen</title>
 </head>
 <body>
-    <div>
-        <img src="includes/images/<?= $courseData[0]['image'] ?>" alt="<?= $courseData[0]['image'] ?>">
-    </div>
-    <div>
-        <h1><?= $courseData[0]['title'] ?></h1>
-        <p><?= $courseData[0]['info'] ?></p>
-    </div>
+<h2><?=$courseData[0]['title'];?> aanpassen</h2>
+<form action="">
+    <label for=""></label>
+    <input type="text" value="<?=$courseData[0]['title'];?>">
+
+    <label for=""></label>
+    <input type="text" value="<?=$courseData[0]['short_info'];?>">
+
+    <label for=""></label>
+    <input type="text" value="<?=$courseData[0]['info'];?>">
+</form>
+<!--put form with data here-->
 </body>
 </html>
+
 <?php endif; ?>
