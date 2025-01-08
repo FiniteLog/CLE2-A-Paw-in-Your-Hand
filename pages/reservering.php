@@ -128,7 +128,7 @@ $days = $dateHandler->getDays();
             <form class="columns bg-footer box mt-4 is-multiline is-centered" action="" method="post">
 
                 <!-- Dog Amount -->
-                <div class="field box mx-2 column is-4">
+                <div class="field box mx-2 column is-3">
                     <label class="label" for="dog_amount">Aantal Honden</label>
 
                     <div class="select is-fullwidth">
