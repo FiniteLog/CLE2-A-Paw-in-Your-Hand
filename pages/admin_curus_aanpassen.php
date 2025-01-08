@@ -35,19 +35,21 @@ if(isset($courseData)):
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> aanpassen</title>
+    <title><?=$courseData[0]['title'];?> aanpassen</title>
 </head>
 <body>
 <h2><?=$courseData[0]['title'];?> aanpassen</h2>
-<form action="">
-    <label for=""></label>
-    <input type="text" value="<?=$courseData[0]['title'];?>">
+<form action="" method="post">
+    <label for="title">Titel</label>
+    <input type="text" value="<?=$courseData[0]['title'];?>" id="title" name="title">
 
-    <label for=""></label>
-    <input type="text" value="<?=$courseData[0]['short_info'];?>">
+    <label for="short_info">Pop-up informatie</label>
+    <input type="text" value="<?=$courseData[0]['short_info'];?>" id="short_info" name="short_info">
 
-    <label for=""></label>
-    <input type="text" value="<?=$courseData[0]['info'];?>">
+    <label for="info">Informatie</label>
+    <input type="text" value="<?=$courseData[0]['info'];?>" id="info" name="info">
+
+    <input type="submit" value="Aanpassen">
 </form>
 <!--put form with data here-->
 </body>
