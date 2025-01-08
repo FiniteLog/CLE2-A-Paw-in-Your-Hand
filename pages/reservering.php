@@ -1,6 +1,7 @@
 <?php
 /** @var mysqli $db */
 require_once 'includes/connection.php';
+require_once 'includes/classes/DateHandler.php';
 session_start();
 
 $errors = [];
@@ -62,36 +63,16 @@ if (isset($_POST['submit'])) {
 
 mysqli_close($db);
 
-// Get the current date from the query string or default to today
-$currentDate = isset($_GET['date']) ? strtotime($_GET['date']) : time();
+// Instantiate the class
+$dateHandler = new DateHandler(isset($_GET['date']) ? $_GET['date'] : null);
 
-// Get the start of the current week (Monday)
-$weekStart = strtotime("Monday this week", $currentDate);
+// Determine the selected week and set it
+$currentWeekIndex = isset($_GET['week']) ? intval($_GET['week']) : 0;
+$dateHandler->setWeekByIndex($currentWeekIndex);
 
-// Generate dates for the current week (Monday to Sunday)
-$days = [];
-for ($i = 0; $i < 7; $i++) {
-    $days[] = date('Y-m-d', strtotime("+$i day", $weekStart));
-}
-
-// Calculate the start of the next 4 weeks (week 1 to week 4)
-$weekNumbers = [];
-for ($i = 0; $i < 4; $i++) {
-    // Start each week from the Monday of that week
-    $weekStartForNextWeek = strtotime("+$i week", $weekStart);
-    $weekNumbers[] = date('Y-m-d', $weekStartForNextWeek);
-}
-
-// Set the week number based on the current date or default to this week
-$currentWeekIndex = isset($_GET['week']) ? $_GET['week'] : 0;
-$currentWeekStart = $weekNumbers[$currentWeekIndex]; // Set the current week based on selected week
-$weekStart = strtotime($currentWeekStart); // Update the weekStart with the chosen week's start date
-
-// Generate the days for the selected week (Monday to Sunday)
-$days = [];
-for ($i = 0; $i < 7; $i++) {
-    $days[] = date('Y-m-d', strtotime("+$i day", $weekStart));
-}
+// Get week numbers and days
+$weekNumbers = $dateHandler->getWeekNumbers();
+$days = $dateHandler->getDays();
 ?>
 <!doctype html>
 <html lang="nl" data-theme="light">
