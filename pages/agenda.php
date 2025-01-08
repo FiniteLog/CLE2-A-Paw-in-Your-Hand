@@ -57,6 +57,7 @@ $days = $dateHandler->getDays();
           content="width=device-width, initial-scale=1.0">
     <title>Reservering</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
 </head>
 <body>
 <main class="m-6">

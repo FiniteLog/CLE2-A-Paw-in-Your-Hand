@@ -5,7 +5,7 @@ $password = "";
 $database = "CLE2";
 
 $db = mysqli_connect($host, $user, $password, $database)
-or die("Error: " . mysqli_connect_error());;
+or die("Error: " . mysqli_connect_error());
 
 $query = "SELECT * FROM courses";
 
@@ -64,7 +64,7 @@ mysqli_close($db);
                 <div class="image is-128x128">
                     <img src="/includes/images/<?= $course['image'] ?>" alt="image">
                 </div>
-                <a href="#">Details</a>
+                <a href="cursus_info.php?course_id=<?= $course['id']?>">Details</a>
             </section>
         <?php
         endforeach;
