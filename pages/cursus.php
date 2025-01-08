@@ -1,3 +1,25 @@
+<?php
+$host = "127.0.0.1";
+$user = "root";
+$password = "";
+$database = "CLE2";
+
+$db = mysqli_connect($host, $user, $password, $database)
+or die("Error: " . mysqli_connect_error());;
+
+$query = "SELECT * FROM courses";
+
+$result = mysqli_query($db, $query)
+or die ('Errror ' . mysqli_error($db) . ' with query ' . $query);
+
+$courses = [];
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $courses[] = $row;
+}
+
+mysqli_close($db);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +47,7 @@
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
-                <img src="/images/pupp_darkGreen.png" height="100">
+                <img src="includes/images/pupp_darkGreen.png" height="100"> <!--Ik mis een unit bij de 100 - image is nu ook heel klein-->
             </div>
         </div>
     </div>
@@ -52,7 +74,7 @@
 </main>
 <footer class=" bg-footer-top pt-5">
     <div class="bg-footer columns">
-        <img src="/images/pupp_darkGreen.png" width="100">
+        <img src="includes/images/pupp_darkGreen.png" width="100"> <!--Ik mis een unit bij 'width'!-->
         <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
     </div>
 </footer>
