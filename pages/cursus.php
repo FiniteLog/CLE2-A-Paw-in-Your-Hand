@@ -47,7 +47,7 @@ mysqli_close($db);
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
-                <img src="/images/pupp_darkGreen.png" height="100">
+                <img src="includes/images/pupp_darkGreen.png" height="100"> <!--Ik mis een unit bij de 100 - image is nu ook heel klein-->
             </div>
         </div>
     </div>
@@ -74,7 +74,7 @@ mysqli_close($db);
 </main>
 <footer class=" bg-footer-top pt-5">
     <div class="bg-footer columns">
-        <img src="/images/pupp_darkGreen.png" width="100">
+        <img src="includes/images/pupp_darkGreen.png" width="100"> <!--Ik mis een unit bij 'width'!-->
         <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
     </div>
 </footer>
