@@ -58,9 +58,9 @@ if (isset($_POST['submit'])) {
 // Fetch dropdown options
 //$timeslotQuery = "SELECT id, timeslot FROM timeslots";
 //$timeslots = mysqli_query($db, $timeslotQuery);
-//
-//$courseQuery = "SELECT id, name FROM courses";
-//$courses = mysqli_query($db, $courseQuery);
+
+$courseQuery = "SELECT course_id, title FROM courses";
+$courses = mysqli_query($db, $courseQuery);
 
 mysqli_close($db);
 
@@ -143,13 +143,22 @@ $days = $dateHandler->getDays();
                     <p class="help is-danger"><?= $errors['dog_amount'] ?? '' ?></p>
                 </div>
 
-                <!-- Temporary Course -->
+                <!-- Course -->
                 <div class="field box is-3 column mx-2">
                     <label class="label" for="course">Cursus</label>
                     <div class="control">
-                        <input class="input" id="course" type="text" name="course"
-                               placeholder="Voer een cursus in, bijvoorbeeld Obedience 1"/>
+                        <div class="select is-fullwidth">
+                            <select id="course" name="course">
+                                <option value="">-- Selecteer een cursus --</option>
+                                <?php while ($course = mysqli_fetch_assoc($courses)): ?>
+                                    <option value="<?= $course['course_id'] ?>" <?= $course['course_id'] == $course ? 'selected' : '' ?>>
+                                        <?= htmlentities($course['title']) ?>
+                                    </option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
                     </div>
+                    <p class="help is-danger"><?= $errors['course'] ?? '' ?></p>
                 </div>
 
                 <!-- Date -->
