@@ -1,5 +1,4 @@
 <?php
-
 $host = "127.0.0.1";
 $user = "root";
 $password = "";
@@ -11,7 +10,7 @@ or die("Error: " . mysqli_connect_error());
 $query = "SELECT * FROM courses";
 
 $result = mysqli_query($db, $query)
-or die ('Errror ' . mysqli_error($db) . ' with query ' . $query);
+or die ('Error ' . mysqli_error($db) . ' with query ' . $query);
 
 $courses = [];
 
@@ -35,26 +34,26 @@ mysqli_close($db);
 <body>
 <?php if(isset($courses)):
     foreach($courses as $course):?>
-    <table>
-        <thead>
-        <tr>
-            <th> </th>
-            <th>Title</th>
-            <th>info</th>
-        </tr>
-        </thead>
-        <tfoot></tfoot>
-        <tbody>
-        <tr>
-            <th><img src="includes/images/<?= $course['image'] ?>" alt="" width="100px"></th>
-            <td><?= $course['title']?></td>
-            <td><?= $course['short_info'] ?></td>
-            <th><a href="admin_curus_aanpassen.php?course_id=<?= $course['course_id']?>">Aanpassen</a></th>
-        </tr>
-        </tbody>
-    </table>
-<?php
-endforeach;
+        <table>
+            <thead>
+            <tr>
+                <th> </th>
+                <th>Title</th>
+                <th>info</th>
+            </tr>
+            </thead>
+            <tfoot></tfoot>
+            <tbody>
+            <tr>
+                <th><img src="includes/images/<?= $course['image'] ?>" alt="" width="100px"></th>
+                <td><?= $course['title']?></td>
+                <td><?= $course['short_info'] ?></td>
+                <th><a href="admin_curus_aanpassen.php?course_id=<?= $course['course_id']?>">Aanpassen</a></th>
+            </tr>
+            </tbody>
+        </table>
+    <?php
+    endforeach;
 endif; ?>
 <a href="#">+ Nieuwe cursus toevoegen</a>
 </body>
