@@ -1,5 +1,4 @@
 <?php
-//include_once "includes/connection.php";
 $courseId = $_GET['course_id'];
 
 $host = "127.0.0.1";
