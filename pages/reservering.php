@@ -170,6 +170,25 @@ $days = $dateHandler->getDays();
                 <p class="help is-danger"><?= $errors['date'] ?? '' ?></p>
 
 
+                <!--                <!-- Timeslot -->-->
+                <!--                <div class="field">-->
+                <!--                    <label class="label has-text-primary" for="timeslot">Tijdslot</label>-->
+                <!--                    <div class="control">-->
+                <!--                        <div class="select is-fullwidth">-->
+                <!--                            <select id="timeslot" name="timeslot">-->
+                <!--                                <option value="">-- Selecteer een tijdslot --</option>-->
+                <!--                                --><?php //while ($timeslot = mysqli_fetch_assoc($timeslots)): ?>
+                <!--                                    <option value="--><?php //= $timeslot['id'] ?><!--" -->
+                <?php //= $timeslot['id'] == $timeslot ? 'selected' : '' ?><!-->-->
+                <!--                                        --><?php //= htmlentities($timeslot['timeslot']) ?>
+                <!--                                    </option>-->
+                <!--                                --><?php //endwhile; ?>
+                <!--                            </select>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                    <p class="help is-danger">--><?php //= $errors['timeslot'] ?? '' ?><!--</p>-->
+                <!--                </div>-->
+
                 <!-- Timeslot -->
                 <div class="box column mx-2 is-3 field">
                     <label class="label" for="timeslot">Tijdslot</label>
