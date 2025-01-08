@@ -102,7 +102,7 @@ for ($i = 0; $i < 7; $i++) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>reservering</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <link rel="stylesheet" href="/CSS/style.css"
+    <link rel="stylesheet" href="../CSS/style.css">
 
 </head>
 <body>
