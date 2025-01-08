@@ -27,11 +27,32 @@
 </nav>
 
 <main>
-    
+    <h1 class="has-text-centered mt-6 is-size-2 has-text-weight-semibold">Log in</h1>
+
+    <h2 class="has-text-centered mt-6 is-size-4">Gebruikersnaam</h2>
+    <div class="columns is-centered my-4">
+        <div class="column is-4">
+            <div class="control">
+                <input class="input" type="text" placeholder="Gebruikersnaam">
+            </div>
+        </div>
+    </div>
+    <h2 class="has-text-centered mt-6 is-size-4">Wachtwoord</h2>
+    <div class="columns is-centered my-4">
+        <div class="column is-4">
+            <div class="control">
+                <input class="input" type="text" placeholder="Wachtwoord">
+            </div>
+        </div>
+    </div>
+    <div class="columns is-centered my-6">
+        <button class="button is-large is-responsive column is-3">
+            Log in
+        </button>
+    </div>
 </main>
 
-<footer class=" bg-footer-top pt-5
-                    ">
+<footer class=" bg-footer-top pt-5">
     <div class="bg-footer columns">
         <img src="/pages/includes/images/pupp_darkGreen.png" width="100">
         <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
