@@ -1,7 +1,6 @@
 <?php
 /** @var mysqli $db */
 require_once 'includes/connection.php';
-require_once 'includes/classes/DateHandler.php';
 session_start();
 
 $errors = [];
@@ -63,16 +62,36 @@ if (isset($_POST['submit'])) {
 
 mysqli_close($db);
 
-// Instantiate the class
-$dateHandler = new DateHandler(isset($_GET['date']) ? $_GET['date'] : null);
+// Get the current date from the query string or default to today
+$currentDate = isset($_GET['date']) ? strtotime($_GET['date']) : time();
 
-// Determine the selected week and set it
-$currentWeekIndex = isset($_GET['week']) ? intval($_GET['week']) : 0;
-$dateHandler->setWeekByIndex($currentWeekIndex);
+// Get the start of the current week (Monday)
+$weekStart = strtotime("Monday this week", $currentDate);
 
-// Get week numbers and days
-$weekNumbers = $dateHandler->getWeekNumbers();
-$days = $dateHandler->getDays();
+// Generate dates for the current week (Monday to Sunday)
+$days = [];
+for ($i = 0; $i < 7; $i++) {
+    $days[] = date('Y-m-d', strtotime("+$i day", $weekStart));
+}
+
+// Calculate the start of the next 4 weeks (week 1 to week 4)
+$weekNumbers = [];
+for ($i = 0; $i < 4; $i++) {
+    // Start each week from the Monday of that week
+    $weekStartForNextWeek = strtotime("+$i week", $weekStart);
+    $weekNumbers[] = date('Y-m-d', $weekStartForNextWeek);
+}
+
+// Set the week number based on the current date or default to this week
+$currentWeekIndex = isset($_GET['week']) ? $_GET['week'] : 0;
+$currentWeekStart = $weekNumbers[$currentWeekIndex]; // Set the current week based on selected week
+$weekStart = strtotime($currentWeekStart); // Update the weekStart with the chosen week's start date
+
+// Generate the days for the selected week (Monday to Sunday)
+$days = [];
+for ($i = 0; $i < 7; $i++) {
+    $days[] = date('Y-m-d', strtotime("+$i day", $weekStart));
+}
 ?>
 <!doctype html>
 <html lang="nl" data-theme="light">
@@ -87,83 +106,129 @@ $days = $dateHandler->getDays();
 
 </head>
 <body>
-<nav class="navbar is-primary">
-    <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-            <a class="navbar-item">
-                Home
-            </a>
-            <a class="navbar-item">
-                Inschrijven
-            </a>
-            <a class="navbar-item">
-                Cursussen
-            </a>
-        </div>
-    </div>
-</nav>
-
 <main class="m-6">
-    <div class="bg-footer box mx-3">
-
-        <div class="columns mx-6">
-            <button class="column is-narrow button mx-2">week 1</button>
-            <button class="column is-narrow button mx-2">week 2</button>
-            <button class="column is-narrow button mx-2">week 3</button>
-            <button class="column is-narrow button mx-2">week 4</button>
+    <!-- Flex container to align everything vertically -->
+    <div class="columns mx-6 is-flex is-flex-direction-column">
+        <!-- Week navigation -->
+        <div id="weeks" class="columns is-flex is-flex-direction-row is-justify-content-space-between">
+            <?php foreach ($weekNumbers as $index => $weekStartForNextWeek): ?>
+                <div>
+                    <form method="get" action="">
+                        <!-- Pass the specific week number as a query parameter -->
+                        <input type="hidden" name="week" value="<?= $index ?>">
+                        <button class="button is-link" type="submit">
+                            Week <?= $index + 1 ?>
+                        </button>
+                    </form>
+                </div>
+            <?php endforeach; ?>
         </div>
 
-        <div class="bg-footer-top box">
+        <!-- Display the selected week's dates (Monday to Sunday) -->
+        <div id="days" class="bg-footer box">
+            <div class="bg-footer-top box">
+                <div class="columns is-flex is-justify-content-space-between is-mobile">
+                    <?php foreach ($days as $day): ?>
+                        <div class="column is-narrow">
+                            <form method="get" action="">
+                                <input type="hidden" name="date" value="<?= $day ?>">
+                                <button
+                                        class="button <?= isset($_GET['date']) && $_GET['date'] == $day ? 'is-primary' : '' ?>"
+                                        type="submit">
+                                    <?= date('D', strtotime($day)) ?><br>
+                                    <?= date('M d', strtotime($day)) ?>
+                                </button>
+                            </form>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
 
-            <div class="bg-footer box columns">
-                <p class="column box pb-6 is-radiusless ">Ma</p>
-                <p class="column box pb-6 is-radiusless ">Di</p>
-                <p class="column box pb-6 is-radiusless ">Wo</p>
-                <p class="column box pb-6 is-radiusless ">Do</p>
-                <p class="column box pb-6 is-radiusless ">Vr</p>
-                <p class="column box pb-6 is-radiusless ">Za</p>
-                <p class="column box pb-6 is-radiusless box-last">Zo</p>
+
+        <!-- The form -->
+        <form class="column is-6 is-centered" action="" method="post">
+            <!-- Name -->
+            <div class="field">
+                <label class="bg-footer box mt-4 columns" for="name">Naam</label>
+                <div class="box column mx-2">
+                    <input class="box is-radiusless input" id="name" type="text" name="name"
+                           value="<?= htmlentities($name) ?>"/>
+                </div>
+                <p class="help is-danger"><?= $errors['name'] ?? '' ?></p>
             </div>
 
-            <div class="bg-footer box mt-4 columns is-multiline is-centered">
-                <div class="box column is-3 mx-4">
-                    <p>Aantal honden</p>
-                    <input class="box is-radiusless input" type="number">
+            <!-- Date -->
+            <div class="field">
+                <label class="label has-text-primary" for="date"></label>
+                <div class="control">
+                    <input type="hidden" name="selected_date"
+                           value="<?= isset($_GET['date']) ? htmlentities($_GET['date']) : date('Y-m-d') ?>"></div>
+                <p class="help is-danger"><?= $errors['date'] ?? '' ?></p>
+            </div>
+
+            <!-- Timeslot -->
+            <div class="box column mx-2">
+                <label class="label has-text-primary" for="timeslot">Tijdslot</label>
+                <div class="control">
+                    <input class="input" id="timeslot" type="text" name="timeslot"
+                           placeholder="Voer een tijdslot in, bijvoorbeeld 10:00 - 11:00"/>
                 </div>
-                <div class="box column is-3 mx-4">
-                    <p>Cursus</p>
-                    <div class="select is-fullwidth">
-                        <select>
-                            <option>Selecteer een cursus</option>
-                            <option>pipi</option>
-                            <option>poopoo</option>
+            </div>
+
+            <!-- Dog Amount -->
+            <div class="field">
+                <label class="label has-text-primary" for="dog_amount">Aantal Honden</label>
+                <div class="box column mx-2">
+                    <div class="select">
+                        <select id="dog_amount" name="dog_amount">
+                            <option value="">-- Selecteer het aantal honden --</option>
+                            <option value="1" <?= $dog_amount == 1 ? 'selected' : '' ?>>1</option>
+                            <option value="2" <?= $dog_amount == 2 ? 'selected' : '' ?>>2</option>
+                            <option value="3" <?= $dog_amount == 3 ? 'selected' : '' ?>>3</option>
+                            <option value="4" <?= $dog_amount == 4 ? 'selected' : '' ?>>4</option>
                         </select>
                     </div>
                 </div>
-                <div class="box column is-3 mx-4">
-                    <p>Selecteer een tijdslot</p>
-                    <input class="box is-radiusless input" type="time">
+                <p class="help is-danger"><?= $errors['dog_amount'] ?? '' ?></p>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="field">
+                <label class="label has-text-primary" for="phone_number">Telefoonnummer</label>
+                <div class="control">
+                    <input class="input" id="phone_number" type="text" name="phone_number"
+                           value="<?= htmlentities($phone_number) ?>" placeholder="06-12345678"/>
                 </div>
-                <div class="column box is-4 mx-4">
-                    <p>Uw naam</p>
-                    <input class="box is-radiusless input" type="text">
-                </div>
-                <div class="column box is-4 mx-4 box-last">
-                    <p>Telefoonnummer</p>
-                    <input class="box is-radiusless input" type="tel">
+                <p class="help is-danger"><?= $errors['phone_number'] ?? '' ?></p>
+            </div>
+
+            <!-- Temporary Course -->
+            <div class="field">
+                <label class="label has-text-primary" for="course">Cursus</label>
+                <div class="control">
+                    <input class="input" id="course" type="text" name="course"
+                           placeholder="Voer een cursus in, bijvoorbeeld Obedience 1"/>
                 </div>
             </div>
 
-            <div class="box bg-footer">
-                <div class="px-6 is-half column container">
-                    <h1 class="has-text-centered is-underlined is-size-5">Vraag?</h1>
-                    <input class="box is-radiusless input" type="text">
+            <!-- Question -->
+            <div class="field">
+                <label class="label has-text-primary" for="question">Vraag</label>
+                <div class="control">
+                    <textarea class="textarea" id="question" name="question"
+                              placeholder="Stel je vraag hier"><?= htmlentities($question) ?></textarea>
                 </div>
             </div>
 
-        </div>
+            <!-- Submit -->
+            <div class="field">
+                <button class="button is-link is-fullwidth" type="submit" name="submit">Inschrijven</button>
+            </div>
+        </form>
     </div>
 </main>
+
 <footer class=" bg-footer-top pt-5
                     ">
     <div class="bg-footer columns">
