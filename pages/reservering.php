@@ -128,10 +128,10 @@ for ($i = 0; $i < 7; $i++) {
         <div id="days" class="bg-footer-top box">
             <div class="columns box bg-footer">
                 <?php foreach ($days as $day): ?>
-                    <form method="get" action="" class="column button is-radiusless box-last pb-6">
+                    <form method="get" action="" class="column p-0">
                         <input type="hidden" name="date" value="<?= $day ?>">
                         <button
-                                class=" <?= isset($_GET['date']) && $_GET['date'] == $day ? 'is-primary' : '' ?>"
+                                class="button is-radiusless is-fullwidth py-4<?= isset($_GET['date']) && $_GET['date'] == $day ? 'is-primary is-fullwidth py-2' : '' ?>"
                                 type="submit">
                             <?= date('D', strtotime($day)) ?><br>
                             <?= date('M d', strtotime($day)) ?>
@@ -149,7 +149,7 @@ for ($i = 0; $i < 7; $i++) {
                 <div class="field box mx-2 column is-4">
                     <label class="label" for="dog_amount">Aantal Honden</label>
 
-                    <div class="select">
+                    <div class="select is-fullwidth">
                         <select id="dog_amount" name="dog_amount">
                             <option value="">-- Selecteer het aantal honden --</option>
                             <option value="1" <?= $dog_amount == 1 ? 'selected' : '' ?>>1</option>
@@ -171,14 +171,13 @@ for ($i = 0; $i < 7; $i++) {
                 </div>
 
                 <!-- Date -->
-                <div class="field column box is-4 mx-2">
-                    <label class="label" for="date">Datum</label>
-                    <div class="control">
-                        <input type="hidden" name="selected_date"
-                               value="<?= isset($_GET['date']) ? htmlentities($_GET['date']) : date('Y-m-d') ?>">
-                    </div>
-                    <p class="help is-danger"><?= $errors['date'] ?? '' ?></p>
+                <label class="label" for="date"></label>
+                <div class="control">
+                    <input type="hidden" name="selected_date"
+                           value="<?= isset($_GET['date']) ? htmlentities($_GET['date']) : date('Y-m-d') ?>">
                 </div>
+                <p class="help is-danger"><?= $errors['date'] ?? '' ?></p>
+
 
                 <!-- Timeslot -->
                 <div class="box column mx-2 is-3 field">
