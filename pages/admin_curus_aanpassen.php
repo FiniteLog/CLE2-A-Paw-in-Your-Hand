@@ -25,47 +25,47 @@ if(!isset($courseId) || $courseId == ""){
     header('Location: cursus.php'); //keep an eye on if this is still correct later
 }
 
-if(isset($_POST['submit'])){
-
-    $title = $_POST[''];
-    $short_info = $_POST[''];
-    $info = $_POST[''];
-
-    $errors = [];
-
-    if($title == ''){
-        $invalidTitle = "Kies een andere titel";
-        $errors[] = $invalidTitle;
-    }
-    elseif (strlen($title) >= 50){
-        $invalidTitle = "De titel is te lang!";
-        $errors[] = $invalidTitle;
-    }
-    if($short_info == ''){
-        $invalidsinfo = "Er mist nog informatie!";
-        $errors[] = $invalidsinfo;
-    } elseif (strlen($short_info) >= 200){
-        $invalidsinfo = "De tekst is te lang";
-        $errors[] = $invalidsinfo;
-    }
-    if($info == ''){
-        $invalidInfo = "Er mist nog informatie!";
-        $errors[] = $invalidInfo;
-    } elseif (strlen($info) >= 3000){
-        $invalidInfo = "De tekst is te lang";
-        $errors[] = $invalidInfo;
-    }
-}
-
-if (empty($errors)){
-    $db = mysqli_connect($host, $user, $password, $database)
-    or die('Error: ' . mysqli_connect_error());
-
-    $query = "UPDATE `courses` SET `title`='$title',`info`='$info',`short_info`='$short_info' WHERE course_id=$courseId";
-
-    mysqli_query($db, $query);
-    header('Location: cursus_overzicht_pagina.php');
-}
+//if(isset($_POST['submit'])){
+//
+//    $title = $_POST[''];
+//    $short_info = $_POST[''];
+//    $info = $_POST[''];
+//
+//    $errors = [];
+//
+//    if($title == ''){
+//        $invalidTitle = "Kies een andere titel";
+//        $errors[] = $invalidTitle;
+//    }
+//    elseif (strlen($title) >= 50){
+//        $invalidTitle = "De titel is te lang!";
+//        $errors[] = $invalidTitle;
+//    }
+//    if($short_info == ''){
+//        $invalidsinfo = "Er mist nog informatie!";
+//        $errors[] = $invalidsinfo;
+//    } elseif (strlen($short_info) >= 200){
+//        $invalidsinfo = "De tekst is te lang";
+//        $errors[] = $invalidsinfo;
+//    }
+//    if($info == ''){
+//        $invalidInfo = "Er mist nog informatie!";
+//        $errors[] = $invalidInfo;
+//    } elseif (strlen($info) >= 3000){
+//        $invalidInfo = "De tekst is te lang";
+//        $errors[] = $invalidInfo;
+//    }
+//}
+//
+//if (empty($errors)){
+//    $db = mysqli_connect($host, $user, $password, $database)
+//    or die('Error: ' . mysqli_connect_error());
+//
+//    $query = "UPDATE `courses` SET `title`='$title',`info`='$info',`short_info`='$short_info' WHERE course_id=$courseId";
+//
+//    mysqli_query($db, $query);
+//    header('Location: cursus_overzicht_pagina.php');
+//}
 
 if(isset($courseData)):
 
