@@ -29,6 +29,7 @@ mysqli_close($db);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/CSS/style.css">
     <title>Cursus overzicht</title>
 </head>
 <body>
@@ -48,13 +49,13 @@ mysqli_close($db);
                 <th><img src="includes/images/<?= $course['image'] ?>" alt="" width="100px"></th>
                 <td><?= $course['title']?></td>
                 <td><?= $course['short_info'] ?></td>
-                <th><a href="admin_curus_aanpassen.php?course_id=<?= $course['course_id']?>">Aanpassen</a></th>
+                <th><a href="admin_cursus_aanpassen.php?course_id=<?= $course['course_id']?>">Aanpassen</a></th>
             </tr>
             </tbody>
         </table>
     <?php
     endforeach;
 endif; ?>
-<a href="#">+ Nieuwe cursus toevoegen</a>
+<a href="cursus_toevoegen.php">+ Nieuwe cursus toevoegen</a>
 </body>
 </html>

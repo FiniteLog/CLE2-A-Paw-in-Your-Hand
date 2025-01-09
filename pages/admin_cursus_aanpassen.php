@@ -27,9 +27,9 @@ if(!isset($courseId) || $courseId == ""){
 
 if(isset($_POST['submit'])){
 
-    $title = $_POST[''];
-    $short_info = $_POST[''];
-    $info = $_POST[''];
+    $title = $_POST['title'];
+    $short_info = $_POST['short_info'];
+    $info = $_POST['info'];
 
     $errors = [];
 
@@ -55,16 +55,18 @@ if(isset($_POST['submit'])){
         $invalidInfo = "De tekst is te lang";
         $errors[] = $invalidInfo;
     }
-}
 
-if (empty($errors)){
-    $db = mysqli_connect($host, $user, $password, $database)
-    or die('Error: ' . mysqli_connect_error());
+    if (empty($errors)){
+        $db = mysqli_connect($host, $user, $password, $database)
+        or die('Error: ' . mysqli_connect_error());
 
-    $query = "UPDATE `courses` SET `title`='$title',`info`='$info',`short_info`='$short_info' WHERE course_id=$courseId";
+        $query_sub = "UPDATE `courses` SET `title`='$title',`info`='$info',`short_info`='$short_info' WHERE course_id=$courseId";
 
-    mysqli_query($db, $query);
-    header('Location: cursus_overzicht_pagina.php');
+        mysqli_query($db, $query_sub);
+        header('Location: admin_cursus_overzicht.php');
+    } else{
+        print_r($errors);
+    }
 }
 
 if(isset($courseData)):
@@ -118,7 +120,7 @@ if(isset($courseData)):
                 <label for="info">Informatie</label>
                 <textarea id="info" name="info" style="height: 150px; padding: 1%;"><?=$courseData[0]['info'];?></textarea>
                 <br>
-                <input type="submit" value="Aanpassen" style="width: 10vw; height: 5vh;">
+                <input type="submit" name="submit" value="aanpassen" style="width: 10vw; height: 5vh;">
             </form>
         </div>
     </main>
