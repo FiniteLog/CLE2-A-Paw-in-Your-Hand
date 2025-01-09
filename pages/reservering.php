@@ -11,7 +11,7 @@ $name = $date = $timeslot = $dog_amount = $phone_number = $course = $question = 
 // Handle form submission
 if (isset($_POST['submit'])) {
     // Sanitize inputs
-    $name = mysqli_real_escape_string($db, $_POST['name']);
+    $name = mysqli_real_escape_string($db, $_POST['username']);
     $date = mysqli_real_escape_string($db, $_POST['date']);
     $timeslot = mysqli_real_escape_string($db, $_POST['timeslot']);
     $dog_amount = mysqli_real_escape_string($db, $_POST['dog_amount']);
@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
 
     // Validation
     if ($name === "") {
-        $errors['name'] = "Vul alstublieft een naam in.";
+        $errors['username'] = "Vul alstublieft een naam in.";
     }
     if ($date === "") {
         $errors['date'] = "Kies alstublieft een datum.";
@@ -43,8 +43,8 @@ if (isset($_POST['submit'])) {
     // If no errors, insert data
     if (empty($errors)) {
         $insertQuery = "
-        INSERT INTO reservations (name, data, time_slot, dog_amount, phone_number, cursus, question) 
-        VALUES ('$name', '$date', '$timeslot', '$dog_amount', '$phone_number', '$course', '$question')";
+        INSERT INTO reservations (username, data, time_slot, dog_amount, phone_number, cursus, question) 
+        VALUES ('usernamee', 'usernamee', 'usernameeslot', 'username_amount', 'usernamene_number', 'usernamerse', 'usernamestion')";
 
         if (mysqli_query($db, $insertQuery)) {
             header('Location: index.php');
@@ -203,7 +203,7 @@ $days = $dateHandler->getDays();
                     <label class="label" for="name">Naam</label>
                     <input class="is-radiusless input" id="name" type="text" name="name"
                            value="<?= htmlentities($name) ?>"/>
-                    <p class="help is-danger"><?= $errors['name'] ?? '' ?></p>
+                    <p class="help is-danger"><?= $errors['username'] ?? '' ?></p>
                 </div>
 
                 <!-- Phone Number -->
