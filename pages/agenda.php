@@ -25,7 +25,7 @@ $result = mysqli_query($db, $query) or die('Error: ' . mysqli_error($db) . ' wit
 // Group reservations by date
 $reservationsByDate = [];
 while ($row = mysqli_fetch_assoc($result)) {
-    // Use the correct column name: 'date' instead of 'reservation_date'
+    // Use the correct column username: 'date' instead of 'reservation_date'
     if (!empty($row['date'])) {
         $reservationsByDate[$row['date']][] = $row;
     }
