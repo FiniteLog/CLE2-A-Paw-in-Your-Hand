@@ -2,10 +2,7 @@
 
 .navbar {
     background-color:  #23B136;
-}
-
-.navbar-start {
-
+    border-bottom: #2CDB43 10px solid;
 }
 
 .navbar-item {
@@ -22,8 +19,35 @@
     height: 80px;
 }
 
+main {
+    background-color: white;
+}
+
+.custom-box {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+section {
+    background-color: white;
+}
+
 .custom-margin {
     margin-right: 8px;
+}
+
+ .article-container {
+     max-width: 300px;
+ }
+
+.custom-button {
+    background-color: #166D21;
+    color: white;
+}
+
+.custom-button:hover {
+    background-color: #145A1C;
 }
 
 .bg-footer {
