@@ -1,4 +1,5 @@
 <?php
+
 $host = "127.0.0.1";
 $user = "root";
 $password = "";
@@ -31,23 +32,21 @@ mysqli_close($db);
 </head>
 <body>
 <nav class="navbar">
-    <div id="navbarBasic" class="navbar-menu my-5 mx-5">
+    <div id="navbarBasic" class="navbar-menu p-5">
         <div class="navbar-start">
-            <a class="navbar-item">
+            <a class="navbar-item custom-margin">
                 Home
             </a>
-
-            <a class="navbar-item">
+            <a class="navbar-item custom-margin">
                 Inschrijven
             </a>
-
-            <a class="navbar-item">
+            <a class="navbar-item custom-margin">
                 Cursussen
             </a>
         </div>
         <div class="navbar-end">
-            <div class="navbar-item">
-                <img src="includes/images/pupp_darkGreen.png" height="100"> <!--Ik mis een unit bij de 100 - image is nu ook heel klein-->
+            <div class="navbar-image">
+                <img src="includes/images/pupp_darkGreen.png" height="100px">
             </div>
         </div>
     </div>
@@ -74,7 +73,7 @@ mysqli_close($db);
 </main>
 <footer class=" bg-footer-top pt-5">
     <div class="bg-footer columns">
-        <img src="includes/images/pupp_darkGreen.png" width="100"> <!--Ik mis een unit bij 'width'!-->
+        <img src="includes/images/pupp_darkGreen.png" width="100px">
         <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
     </div>
 </footer>
