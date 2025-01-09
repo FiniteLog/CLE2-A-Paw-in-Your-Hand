@@ -64,7 +64,7 @@ mysqli_close($db);
                 <div class="image is-128x128">
                     <img src="/includes/images/<?= $course['image'] ?>" alt="image">
                 </div>
-                <a href="cursus_info.php?course_id=<?= $course['id']?>">Details</a>
+                <a href="cursus_info.php?course_id=<?= $course['course_id']?>">Details</a>
             </section>
         <?php
         endforeach;
