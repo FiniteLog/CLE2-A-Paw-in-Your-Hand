@@ -41,6 +41,9 @@ if (isset($_POST['submit'])) {
     } elseif (strlen($title) >= 50) {
         $invalidTitle = "De titel is te lang!";
         $errors[] = $invalidTitle;
+    } elseif (strlen($title) <= 10){
+        $invalidTitle = "De titel is te kort!";
+        $errors[] = $invalidTitle;
     }
     if ($short_info == '') {
         $invalidsinfo = "Er mist nog informatie!";
@@ -65,8 +68,11 @@ if (isset($_POST['submit'])) {
 
         mysqli_query($db, $query_sub);
         header('Location: admin_cursus_overzicht.php');
+<<<<<<< Updated upstream
     } else {
         print_r($errors);
+=======
+>>>>>>> Stashed changes
     }
 }
 
@@ -107,13 +113,19 @@ if (isset($courseData)):
     <main>
         <body style="background-image: url('includes/images/bg1.png'); background-repeat: no-repeat; background-size: cover;">
         <div style="background-color: white; width: 75%; margin-left: 8vw; height: 100vh; margin-top: -2.5vh; padding: 5%;">
+<<<<<<< Updated upstream
             <h2><?= $courseData[0]['title']; ?> aanpassen</h2>
             <a href="admin_cursus_overzicht.php">Terug</a> <!--history.back()-->
+=======
+            <h2><?=$title ?? $courseData[0]['title']?> aanpassen</h2>
+            <a href="admin_cursus_overzicht.php">Terug</a>
+>>>>>>> Stashed changes
             <a>Verwijder cursus</a>
             <br>
             <br>
             <form action="" method="post" style="display: flex; flex-flow: column; ">
                 <label for="title">Titel</label>
+<<<<<<< Updated upstream
                 <input type="text" value="<?= $courseData[0]['title']; ?>" id="title" name="title" style="width: 15vw;">
                 <br>
                 <label for="short_info">Pop-up informatie</label>
@@ -123,6 +135,18 @@ if (isset($courseData)):
                 <label for="info">Informatie</label>
                 <textarea id="info" name="info"
                           style="height: 150px; padding: 1%;"><?= $courseData[0]['info']; ?></textarea>
+=======
+                <input type="text" value="<?=$courseData[0]['title'];?>" id="title" name="title" style="width: 15vw;">
+                <p><?= $invalidTitle ?? '' ?></p>
+                <br>
+                <label for="short_info">Pop-up informatie</label>
+                <textarea id="short_info" name="short_info" oninput="this.style.height" style="height: 50px; padding: 1%; width: 40vw;"><?=$courseData[0]['short_info'];?></textarea>
+                <p><?= $invalidsinfo ?? '' ?></p>
+                <br>
+                <label for="info">Informatie</label>
+                <textarea id="info" name="info" oninput="this.style.height" style="height: 150px; padding: 1%;"><?=$courseData[0]['info'];?></textarea>
+                <p><?= $invalidInfo ?? '' ?></p>
+>>>>>>> Stashed changes
                 <br>
                 <input type="submit" name="submit" value="aanpassen" style="width: 10vw; height: 5vh;">
             </form>
