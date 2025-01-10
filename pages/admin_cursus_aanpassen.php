@@ -21,8 +21,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     $courseData[] = $row;
 }
 
-mysqli_close($db);
-
 if (!isset($courseId) || $courseId == "") {
     header('Location: cursus.php'); //keep an eye on if this is still correct later
 }
@@ -61,18 +59,11 @@ if (isset($_POST['submit'])) {
     }
 
     if (empty($errors)) {
-        $db = mysqli_connect($host, $user, $password, $database)
-        or die('Error: ' . mysqli_connect_error());
 
         $query_sub = "UPDATE `courses` SET `title`='$title',`info`='$info',`short_info`='$short_info' WHERE course_id=$courseId";
 
         mysqli_query($db, $query_sub);
         header('Location: admin_cursus_overzicht.php');
-<<<<<<< Updated upstream
-    } else {
-        print_r($errors);
-=======
->>>>>>> Stashed changes
     }
 }
 
@@ -104,8 +95,7 @@ if (isset($courseData)):
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <img src="includes/images/pupp_darkGreen.png" height="100">
-                    <!--Ik mis een unit bij de 100 - image is nu ook heel klein-->
+                    <img src="includes/images/pupp_darkGreen.png" height="100px">
                 </div>
             </div>
         </div>
@@ -113,19 +103,15 @@ if (isset($courseData)):
     <main>
         <body style="background-image: url('includes/images/bg1.png'); background-repeat: no-repeat; background-size: cover;">
         <div style="background-color: white; width: 75%; margin-left: 8vw; height: 100vh; margin-top: -2.5vh; padding: 5%;">
-<<<<<<< Updated upstream
             <h2><?= $courseData[0]['title']; ?> aanpassen</h2>
-            <a href="admin_cursus_overzicht.php">Terug</a> <!--history.back()-->
-=======
+            <a href="admin_cursus_overzicht.php">Terug</a>
             <h2><?=$title ?? $courseData[0]['title']?> aanpassen</h2>
             <a href="admin_cursus_overzicht.php">Terug</a>
->>>>>>> Stashed changes
             <a>Verwijder cursus</a>
             <br>
             <br>
             <form action="" method="post" style="display: flex; flex-flow: column; ">
                 <label for="title">Titel</label>
-<<<<<<< Updated upstream
                 <input type="text" value="<?= $courseData[0]['title']; ?>" id="title" name="title" style="width: 15vw;">
                 <br>
                 <label for="short_info">Pop-up informatie</label>
@@ -135,7 +121,6 @@ if (isset($courseData)):
                 <label for="info">Informatie</label>
                 <textarea id="info" name="info"
                           style="height: 150px; padding: 1%;"><?= $courseData[0]['info']; ?></textarea>
-=======
                 <input type="text" value="<?=$courseData[0]['title'];?>" id="title" name="title" style="width: 15vw;">
                 <p><?= $invalidTitle ?? '' ?></p>
                 <br>
@@ -146,7 +131,6 @@ if (isset($courseData)):
                 <label for="info">Informatie</label>
                 <textarea id="info" name="info" oninput="this.style.height" style="height: 150px; padding: 1%;"><?=$courseData[0]['info'];?></textarea>
                 <p><?= $invalidInfo ?? '' ?></p>
->>>>>>> Stashed changes
                 <br>
                 <input type="submit" name="submit" value="aanpassen" style="width: 10vw; height: 5vh;">
             </form>

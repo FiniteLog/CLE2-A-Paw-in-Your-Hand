@@ -1,10 +1,13 @@
 <?php
+/** @var mysqli $db
+ * @var string $host
+ * @var string $user
+ * @var string $password
+ * @var string $database
+ * */
 
-$host = "127.0.0.1";
-$user = "root";
-$password = "";
-$database = "CLE2";
-
+require_once 'includes/connection.php';
+session_start();
 if(isset($_POST['submit'])) {
 
     $title = $_POST['title'];
@@ -39,9 +42,6 @@ if(isset($_POST['submit'])) {
     }
 
 if (empty($errors)) {
-    $db = mysqli_connect($host, $user, $password, $database)
-    or die("Error: " . mysqli_connect_error());
-
     $query = "INSERT INTO `courses`(`title`, `info`, `short_info`) VALUES ('$title', '$info', '$short_info')";
 
     $result = mysqli_query($db, $query);
