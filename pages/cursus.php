@@ -6,7 +6,7 @@ session_start();
 $query = "SELECT * FROM courses";
 
 $result = mysqli_query($db, $query)
-or die ('Errror ' . mysqli_error($db) . ' with query ' . $query);
+or die ('Error ' . mysqli_error($db) . ' with query ' . $query);
 
 $courses = [];
 
