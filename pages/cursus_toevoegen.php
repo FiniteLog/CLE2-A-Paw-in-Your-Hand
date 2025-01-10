@@ -10,9 +10,9 @@ require_once 'includes/connection.php';
 session_start();
 if(isset($_POST['submit'])) {
 
-    $title = $_POST['title'];
-    $short_info = $_POST['short_info'];
-    $info = $_POST['info'];
+    $title = htmlentities($_POST['title']);
+    $short_info = htmlentities($_POST['short_info']);
+    $info = htmlentities( $_POST['info']);
 
     $errors = [];
 

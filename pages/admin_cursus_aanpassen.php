@@ -21,15 +21,15 @@ while ($row = mysqli_fetch_assoc($result)) {
     $courseData[] = $row;
 }
 
-if (!isset($courseId) || $courseId == "") {
+if (!isset($courseId) || $courseId == "" || is_numeric($courseId)) {
     header('Location: cursus.php'); //keep an eye on if this is still correct later
 }
 
 if (isset($_POST['submit'])) {
 
-    $title = $_POST['title'];
-    $short_info = $_POST['short_info'];
-    $info = $_POST['info'];
+    $title = htmlentities($_POST['title']);
+    $short_info = htmlentities($_POST['short_info']);
+    $info = htmlentities($_POST['info']);
 
     $errors = [];
 
@@ -59,7 +59,6 @@ if (isset($_POST['submit'])) {
     }
 
     if (empty($errors)) {
-
         $query_sub = "UPDATE `courses` SET `title`='$title',`info`='$info',`short_info`='$short_info' WHERE course_id=$courseId";
 
         mysqli_query($db, $query_sub);
