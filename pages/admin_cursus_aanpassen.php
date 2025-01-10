@@ -27,6 +27,7 @@ if(!isset($courseId) || $courseId == ""){
 
 if(isset($_POST['submit'])){
 
+    print_r($_POST['submit']);
     $title = $_POST['title'];
     $short_info = $_POST['short_info'];
     $info = $_POST['info'];
@@ -83,6 +84,7 @@ if(isset($courseData)):
         <link rel="stylesheet" href="/CSS/style.css">
         <title><?=$courseData[0]['title'];?> aanpassen</title>
     </head>
+    <body style="background-image: url('includes/images/bg1.png'); background-repeat: no-repeat; background-size: cover;">
     <nav class="navbar">
         <div id="navbarBasic" class="navbar-menu my-5 mx-5">
             <div class="navbar-start">
@@ -103,22 +105,24 @@ if(isset($courseData)):
         </div>
     </nav>
     <main>
-        <body style="background-image: url('includes/images/bg1.png'); background-repeat: no-repeat; background-size: cover;">
         <div style="background-color: white; width: 75%; margin-left: 8vw; height: 100vh; margin-top: -2.5vh; padding: 5%;">
             <h2><?=$courseData[0]['title'];?> aanpassen</h2>
             <a href="admin_cursus_overzicht.php">Terug</a> <!--history.back()-->
-            <a>Verwijder cursus</a>
+            <a href="delete.php">Verwijder cursus</a>
             <br>
             <br>
             <form action="" method="post" style="display: flex; flex-flow: column; ">
                 <label for="title">Titel</label>
                 <input type="text" value="<?=$courseData[0]['title'];?>" id="title" name="title" style="width: 15vw;">
+                <p><?= $invalidTitle?></p>
                 <br>
                 <label for="short_info">Pop-up informatie</label>
                 <textarea id="short_info" name="short_info" style="height: 50px; padding: 1%; width: 40vw;"><?=$courseData[0]['short_info'];?></textarea>
+                <p><?= $invalidsinfo?></p>
                 <br>
                 <label for="info">Informatie</label>
                 <textarea id="info" name="info" style="height: 150px; padding: 1%;"><?=$courseData[0]['info'];?></textarea>
+                <p><?= $invalidInfo?></p>
                 <br>
                 <input type="submit" name="submit" value="aanpassen" style="width: 10vw; height: 5vh;">
             </form>

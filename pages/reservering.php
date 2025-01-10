@@ -88,8 +88,8 @@ $days = $dateHandler->getDays();
 
 </head>
 <body>
-<nav class="navbar">
-    <div id="navbarBasic" class="navbar-menu p-5">
+<nav class="navbar py-8 mb-5">
+    <div id="navbarBasic" class="navbar-menu">
         <div class="navbar-start">
             <a href="index.php" class="navbar-item custom-margin">
                 Home
