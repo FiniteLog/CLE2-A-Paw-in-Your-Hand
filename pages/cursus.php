@@ -34,13 +34,13 @@ mysqli_close($db);
 <nav class="navbar">
     <div id="navbarBasic" class="navbar-menu p-5">
         <div class="navbar-start">
-            <a class="navbar-item custom-margin">
+            <a href="index.php" class="navbar-item custom-margin">
                 Home
             </a>
-            <a class="navbar-item custom-margin">
+            <a href="reservering.php" class="navbar-item custom-margin">
                 Inschrijven
             </a>
-            <a class="navbar-item custom-margin">
+            <a href="cursus.php" class="navbar-item custom-margin">
                 Cursussen
             </a>
         </div>
@@ -51,25 +51,28 @@ mysqli_close($db);
         </div>
     </div>
 </nav>
-<header></header>
-<main>
+<main class="is-flex is-flex-direction-column is-align-items-center">
     <?php if (isset($courses)):
-
         foreach ($courses as $course):
             ?>
-            <section class="course-container mx-2 my-2">
-                <h1><?= $course['title'] ?></h1>
-                <p><?= $course['short_info'] ?></p>
-                <div class="image is-128x128">
-                    <img src="/includes/images/<?= $course['image'] ?>" alt="image">
+            <section class="box custom-box columns is-centered is-variable is-8 mx-2 my-2">
+                <div class="column is-narrow">
+                    <img src="includes/images/<?= $course['image'] ?>" alt="image" class="image is-128x128">
                 </div>
-                <a href="cursus_info.php?course_id=<?= $course['course_id']?>">Details</a>
+                <div class="column is-flex is-flex-direction-column p-4">
+                    <h1 class="has-text-weight-bold"><?= $course['title'] ?></h1>
+                    <div class="article-container">
+                        <p><?= $course['short_info'] ?></p>
+                    </div>
+                    <div class="is-flex is-justify-content-flex-end mt-auto">
+                        <a href="cursus_info.php?course_id=<?= $course['course_id']?>" class="button custom-button">Details</a>
+                    </div>
+                </div>
             </section>
         <?php
         endforeach;
     endif;
     ?>
-
 </main>
 <footer class=" bg-footer-top pt-5">
     <div class="bg-footer columns">
