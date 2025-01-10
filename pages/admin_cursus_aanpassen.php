@@ -1,5 +1,11 @@
 <?php
-/** @var mysqli $db */
+/** @var mysqli $db
+ * @var string $host
+ * @var string $user
+ * @var string $password
+ * @var string $database
+ * */
+
 require_once 'includes/connection.php';
 session_start();
 
