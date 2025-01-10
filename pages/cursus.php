@@ -74,7 +74,7 @@ mysqli_close($db);
     endif;
     ?>
 </main>
-<footer class=" bg-footer-top pt-5">
+<footer class="bg-footer-top pt-5">
     <div class="bg-footer columns">
         <img src="includes/images/pupp_darkGreen.png" width="100px">
         <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>

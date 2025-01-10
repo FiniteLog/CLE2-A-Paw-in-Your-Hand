@@ -1,5 +1,15 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
-
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+    background-color: white;
+}
 .navbar {
     background-color:  #23B136;
     border-bottom: #2CDB43 10px solid;
@@ -19,10 +29,6 @@
     height: 80px;
 }
 
-main {
-    background-color: white;
-}
-
 .custom-box {
     background-color: white;
     border: 1px solid black;
@@ -38,7 +44,7 @@ section {
 }
 
  .article-container {
-     max-width: 300px;
+     max-width: 350px;
  }
 
 .custom-button {
