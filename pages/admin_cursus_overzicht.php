@@ -1,11 +1,7 @@
 <?php
-$host = "127.0.0.1";
-$user = "root";
-$password = "";
-$database = "CLE2";
-
-$db = mysqli_connect($host, $user, $password, $database)
-or die("Error: " . mysqli_connect_error());
+/** @var mysqli $db */
+require_once 'includes/connection.php';
+session_start();
 
 $query = "SELECT * FROM courses";
 
@@ -19,7 +15,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 
 mysqli_close($db);
-
 ?>
 
 <!doctype html>
@@ -33,12 +28,12 @@ mysqli_close($db);
     <title>Cursus overzicht</title>
 </head>
 <body>
-<?php if(isset($courses)):
-    foreach($courses as $course):?>
+<?php if (isset($courses)):
+    foreach ($courses as $course):?>
         <table>
             <thead>
             <tr>
-                <th> </th>
+                <th></th>
                 <th>Title</th>
                 <th>info</th>
             </tr>
@@ -47,9 +42,9 @@ mysqli_close($db);
             <tbody>
             <tr>
                 <th><img src="includes/images/<?= $course['image'] ?>" alt="" width="100px"></th>
-                <td><?= $course['title']?></td>
+                <td><?= $course['title'] ?></td>
                 <td><?= $course['short_info'] ?></td>
-                <th><a href="admin_cursus_aanpassen.php?course_id=<?= $course['course_id']?>">Aanpassen</a></th>
+                <th><a href="admin_cursus_aanpassen.php?course_id=<?= $course['course_id'] ?>">Aanpassen</a></th>
             </tr>
             </tbody>
         </table>

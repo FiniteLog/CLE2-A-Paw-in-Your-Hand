@@ -1,13 +1,9 @@
 <?php
+/** @var mysqli $db */
+require_once 'includes/connection.php';
+session_start();
+
 $courseId = $_GET["course_id"];
-
-$host = "127.0.0.1";
-$user = "root";
-$password = "";
-$database = "CLE2";
-
-$db = mysqli_connect($host, $user, $password, $database)
-or die("Error: " . mysqli_connect_error());
 
 $query = "SELECT * FROM courses WHERE course_id=$courseId";
 
@@ -21,11 +17,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 mysqli_close($db);
 
-if(!isset($courseId) || $courseId == ""){
+if (!isset($courseId) || $courseId == "") {
     header('Location: cursus.php'); //keep an eye on if this is still correct later
 }
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
 
     $title = $_POST['title'];
     $short_info = $_POST['short_info'];
@@ -33,30 +29,29 @@ if(isset($_POST['submit'])){
 
     $errors = [];
 
-    if($title == ''){
+    if ($title == '') {
         $invalidTitle = "Kies een andere titel";
         $errors[] = $invalidTitle;
-    }
-    elseif (strlen($title) >= 50){
+    } elseif (strlen($title) >= 50) {
         $invalidTitle = "De titel is te lang!";
         $errors[] = $invalidTitle;
     }
-    if($short_info == ''){
+    if ($short_info == '') {
         $invalidsinfo = "Er mist nog informatie!";
         $errors[] = $invalidsinfo;
-    } elseif (strlen($short_info) >= 200){
+    } elseif (strlen($short_info) >= 200) {
         $invalidsinfo = "De tekst is te lang";
         $errors[] = $invalidsinfo;
     }
-    if($info == ''){
+    if ($info == '') {
         $invalidInfo = "Er mist nog informatie!";
         $errors[] = $invalidInfo;
-    } elseif (strlen($info) >= 3000){
+    } elseif (strlen($info) >= 3000) {
         $invalidInfo = "De tekst is te lang";
         $errors[] = $invalidInfo;
     }
 
-    if (empty($errors)){
+    if (empty($errors)) {
         $db = mysqli_connect($host, $user, $password, $database)
         or die('Error: ' . mysqli_connect_error());
 
@@ -64,12 +59,12 @@ if(isset($_POST['submit'])){
 
         mysqli_query($db, $query_sub);
         header('Location: admin_cursus_overzicht.php');
-    } else{
+    } else {
         print_r($errors);
     }
 }
 
-if(isset($courseData)):
+if (isset($courseData)):
 
     ?>
     <!doctype html>
@@ -81,7 +76,7 @@ if(isset($courseData)):
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
         <link rel="stylesheet" href="/CSS/style.css">
-        <title><?=$courseData[0]['title'];?> aanpassen</title>
+        <title><?= $courseData[0]['title']; ?> aanpassen</title>
     </head>
     <nav class="navbar">
         <div id="navbarBasic" class="navbar-menu my-5 mx-5">
@@ -97,7 +92,8 @@ if(isset($courseData)):
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <img src="includes/images/pupp_darkGreen.png" height="100"> <!--Ik mis een unit bij de 100 - image is nu ook heel klein-->
+                    <img src="includes/images/pupp_darkGreen.png" height="100">
+                    <!--Ik mis een unit bij de 100 - image is nu ook heel klein-->
                 </div>
             </div>
         </div>
@@ -105,20 +101,22 @@ if(isset($courseData)):
     <main>
         <body style="background-image: url('includes/images/bg1.png'); background-repeat: no-repeat; background-size: cover;">
         <div style="background-color: white; width: 75%; margin-left: 8vw; height: 100vh; margin-top: -2.5vh; padding: 5%;">
-            <h2><?=$courseData[0]['title'];?> aanpassen</h2>
+            <h2><?= $courseData[0]['title']; ?> aanpassen</h2>
             <a href="admin_cursus_overzicht.php">Terug</a> <!--history.back()-->
             <a>Verwijder cursus</a>
             <br>
             <br>
             <form action="" method="post" style="display: flex; flex-flow: column; ">
                 <label for="title">Titel</label>
-                <input type="text" value="<?=$courseData[0]['title'];?>" id="title" name="title" style="width: 15vw;">
+                <input type="text" value="<?= $courseData[0]['title']; ?>" id="title" name="title" style="width: 15vw;">
                 <br>
                 <label for="short_info">Pop-up informatie</label>
-                <textarea id="short_info" name="short_info" style="height: 50px; padding: 1%; width: 40vw;"><?=$courseData[0]['short_info'];?></textarea>
+                <textarea id="short_info" name="short_info"
+                          style="height: 50px; padding: 1%; width: 40vw;"><?= $courseData[0]['short_info']; ?></textarea>
                 <br>
                 <label for="info">Informatie</label>
-                <textarea id="info" name="info" style="height: 150px; padding: 1%;"><?=$courseData[0]['info'];?></textarea>
+                <textarea id="info" name="info"
+                          style="height: 150px; padding: 1%;"><?= $courseData[0]['info']; ?></textarea>
                 <br>
                 <input type="submit" name="submit" value="aanpassen" style="width: 10vw; height: 5vh;">
             </form>
