@@ -1,13 +1,9 @@
 <?php
+/** @var mysqli $db */
+require_once 'includes/connection.php';
+session_start();
+
 $courseId = $_GET['course_id'];
-
-$host = "127.0.0.1";
-$user = "root";
-$password = "";
-$database = "CLE2";
-
-$db = mysqli_connect($host, $user, $password, $database)
-or die("Error: " . mysqli_connect_error());
 
 $query = "SELECT * FROM courses WHERE course_id=$courseId";
 
@@ -21,7 +17,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 mysqli_close($db);
 
-if (!isset($courseId) || $courseId == "") {
+if (!isset($courseId) || $courseId == "" || is_numeric($courseId)) {
     header('Location: cursus.php'); //keep an eye on if this is still correct later
 }
 

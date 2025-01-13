@@ -1,17 +1,12 @@
 <?php
-
-$host = "127.0.0.1";
-$user = "root";
-$password = "";
-$database = "CLE2";
-
-$db = mysqli_connect($host, $user, $password, $database)
-or die("Error: " . mysqli_connect_error());
+/** @var mysqli $db */
+require_once 'includes/connection.php';
+session_start();
 
 $query = "SELECT * FROM courses";
 
 $result = mysqli_query($db, $query)
-or die ('Errror ' . mysqli_error($db) . ' with query ' . $query);
+or die ('Error ' . mysqli_error($db) . ' with query ' . $query);
 
 $courses = [];
 
