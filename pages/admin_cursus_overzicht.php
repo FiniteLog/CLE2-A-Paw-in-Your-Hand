@@ -28,6 +28,7 @@ mysqli_close($db);
     <title>Cursus overzicht</title>
 </head>
 <body>
+<main>
 <?php if (isset($courses)):
     foreach ($courses as $course):?>
         <table>
@@ -56,5 +57,6 @@ mysqli_close($db);
     endforeach;
 endif; ?>
 <a href="cursus_toevoegen.php">+ Nieuwe cursus toevoegen</a>
+</main>
 </body>
 </html>

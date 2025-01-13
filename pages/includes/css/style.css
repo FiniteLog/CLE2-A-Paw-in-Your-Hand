@@ -1,28 +1,45 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
+
+*{
+    --white: #FFF;
+    --lightGrey: #A7A7A7;
+    --darkGrey: #8C8C8C;
+    --black: #000;
+    --lightGreen: #2CDB43;
+    --darkerGreen: #23B136;
+    --darkestGreen: #166D21;
+    --lightblue: #76cdff;
+    --deepblue: #38b6ff;
+
+    /*set font sizes*/
+}
+
 html, body {
     height: 100%;
 }
 body {
     display: flex;
     flex-direction: column;
+    /*background image*/
 }
 main {
-    flex: 1;
-    background-color: white;
+    flex: 1; /*????*/
+    background-color: var(--white);
+    /*new size for visible background image*/
 }
 .navbar {
-    background-color:  #23B136;
-    border-bottom: #2CDB43 10px solid;
+    background-color:  var(--darkerGreen);
+    border-bottom: var(--lightGreen) 10px solid;
 }
 
 .navbar-item {
-    color: black;
-    background-color: #2CDB43;
+    color: var(--black);
+    background-color: var(--lightGreen);
 }
 
 .navbar-item:hover {
-    background-color: #166D21;
-    color: white;
+    background-color: var(--darkestGreen);
+    color: var(--white);
 }
 
 .navbar-image img {
@@ -30,16 +47,16 @@ main {
 }
 
 .custom-box {
-    background-color: white;
-    border: 1px solid black;
+    background-color: var(--white);
+    border: 1px solid var(--black);
     border-radius: 10px;
 }
 
 section {
-    background-color: white;
+    background-color: var(--white);
 }
 
-.custom-margin {
+.custom-margin { /*for what?*/
     margin-right: 8px;
 }
 
@@ -48,27 +65,27 @@ section {
  }
 
 .custom-button {
-    background-color: #166D21;
-    color: white;
+    background-color: var(--darkestGreen);
+    color: var(--white);
 }
 
 .custom-button:hover {
-    background-color: #145A1C;
+    background-color: var(--darkestGreen);
 }
 
 .bg-footer {
-    background-color: #166D21;
-    color: black;
+    background-color: var(--darkerGreen);
+    color: var(--black);
 }
 
 .bg-footer-top {
-    background-color: #2CDB43;
+    background-color: var(--lightGreen);
 }
 
 button:hover {
-    background-color: #8C8C8C;
+    background-color: var(--darkGrey);
 }
 
-.box-last {
+.box-last { /*What is this?*/
     margin-bottom: 1.5rem;
 }
