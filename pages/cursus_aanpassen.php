@@ -21,8 +21,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     $courseData[] = $row;
 }
 
-if (!isset($courseId) || $courseId == "" || is_numeric($courseId)) {
-    header('Location: cursus.php'); //keep an eye on if this is still correct later
+if (!isset($courseId) || $courseId == "" || !is_numeric($courseId)) {
+    header('Location: gebruiker_cursus_overzicht.php'); //keep an eye on if this is still correct later
 }
 
 if (isset($_POST['submit'])) {
@@ -83,11 +83,11 @@ if (isset($courseData)):
     <nav class="navbar">
         <div id="navbarBasic" class="navbar-menu my-5 mx-5">
             <div class="navbar-start">
-                <a class="navbar-item">
+                <a class="navbar-item" href="agenda.php">
                     Agenda
                 </a>
 
-                <a class="navbar-item">
+                <a class="navbar-item" href="admin_cursus_overzicht.php">
                     Cursussen overzicht
                 </a>
 
@@ -99,10 +99,9 @@ if (isset($courseData)):
             </div>
         </div>
     </nav>
+    <body>
     <main>
         <div style="background-color: white; width: 75%; margin-left: 8vw; height: 100vh; margin-top: -2.5vh; padding: 5%;">
-            <h2><?= $courseData[0]['title']; ?> aanpassen</h2>
-            <a href="admin_cursus_overzicht.php">Terug</a>
             <h2><?=$title ?? $courseData[0]['title']?> aanpassen</h2>
             <a href="admin_cursus_overzicht.php">Terug</a>
             <a>Verwijder cursus</a>
@@ -119,28 +118,18 @@ if (isset($courseData)):
                 <label for="info">Informatie</label>
                 <textarea id="info" name="info"
                           style="height: 150px; padding: 1%;"><?= $courseData[0]['info']; ?></textarea>
-                <input type="text" value="<?=$courseData[0]['title'];?>" id="title" name="title" style="width: 15vw;">
-                <p><?= $invalidTitle ?? '' ?></p>
-                <br>
-                <label for="short_info">Pop-up informatie</label>
-                <textarea id="short_info" name="short_info" oninput="this.style.height" style="height: 50px; padding: 1%; width: 40vw;"><?=$courseData[0]['short_info'];?></textarea>
-                <p><?= $invalidsinfo ?? '' ?></p>
-                <br>
-                <label for="info">Informatie</label>
-                <textarea id="info" name="info" oninput="this.style.height" style="height: 150px; padding: 1%;"><?=$courseData[0]['info'];?></textarea>
-                <p><?= $invalidInfo ?? '' ?></p>
                 <br>
                 <input type="submit" name="submit" value="aanpassen" style="width: 10vw; height: 5vh;">
             </form>
         </div>
     </main>
+    </body>
     <footer class=" bg-footer-top pt-5">
         <div class="bg-footer columns">
             <img src="/pages/includes/images/pupp_darkGreen.png" width="100">
             <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
         </div>
     </footer>
-    </body>
     </html>
 
 <?php endif; ?>

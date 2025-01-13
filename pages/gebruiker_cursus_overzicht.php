@@ -35,7 +35,7 @@ mysqli_close($db);
             <a href="reservering.php" class="navbar-item custom-margin">
                 Inschrijven
             </a>
-            <a href="cursus.php" class="navbar-item custom-margin">
+            <a href="gebruiker_cursus_overzicht.php.php" class="navbar-item custom-margin">
                 Cursussen
             </a>
         </div>
@@ -60,7 +60,7 @@ mysqli_close($db);
                         <p><?= $course['short_info'] ?></p>
                     </div>
                     <div class="is-flex is-justify-content-flex-end mt-auto">
-                        <a href="cursus_info.php?course_id=<?= $course['course_id'] ?>" class="button custom-button">Details</a>
+                        <a href="cursus_details.php?course_id=<?= $course['course_id'] ?>" class="button custom-button">Details</a>
                     </div>
                 </div>
             </section>

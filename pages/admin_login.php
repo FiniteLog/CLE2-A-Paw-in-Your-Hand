@@ -66,28 +66,26 @@ if (isset($_POST['submit'])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>admin login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="includes/css/style.css">
-
+    <title>admin login</title>
 </head>
 <body>
 <nav class="navbar is-primary">
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item">
+            <a class="navbar-item" href="index.php">
                 Home
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" href="reservering.php">
                 Inschrijven
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" href="gebruiker_cursus_overzicht.php">
                 Cursussen
             </a>
         </div>
     </div>
 </nav>
-
 <main>
     <h1 class="has-text-centered mt-6 is-size-2 has-text-weight-semibold">Log in</h1>
     <form class="column" action="" method="post">
@@ -146,7 +144,6 @@ if (isset($_POST['submit'])) {
 
     </form>
 </main>
-
 <footer class=" bg-footer-top pt-5">
     <div class="bg-footer columns">
         <img src="/pages/includes/images/pupp_darkGreen.png" width="100">

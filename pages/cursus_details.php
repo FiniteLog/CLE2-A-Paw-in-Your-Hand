@@ -18,7 +18,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 mysqli_close($db);
 
 if (!isset($courseId) || $courseId == "" || is_numeric($courseId)) {
-    header('Location: cursus.php'); //keep an eye on if this is still correct later
+    header('Location: gebruiker_cursus_overzicht.php'); //keep an eye on if this is still correct later
 }
 
 if (isset($courseData)):
@@ -44,7 +44,7 @@ if (isset($courseData)):
                 <a href="reservering.php" class="navbar-item custom-margin">
                     Inschrijven
                 </a>
-                <a href="cursus.php" class="navbar-item custom-margin">
+                <a href="gebruiker_cursus_overzicht.php" class="navbar-item custom-margin">
                     Cursussen
                 </a>
             </div>

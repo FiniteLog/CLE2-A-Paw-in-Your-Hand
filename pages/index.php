@@ -13,16 +13,16 @@
             <a href="index.php" class="navbar-item custom-margin">
                 Home
             </a>
-            <a href="/pages/reservering.php" class="navbar-item custom-margin">
+            <a href="reservering.php" class="navbar-item custom-margin">
                 Inschrijven
             </a>
-            <a href="/pages/cursus.php" class="navbar-item custom-margin">
+            <a href="gebruiker_cursus_overzicht.php" class="navbar-item custom-margin">
                 Cursussen
             </a>
-            <a href="/pages/admin_cursus_overzicht.php" class="navbar-item custom-margin">
+            <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin">
                 Admin
             </a>
-            <a href="/pages/agenda.php" class="navbar-item custom-margin">
+            <a href="agenda.php" class="navbar-item custom-margin">
                 Agenda
             </a>
         </div>
@@ -37,7 +37,7 @@
     <h1> Welcome </h1>
     <section class="box custom-box columns is-centered is-variable is-8 mx-2 my-2">
         <div class="column is-narrow">
-            <img src="/pages/includes/images/Puppies.jpg" alt="placeholder" class="image is-128x128">
+            <img src="includes/images/Puppies.jpg" alt="placeholder" class="image is-128x128">
         </div>
         <div class="column is-flex is-flex-direction-column p-4">
             <h2>Article Title</h2>
@@ -54,7 +54,7 @@
                 pariatur porro quod saepe, sapiente.</p>
         </div>
         <div class="column is-narrow">
-            <img src="/pages/includes/images/DogOnFence.jpg" alt="Placeholder" class="image is-128x128">
+            <img src="includes/images/DogOnFence.jpg" alt="Placeholder" class="image is-128x128">
         </div>
     </section>
 </main>

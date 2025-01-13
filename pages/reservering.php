@@ -103,8 +103,8 @@ $days = $dateHandler->getDays();
 
 </head>
 <body>
-<nav class="navbar py-8 mb-5">
-    <div id="navbarBasic" class="navbar-menu">
+<nav class="navbar">
+    <div id="navbarBasic" class="navbar-menu p-5">
         <div class="navbar-start">
             <a href="index.php" class="navbar-item custom-margin">
                 Home
@@ -112,7 +112,7 @@ $days = $dateHandler->getDays();
             <a href="reservering.php" class="navbar-item custom-margin">
                 Inschrijven
             </a>
-            <a href="cursus.php" class="navbar-item custom-margin">
+            <a href="gebruiker_cursus_overzicht.php.php" class="navbar-item custom-margin">
                 Cursussen
             </a>
         </div>
@@ -264,7 +264,7 @@ $days = $dateHandler->getDays();
 
 <footer class=" bg-footer-top pt-5">
     <div class="bg-footer columns">
-        <img src="/pages/includes/images/pupp_darkGreen.png" width="100">
+        <img src="includes/images/pupp_darkGreen.png" width="100">
         <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
     </div>
 </footer>
