@@ -37,6 +37,29 @@ mysqli_close($db);
     <link rel="stylesheet" href="includes/css/style.css">
 </head>
 <body>
+<nav class="navbar">
+    <div id="navbarBasic" class="navbar-menu p-5">
+        <div class="navbar-start">
+            <a href="index.php" class="navbar-item custom-margin">
+                Home
+            </a>
+            <a href="agenda.php" class="navbar-item custom-margin">
+                Agenda
+            </a>
+            <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin">
+                Cursusoverzicht
+            </a>
+            <a href="" class="navbar-item custom-margin">
+                Cursisten
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-image">
+                <img src="includes/images/pupp_darkGreen.png" height="100px">
+            </div>
+        </div>
+    </div>
+</nav>
 <main class="m-6">
     <div class="box">
         <h1 class="title">Reservation Details</h1>
