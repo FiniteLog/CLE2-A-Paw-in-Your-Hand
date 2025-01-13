@@ -8,10 +8,12 @@ if (!isset($_GET['id'])) {
 
 $reservationId = intval($_GET['id']);
 
+// Updated query to join the timeslots table and retrieve timeslot_info
 $query = "
-    SELECT reservations.*, courses.title
+    SELECT reservations.*, courses.title, timeslots.timeslot_info
     FROM reservations
-    JOIN courses ON reservations.course = courses.course_id
+    JOIN courses ON reservations.course_id = courses.course_id
+    JOIN timeslots ON reservations.timeslot = timeslots.timeslot_id
     WHERE reservations.reservation_id = $reservationId
 ";
 
@@ -40,7 +42,7 @@ mysqli_close($db);
         <h1 class="title">Reservation Details</h1>
         <p><strong>Course:</strong> <?= htmlspecialchars($reservation['title']) ?></p>
         <p><strong>Date:</strong> <?= htmlspecialchars($reservation['date']) ?></p>
-        <p><strong>Time:</strong> <?= htmlspecialchars($reservation['timeslot']) ?></p>
+        <p><strong>Time:</strong> <?= htmlspecialchars($reservation['timeslot_info']) ?></p> <!-- Updated field -->
         <p><strong>Client Name:</strong> <?= htmlspecialchars($reservation['name']) ?></p>
         <p><strong>Dog Amount:</strong> <?= htmlspecialchars($reservation['dog_amount']) ?></p>
         <p><strong>Phone Number:</strong> <?= htmlspecialchars($reservation['phone_number']) ?></p>

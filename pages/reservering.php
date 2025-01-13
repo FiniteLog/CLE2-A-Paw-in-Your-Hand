@@ -56,11 +56,26 @@ if (isset($_POST['submit'])) {
 }
 
 // Fetch dropdown options
-//$timeslotQuery = "SELECT id, timeslot FROM timeslots";
-//$timeslots = mysqli_query($db, $timeslotQuery);
+$timeslotQuery = "SELECT timeslot_id, timeslot_info FROM timeslots";
+$timeslots = mysqli_query($db, $timeslotQuery);
 
 $courseQuery = "SELECT course_id, title FROM courses";
 $courses = mysqli_query($db, $courseQuery);
+
+// Get the selected date from the query parameter or default to today
+$selectedDate = isset($_GET['date']) ? mysqli_real_escape_string($db, $_GET['date']) : date('Y-m-d');
+
+// Fetch available timeslots, excluding those with reservations for the selected date
+$timeslotQuery = "
+    SELECT t.timeslot_id, t.timeslot_info
+    FROM timeslots t
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM reservations r
+        WHERE r.timeslot = t.timeslot_id AND r.date = '$selectedDate'
+    )";
+$timeslots = mysqli_query($db, $timeslotQuery);
+
 
 mysqli_close($db);
 
@@ -171,7 +186,8 @@ $days = $dateHandler->getDays();
                             <select id="course_id" name="course_id">
                                 <option value="">-- Selecteer een cursus --</option>
                                 <?php while ($course_id = mysqli_fetch_assoc($courses)): ?>
-                                    <option value="<?= $course_id['course_id'] ?>" <?= $course_id['course_id'] == $course_id ? 'selected' : '' ?>>
+                                    <option value="<?= $course_id['course_id'] ?>"
+                                        <?= $course_id['course_id'] == $course_id ? 'selected' : '' ?>>
                                         <?= htmlentities($course_id['title']) ?>
                                     </option>
                                 <?php endwhile; ?>
@@ -190,33 +206,24 @@ $days = $dateHandler->getDays();
                 <p class="help is-danger"><?= $errors['date'] ?? '' ?></p>
 
 
-                <!--                Timeslot -->
-                <!--                <div class="field">-->
-                <!--                    <label class="label has-text-primary" for="timeslot">Tijdslot</label>-->
-                <!--                    <div class="control">-->
-                <!--                        <div class="select is-fullwidth">-->
-                <!--                            <select id="timeslot" name="timeslot">-->
-                <!--                                <option value="">-- Selecteer een tijdslot --</option>-->
-                <!--                                --><?php //while ($timeslot = mysqli_fetch_assoc($timeslots)): ?>
-                <!--                                    <option value="--><?php //= $timeslot['id'] ?><!--" -->
-                <!--                <?php //= $timeslot['id'] == $timeslot ? 'selected' : '' ?>-->
-                <!--                                        --><?php //= htmlentities($timeslot['timeslot']) ?>
-                <!--                                    </option>-->
-                <!--                                --><?php //endwhile; ?>
-                <!--                            </select>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-                <!--                    <p class="help is-danger">--><?php //= $errors['timeslot'] ?? '' ?><!--</p>-->
-                <!--                </div>-->
-
-                <!-- Timeslot -->
-                <div class="box column mx-2 is-3 field">
+                <!--Timeslot -->
+                <div class="field box is-3 column mx-2">
                     <label class="label" for="timeslot">Tijdslot</label>
                     <div class="control">
-                        <input class="input" id="timeslot" type="text" name="timeslot"
-                               placeholder="Voer een tijdslot in, bvb 10:00 - 11:00"/>
+                        <div class="select is-fullwidth">
+                            <select id="timeslot" name="timeslot">
+                                <option value="">-- Selecteer een tijdslot --</option>
+                                <?php while ($timeslot = mysqli_fetch_assoc($timeslots)): ?>
+                                    <option value="<?= $timeslot['timeslot_id'] ?>">
+                                        <?= htmlentities($timeslot['timeslot_info']) ?>
+                                    </option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
                     </div>
+                    <p class="help is-danger"><?= $errors['timeslot'] ?? '' ?></p>
                 </div>
+
 
                 <!-- Name -->
                 <div class="field box column is-3 mx-2">
