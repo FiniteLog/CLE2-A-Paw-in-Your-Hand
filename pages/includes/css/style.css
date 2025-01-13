@@ -20,7 +20,7 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    /*background image*/
+    background-image: url("");
 }
 main {
     flex: 1; /*????*/

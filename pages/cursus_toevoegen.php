@@ -83,7 +83,7 @@ if (empty($errors)) {
     </div>
 </nav>
 <main>
-    <body style="background-image: url('includes/images/bg1.png'); background-repeat: no-repeat; background-size: cover;">
+    <body style="background-image: url('includes/css/bg1.png'); background-repeat: no-repeat; background-size: cover;">
     <div style="background-color: white; width: 75%; margin-left: 8vw; height: 100vh; margin-top: -2.5vh; padding: 5%;">
         <h2>Cursus toevoegen</h2>
         <a href="admin_cursus_overzicht.php">Terug</a> <!--history.back()-->
