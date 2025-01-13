@@ -81,19 +81,23 @@ if (isset($courseData)):
         <title><?= $courseData[0]['title']; ?> aanpassen</title>
     </head>
     <nav class="navbar">
-        <div id="navbarBasic" class="navbar-menu my-5 mx-5">
+        <div id="navbarBasic" class="navbar-menu p-5">
             <div class="navbar-start">
-                <a class="navbar-item" href="agenda.php">
+                <a href="index.php" class="navbar-item custom-margin">
+                    Home
+                </a>
+                <a href="agenda.php" class="navbar-item custom-margin">
                     Agenda
                 </a>
-
-                <a class="navbar-item" href="admin_cursus_overzicht.php">
-                    Cursussen overzicht
+                <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin">
+                    Cursusoverzicht
                 </a>
-
+                <a href="" class="navbar-item custom-margin">
+                    Cursisten
+                </a>
             </div>
             <div class="navbar-end">
-                <div class="navbar-item">
+                <div class="navbar-image">
                     <img src="includes/images/pupp_darkGreen.png" height="100px">
                 </div>
             </div>

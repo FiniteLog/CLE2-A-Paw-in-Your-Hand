@@ -27,6 +27,29 @@ mysqli_close($db);
     <title>Cursus overzicht</title>
 </head>
 <body>
+<nav class="navbar">
+    <div id="navbarBasic" class="navbar-menu p-5">
+        <div class="navbar-start">
+            <a href="index.php" class="navbar-item custom-margin">
+                Home
+            </a>
+            <a href="agenda.php" class="navbar-item custom-margin">
+                Agenda
+            </a>
+            <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin">
+                Cursusoverzicht
+            </a>
+            <a href="" class="navbar-item custom-margin">
+                Cursisten
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-image">
+                <img src="includes/images/pupp_darkGreen.png" height="100px">
+            </div>
+        </div>
+    </div>
+</nav>
 <main>
 <?php if (isset($courses)):
     foreach ($courses as $course):?>
@@ -57,5 +80,11 @@ mysqli_close($db);
 endif; ?>
 <a href="cursus_toevoegen.php">+ Nieuwe cursus toevoegen</a>
 </main>
+<footer class=" bg-footer-top pt-5">
+    <div class="bg-footer columns">
+        <img src="/pages/includes/images/pupp_darkGreen.png" width="100">
+        <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
+    </div>
+</footer>
 </body>
 </html>
