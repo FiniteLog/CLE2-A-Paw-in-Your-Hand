@@ -27,6 +27,12 @@ main {
     background-color: var(--white);
     /*new size for visible background image*/
 }
+
+nav{
+    height: 10%;
+    width: 100%;
+}
+
 .navbar {
     background-color:  var(--darkerGreen);
     border-bottom: var(--lightGreen) 10px solid;
