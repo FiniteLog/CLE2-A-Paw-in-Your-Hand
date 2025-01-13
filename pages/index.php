@@ -19,6 +19,12 @@
             <a href="/pages/cursus.php" class="navbar-item custom-margin">
                 Cursussen
             </a>
+            <a href="/pages/admin_cursus_overzicht.php" class="navbar-item custom-margin">
+                Admin
+            </a>
+            <a href="/pages/agenda.php" class="navbar-item custom-margin">
+                Agenda
+            </a>
         </div>
         <div class="navbar-end">
             <div class="navbar-image">
