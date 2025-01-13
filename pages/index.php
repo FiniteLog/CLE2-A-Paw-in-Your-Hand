@@ -13,11 +13,17 @@
             <a href="index.php" class="navbar-item custom-margin">
                 Home
             </a>
-            <a href="reservering.php" class="navbar-item custom-margin">
+            <a href="/pages/reservering.php" class="navbar-item custom-margin">
                 Inschrijven
             </a>
-            <a href="cursus.php" class="navbar-item custom-margin">
+            <a href="/pages/cursus.php" class="navbar-item custom-margin">
                 Cursussen
+            </a>
+            <a href="/pages/admin_cursus_overzicht.php" class="navbar-item custom-margin">
+                Admin
+            </a>
+            <a href="/pages/agenda.php" class="navbar-item custom-margin">
+                Agenda
             </a>
         </div>
         <div class="navbar-end">

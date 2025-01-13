@@ -88,6 +88,26 @@ $days = $dateHandler->getDays();
 
 </head>
 <body>
+<nav class="navbar py-8 mb-5">
+    <div id="navbarBasic" class="navbar-menu">
+        <div class="navbar-start">
+            <a href="index.php" class="navbar-item custom-margin">
+                Home
+            </a>
+            <a href="reservering.php" class="navbar-item custom-margin">
+                Inschrijven
+            </a>
+            <a href="cursus.php" class="navbar-item custom-margin">
+                Cursussen
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-image">
+                <img src="includes/images/pupp_darkGreen.png" height="100px">
+            </div>
+        </div>
+    </div>
+</nav>
 <main class="m-6">
     <!-- Flex container to align everything vertically -->
     <div class="bg-footer box mx-3">

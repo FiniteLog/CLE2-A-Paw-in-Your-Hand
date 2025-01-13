@@ -1,17 +1,12 @@
 <?php
-
-$host = "127.0.0.1";
-$user = "root";
-$password = "";
-$database = "CLE2";
-
-$db = mysqli_connect($host, $user, $password, $database)
-or die("Error: " . mysqli_connect_error());
+/** @var mysqli $db */
+require_once 'includes/connection.php';
+session_start();
 
 $query = "SELECT * FROM courses";
 
 $result = mysqli_query($db, $query)
-or die ('Errror ' . mysqli_error($db) . ' with query ' . $query);
+or die ('Error ' . mysqli_error($db) . ' with query ' . $query);
 
 $courses = [];
 
@@ -26,7 +21,7 @@ mysqli_close($db);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>Curusoverzicht</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="includes/css/style.css">
 </head>
@@ -74,7 +69,7 @@ mysqli_close($db);
     endif;
     ?>
 </main>
-<footer class=" bg-footer-top pt-5">
+<footer class="bg-footer-top pt-5">
     <div class="bg-footer columns">
         <img src="includes/images/pupp_darkGreen.png" width="100px">
         <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
