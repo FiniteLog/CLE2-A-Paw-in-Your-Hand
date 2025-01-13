@@ -6,23 +6,23 @@ require_once 'includes/classes/DateHandler.php';
 session_start();
 
 $errors = [];
-$name = $date = $timeslot = $dog_amount = $phone_number = $course = $question = '';
+$name = $date = $timeslot = $dog_amount = $phone_number = $course_id = $question = '';
 
 // Handle form submission
 if (isset($_POST['submit'])) {
     // Sanitize inputs
-    $name = mysqli_real_escape_string($db, $_POST['username']);
+    $name = mysqli_real_escape_string($db, $_POST['name']);
     $date = mysqli_real_escape_string($db, $_POST['date']);
     $timeslot = mysqli_real_escape_string($db, $_POST['timeslot']);
     $dog_amount = mysqli_real_escape_string($db, $_POST['dog_amount']);
     $phone_number = mysqli_real_escape_string($db, $_POST['phone_number']);
-    $course = mysqli_real_escape_string($db, $_POST['course']);
+    $course_id = mysqli_real_escape_string($db, $_POST['course_id']);
     $question = mysqli_real_escape_string($db, $_POST['question']);
     $userId = $_SESSION['user']['id'] ?? null; // Retrieve logged-in user's ID
 
     // Validation
     if ($name === "") {
-        $errors['username'] = "Vul alstublieft een naam in.";
+        $errors['name'] = "Vul alstublieft een naam in.";
     }
     if ($date === "") {
         $errors['date'] = "Kies alstublieft een datum.";
@@ -36,15 +36,15 @@ if (isset($_POST['submit'])) {
     if ($phone_number === "") {
         $errors['phone_number'] = "Vul alstublieft een telefoonnummer in.";
     }
-    if ($course === "") {
+    if ($course_id === "") {
         $errors['course'] = "Kies alstublieft een cursus.";
     }
 
     // If no errors, insert data
     if (empty($errors)) {
         $insertQuery = "
-        INSERT INTO reservations (username, data, time_slot, dog_amount, phone_number, cursus, question) 
-        VALUES ('usernamee', 'usernamee', 'usernameeslot', 'username_amount', 'usernamene_number', 'usernamerse', 'usernamestion')";
+        INSERT INTO reservations (name, date, timeslot, dog_amount, phone_number, course_id, question) 
+        VALUES ('$name', '$date', '$timeslot', '$dog_amount', '$phone_number', '$course_id', '$question')";
 
         if (mysqli_query($db, $insertQuery)) {
             header('Location: index.php');
@@ -84,7 +84,7 @@ $days = $dateHandler->getDays();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>reservering</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="includes/css/style.css">
 
 </head>
 <body>
@@ -148,29 +148,29 @@ $days = $dateHandler->getDays();
                     <label class="label" for="course">Cursus</label>
                     <div class="control">
                         <div class="select is-fullwidth">
-                            <select id="course" name="course">
+                            <select id="course_id" name="course_id">
                                 <option value="">-- Selecteer een cursus --</option>
-                                <?php while ($course = mysqli_fetch_assoc($courses)): ?>
-                                    <option value="<?= $course['course_id'] ?>" <?= $course['course_id'] == $course ? 'selected' : '' ?>>
-                                        <?= htmlentities($course['title']) ?>
+                                <?php while ($course_id = mysqli_fetch_assoc($courses)): ?>
+                                    <option value="<?= $course_id['course_id'] ?>" <?= $course_id['course_id'] == $course_id ? 'selected' : '' ?>>
+                                        <?= htmlentities($course_id['title']) ?>
                                     </option>
                                 <?php endwhile; ?>
                             </select>
                         </div>
                     </div>
-                    <p class="help is-danger"><?= $errors['course'] ?? '' ?></p>
+                    <p class="help is-danger"><?= $errors['course_id'] ?? '' ?></p>
                 </div>
 
                 <!-- Date -->
                 <label class="label" for="date"></label>
                 <div class="control">
-                    <input type="hidden" name="selected_date"
+                    <input type="hidden" name="date"
                            value="<?= isset($_GET['date']) ? htmlentities($_GET['date']) : date('Y-m-d') ?>">
                 </div>
                 <p class="help is-danger"><?= $errors['date'] ?? '' ?></p>
 
 
-                <!--                <!-- Timeslot -->-->
+                <!--                Timeslot -->
                 <!--                <div class="field">-->
                 <!--                    <label class="label has-text-primary" for="timeslot">Tijdslot</label>-->
                 <!--                    <div class="control">-->
@@ -179,7 +179,7 @@ $days = $dateHandler->getDays();
                 <!--                                <option value="">-- Selecteer een tijdslot --</option>-->
                 <!--                                --><?php //while ($timeslot = mysqli_fetch_assoc($timeslots)): ?>
                 <!--                                    <option value="--><?php //= $timeslot['id'] ?><!--" -->
-                <?php //= $timeslot['id'] == $timeslot ? 'selected' : '' ?><!-->-->
+                <!--                <?php //= $timeslot['id'] == $timeslot ? 'selected' : '' ?>-->
                 <!--                                        --><?php //= htmlentities($timeslot['timeslot']) ?>
                 <!--                                    </option>-->
                 <!--                                --><?php //endwhile; ?>
@@ -203,7 +203,7 @@ $days = $dateHandler->getDays();
                     <label class="label" for="name">Naam</label>
                     <input class="is-radiusless input" id="name" type="text" name="name"
                            value="<?= htmlentities($name) ?>"/>
-                    <p class="help is-danger"><?= $errors['username'] ?? '' ?></p>
+                    <p class="help is-danger"><?= $errors['name'] ?? '' ?></p>
                 </div>
 
                 <!-- Phone Number -->

@@ -32,7 +32,7 @@ if (isset($courseData)):
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title><?= $courseData[0]['title'] ?></title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-        <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" href="includes/css/style.css">
     </head>
     <body>
     <div>

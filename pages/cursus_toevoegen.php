@@ -9,7 +9,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="includes/css/style.css">
     <title>Nieuwe cursus</title>
 </head>
 <body>
@@ -25,7 +25,8 @@
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
-                <img src="includes/images/pupp_darkGreen.png" height="100"> <!--Ik mis een unit bij de 100 - image is nu ook heel klein-->
+                <img src="includes/images/pupp_darkGreen.png" height="100">
+                <!--Ik mis een unit bij de 100 - image is nu ook heel klein-->
             </div>
         </div>
     </div>

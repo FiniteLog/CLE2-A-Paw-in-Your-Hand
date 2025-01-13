@@ -1,7 +1,5 @@
 <?php
 /** @var mysqli $db */
-
-// required when working with sessions
 session_start();
 require_once 'includes/connection.php';
 
@@ -13,12 +11,12 @@ $errors = []; // Initialize errors array
 if (isset($_POST['submit'])) {
 
     // Get form data
-    $username = mysqli_real_escape_string($db, $_POST['username'] ?? '');
+    $name = mysqli_real_escape_string($db, $_POST['name'] ?? '');
     $password = mysqli_real_escape_string($db, $_POST['password'] ?? '');
 
     // Server-side validation
-    if ($username === "") {
-        $errors['username'] = "Enter a username";
+    if ($name === "") {
+        $errors['name'] = "Enter a name";
     }
     if ($password === "") {
         $errors['password'] = "Enter a password";
@@ -26,10 +24,10 @@ if (isset($_POST['submit'])) {
 
     // Proceed only if there are no validation errors
     if (empty($errors)) {
-        // SELECT the user from the database, based on the username
-        $loginQuery = "SELECT * FROM admins WHERE username = ?";
+        // SELECT the user from the database, based on the name
+        $loginQuery = "SELECT * FROM admins WHERE name = ?";
         $stmt = $db->prepare($loginQuery);
-        $stmt->bind_param("s", $username);
+        $stmt->bind_param("s", $name);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -70,7 +68,8 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>admin login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="includes/css/style.css">
+
 </head>
 <body>
 <nav class="navbar is-primary">
@@ -95,17 +94,17 @@ if (isset($_POST['submit'])) {
 
         <div class="">
             <div class="has-text-centered">
-                <label class="has-text-centered mt-6 is-size-4" for="username">Gebruikersnaam</label>
+                <label class="has-text-centered mt-6 is-size-4" for="name">Gebruikersnaam</label>
             </div>
             <div class="columns is-centered my-4">
                 <div class="column is-4">
                     <div class="control">
-                        <input class="input" id="username" type="text" name="username" placeholder="Gebruikersnaam"
-                               value="<?= $username ?? '' ?>"/>
+                        <input class="input" id="name" type="text" name="name" placeholder="Gebruikersnaam"
+                               value="<?= $name ?? '' ?>"/>
                         <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                     </div>
                     <p class="help is-danger">
-                        <?= $errors['username'] ?? '' ?>
+                        <?= $errors['name'] ?? '' ?>
                     </p>
                 </div>
             </div>

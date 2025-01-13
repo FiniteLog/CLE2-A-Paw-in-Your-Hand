@@ -28,7 +28,7 @@ mysqli_close($db);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello Bulma!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="includes/css/style.css">
 </head>
 <body>
 <nav class="navbar">
@@ -65,7 +65,7 @@ mysqli_close($db);
                         <p><?= $course['short_info'] ?></p>
                     </div>
                     <div class="is-flex is-justify-content-flex-end mt-auto">
-                        <a href="cursus_info.php?course_id=<?= $course['course_id']?>" class="button custom-button">Details</a>
+                        <a href="cursus_info.php?course_id=<?= $course['course_id'] ?>" class="button custom-button">Details</a>
                     </div>
                 </div>
             </section>

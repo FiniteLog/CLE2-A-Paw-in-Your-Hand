@@ -12,20 +12,20 @@ session_start();
 //
 //// Get user data from the SESSION
 //$user = $_SESSION['user'];
-//$username = $user['username'];
+//$name = $user['name'];
 
 // Fetch reservations with course information
 $query = "
     SELECT reservations.reservation_id, reservations.date, courses.title, reservations.timeslot
     FROM reservations
-    JOIN courses ON reservations.course = courses.course_id
+    JOIN courses ON reservations.course_id = courses.course_id
 ";
 $result = mysqli_query($db, $query) or die('Error: ' . mysqli_error($db) . ' with query ' . $query);
 
 // Group reservations by date
 $reservationsByDate = [];
 while ($row = mysqli_fetch_assoc($result)) {
-    // Use the correct column username: 'date' instead of 'reservation_date'
+    // Use the correct column name: 'date' instead of 'reservation_date'
     if (!empty($row['date'])) {
         $reservationsByDate[$row['date']][] = $row;
     }
@@ -57,7 +57,7 @@ $days = $dateHandler->getDays();
           content="width=device-width, initial-scale=1.0">
     <title>Reservering</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="includes/css/style.css">
 </head>
 <body>
 <main class="m-6">
