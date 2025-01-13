@@ -17,7 +17,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 mysqli_close($db);
 
-if (!isset($courseId) || $courseId == "" || is_numeric($courseId)) {
+if (!isset($courseId) || $courseId == "" || !is_numeric($courseId)) {
     header('Location: gebruiker_cursus_overzicht.php'); //keep an eye on if this is still correct later
 }
 
