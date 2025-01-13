@@ -16,7 +16,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 mysqli_close($db);
 ?>
-
 <!doctype html>
 <html lang="nl">
 <head>
