@@ -44,7 +44,11 @@ mysqli_close($db);
                 <th><img src="includes/images/<?= $course['image'] ?>" alt="" width="100px"></th>
                 <td><?= $course['title'] ?></td>
                 <td><?= $course['short_info'] ?></td>
-                <th><a href="admin_cursus_aanpassen.php?course_id=<?= $course['course_id'] ?>">Aanpassen</a></th>
+                <th>
+                    <a href="admin_cursus_aanpassen.php?course_id=<?= $course['course_id']?>">
+                        Aanpassen
+                    </a>
+                </th>
             </tr>
             </tbody>
         </table>

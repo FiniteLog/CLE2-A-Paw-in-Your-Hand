@@ -21,7 +21,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $courseData[] = $row;
 }
 
-if (!isset($courseId) || $courseId == "" || is_numeric($courseId)) {
+if (!isset($courseId) || $courseId == "" || !is_numeric($courseId)) {
     header('Location: cursus.php'); //keep an eye on if this is still correct later
 }
 
