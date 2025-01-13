@@ -74,13 +74,13 @@ if (isset($_POST['submit'])) {
 <nav class="navbar is-primary">
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item">
+            <a class="navbar-item" href="index.php">
                 Home
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" href="reservering.php">
                 Inschrijven
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" href="gebruiker_cursus_overzicht.php">
                 Cursussen
             </a>
         </div>
