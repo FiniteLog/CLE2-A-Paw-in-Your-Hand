@@ -46,7 +46,7 @@ mysqli_close($db);
                 <td><?= $course['title'] ?></td>
                 <td><?= $course['short_info'] ?></td>
                 <th>
-                    <a href="admin_cursus_aanpassen.php?course_id=<?= $course['course_id']?>">
+                    <a href="cursus_aanpassen.php?course_id=<?= $course['course_id']?>">
                         Aanpassen
                     </a>
                 </th>

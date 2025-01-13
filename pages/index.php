@@ -16,7 +16,7 @@
             <a href="/pages/reservering.php" class="navbar-item custom-margin">
                 Inschrijven
             </a>
-            <a href="/pages/cursus.php" class="navbar-item custom-margin">
+            <a href="/pages/gebruiker_cursus_overzicht.php.php" class="navbar-item custom-margin">
                 Cursussen
             </a>
             <a href="/pages/admin_cursus_overzicht.php" class="navbar-item custom-margin">

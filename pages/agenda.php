@@ -88,7 +88,7 @@ $days = $dateHandler->getDays();
 
                             <?php if (isset($reservationsByDate[$day])): ?>
                                 <?php foreach ($reservationsByDate[$day] as $reservation): ?>
-                                    <form method="get" action="cursus_overzicht_pagina.php" class="mb-2">
+                                    <form method="get" action="cursus_overzicht.php" class="mb-2">
                                         <input type="hidden" name="id" value="<?= $reservation['reservation_id'] ?>">
                                         <button class="button is-info is-fullwidth">
                                             <?= htmlspecialchars($reservation['timeslot']) ?>

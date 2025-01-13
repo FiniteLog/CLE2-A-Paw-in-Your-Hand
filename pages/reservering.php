@@ -97,7 +97,7 @@ $days = $dateHandler->getDays();
             <a href="reservering.php" class="navbar-item custom-margin">
                 Inschrijven
             </a>
-            <a href="cursus.php" class="navbar-item custom-margin">
+            <a href="gebruiker_cursus_overzicht.php" class="navbar-item custom-margin">
                 Cursussen
             </a>
         </div>
