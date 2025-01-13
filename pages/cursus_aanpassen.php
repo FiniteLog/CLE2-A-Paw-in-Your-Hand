@@ -83,11 +83,11 @@ if (isset($courseData)):
     <nav class="navbar">
         <div id="navbarBasic" class="navbar-menu my-5 mx-5">
             <div class="navbar-start">
-                <a class="navbar-item">
+                <a class="navbar-item" href="agenda.php">
                     Agenda
                 </a>
 
-                <a class="navbar-item">
+                <a class="navbar-item" href="admin_cursus_overzicht.php">
                     Cursussen overzicht
                 </a>
 
