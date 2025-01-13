@@ -80,6 +80,7 @@ if (isset($courseData)):
         <link rel="stylesheet" href="includes/css/style.css">
         <title><?= $courseData[0]['title']; ?> aanpassen</title>
     </head>
+    <body>
     <nav class="navbar">
         <div id="navbarBasic" class="navbar-menu p-5">
             <div class="navbar-start">
@@ -103,7 +104,6 @@ if (isset($courseData)):
             </div>
         </div>
     </nav>
-    <body>
     <main>
         <div style="background-color: white; width: 75%; margin-left: 8vw; height: 100vh; margin-top: -2.5vh; padding: 5%;">
             <h2><?=$title ?? $courseData[0]['title']?> aanpassen</h2>
@@ -127,13 +127,13 @@ if (isset($courseData)):
             </form>
         </div>
     </main>
-    </body>
     <footer class=" bg-footer-top pt-5">
         <div class="bg-footer columns">
             <img src="/pages/includes/images/pupp_darkGreen.png" width="100">
             <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
         </div>
     </footer>
+    </body>
     </html>
 
 <?php endif; ?>

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="includes/css/style.css">
 </head>
+<body>
 <nav class="navbar">
     <div id="navbarBasic" class="navbar-menu p-5">
         <div class="navbar-start">
@@ -64,4 +65,5 @@
         <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
     </div>
 </footer>
+</body>
 </html>
