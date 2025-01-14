@@ -82,7 +82,7 @@ if (isset($courseData)):
     </head>
     <body style="background-repeat: no-repeat; background-size: cover;">
     <nav class="navbar">
-        <div id="navbarBasic" class="navbar-menu p-5">
+        <div id="navbarBasic" class="navbar-menu px-6">
             <div class="navbar-start">
                 <a href="index.php" class="navbar-item custom-margin">
                     Home
@@ -97,11 +97,7 @@ if (isset($courseData)):
                     Cursisten
                 </a>
             </div>
-            <div class="navbar-end">
-                <div class="navbar-image">
-                    <img src="includes/images/pupp_darkGreen.png" height="100px">
-                </div>
-            </div>
+            <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
         </div>
     </nav>
     <main>
@@ -109,7 +105,8 @@ if (isset($courseData)):
             <h2><?= $title ?? $courseData[0]['title'] ?> aanpassen</h2>
             <section class="columns mt-2">
                 <a href="admin_cursus_overzicht.php" class="box mx-2 column is-2 button is-link">Terug</a>
-                <a href="delete.php?id=<?= $courseData[0]['course_id']?>" class="box box-last mx-2 column is-2 button is-link">Verwijder cursus</a>
+                <a href="delete.php?id=<?= $courseData[0]['course_id'] ?>"
+                   class="box box-last mx-2 column is-2 button is-link">Verwijder cursus</a>
             </section>
             <br>
             <br>
