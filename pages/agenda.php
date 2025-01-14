@@ -4,15 +4,15 @@ require_once 'includes/connection.php';
 require_once 'includes/classes/DateHandler.php';
 session_start();
 
-//// Check if the user is logged in
-//if (!isset($_SESSION['user'])) {
-//    header('Location: login.php');
-//    exit;
-//}
-//
-//// Get user data from the SESSION
-//$user = $_SESSION['user'];
-//$name = $user['name'];
+// Check if the admin is logged in
+if (!isset($_SESSION['admin'])) {
+    header('Location: admin_login.php');
+    exit;
+}
+
+// Get admin data from the SESSION
+$admin = $_SESSION['admin'];
+$name = $admin['username'];
 
 // Fetch reservations with course information
 $query = "
@@ -30,11 +30,6 @@ while ($row = mysqli_fetch_assoc($result)) {
         $reservationsByDate[$row['date']][] = $row;
     }
 }
-
-// Debug: Print the reservationsByDate array to verify the structure
-//echo '<pre>';
-//print_r($reservationsByDate);
-//echo '</pre>';
 
 mysqli_close($db);
 
