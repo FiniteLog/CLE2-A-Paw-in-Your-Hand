@@ -108,8 +108,6 @@ if (isset($courseData)):
                 <a href="delete.php?id=<?= $courseData[0]['course_id'] ?>"
                    class="box box-last mx-2 column is-2 button is-link">Verwijder cursus</a>
             </section>
-            <br>
-            <br>
             <form action="" method="post" style="display: flex; flex-flow: column; ">
                 <label for="title">Titel</label>
                 <input type="text" value="<?= $courseData[0]['title']; ?>" id="title" name="title" style="width: 15vw;">
