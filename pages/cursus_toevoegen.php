@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
 </head>
 <body style="background-repeat: no-repeat; background-size: cover;">
 <nav class="navbar">
-    <div id="navbarBasic" class="navbar-menu p-5">
+    <div id="navbarBasic" class="navbar-menu px-6">
         <div class="navbar-start">
             <a href="index.php" class="navbar-item custom-margin">
                 Home
@@ -80,11 +80,7 @@ if (isset($_POST['submit'])) {
                 Cursisten
             </a>
         </div>
-        <div class="navbar-end">
-            <div class="navbar-image">
-                <img src="includes/images/pupp_darkGreen.png" height="100px">
-            </div>
-        </div>
+        <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
     </div>
 </nav>
 <main>
