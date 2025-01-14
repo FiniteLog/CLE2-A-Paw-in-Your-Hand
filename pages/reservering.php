@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     $phone_number = mysqli_real_escape_string($db, $_POST['phone_number']);
     $course_id = mysqli_real_escape_string($db, $_POST['course_id']);
     $question = mysqli_real_escape_string($db, $_POST['question']);
-    $userId = $_SESSION['user']['id'] ?? null; // Retrieve logged-in user's ID
+    $userId = $_SESSION['admin']['id'] ?? null; // Retrieve logged-in admin's ID
 
     // Validation
     if ($name === "") {

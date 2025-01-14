@@ -1,6 +1,17 @@
 <?php
 /** @var mysqli $db */
 require_once 'includes/connection.php';
+session_start();
+
+// Check if the admin is logged in
+if (!isset($_SESSION['admin'])) {
+    header('Location: admin_login.php');
+    exit;
+}
+
+// Get admin data from the SESSION
+$admin = $_SESSION['admin'];
+$name = $admin['username'];
 
 if (!isset($_GET['id'])) {
     die('Reservation ID is required.');
