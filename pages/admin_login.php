@@ -145,12 +145,9 @@ if (isset($_POST['submit'])) {
         </div>
 
         <div class="columns is-centered my-6">
-            <div class=""></div>
-            <div class="">
-                <button class="button is-large is-responsive column is-3" type="submit" name="submit">
-                    Log in
-                </button>
-            </div>
+            <button class="button is-large is-responsive column is-3" type="submit" name="submit">
+                Log in
+            </button>
         </div>
 
     </form>
