@@ -25,7 +25,7 @@ mysqli_close($db);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="includes/css/style.css">
 </head>
-<body>
+<body style="background-repeat: no-repeat; background-size: cover;">
 <nav class="navbar">
     <div id="navbarBasic" class="navbar-menu p-5">
         <div class="navbar-start">

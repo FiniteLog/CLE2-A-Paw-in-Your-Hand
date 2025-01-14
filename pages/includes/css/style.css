@@ -17,22 +17,41 @@
 html, body {
     height: 100%;
 }
+
 body {
     display: flex;
     flex-direction: column;
     background-image: url("bg1.png");
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
 }
+
+main, nav, footer{
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    display: flex;
+    background-color: var(--darkerGreen);
+    border-top: var(--lightGreen) 10px solid;
+    color: var(--black);
+}
+
 main {
     flex: 1; /*????*/
     background-color: var(--white);
-    width: 70%;
 }
 
 nav{
     height: 10%;
-    width: 100%;
+}
+
+.logo{
+    height: 12vh;
+    width: 6vw;
 }
 
 .navbar {

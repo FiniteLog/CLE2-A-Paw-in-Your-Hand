@@ -26,7 +26,7 @@ mysqli_close($db);
     <link rel="stylesheet" href="includes/css/style.css">
     <title>Cursus overzicht</title>
 </head>
-<body>
+<body style="background-repeat: no-repeat; background-size: cover;">
 <nav class="navbar">
     <div id="navbarBasic" class="navbar-menu p-5">
         <div class="navbar-start">

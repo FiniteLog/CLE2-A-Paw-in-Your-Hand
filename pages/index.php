@@ -27,11 +27,9 @@
                 Agenda
             </a>
         </div>
-        <div class="navbar-end">
             <div class="navbar-image">
-                <img src="includes/images/pupp_darkGreen.png" height="100px">
+                <img src="includes/images/pupp_darkGreen.png" height="100px" class="logo">
             </div>
-        </div>
     </div>
 </nav>
 <main>
@@ -59,11 +57,9 @@
         </div>
     </section>
 </main>
-<footer class=" bg-footer-top pt-5">
-    <div class="bg-footer columns">
-        <img src="includes/images/pupp_darkGreen.png" width="100px">
-        <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
-    </div>
+<footer>
+        <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
+        <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
 </footer>
 </body>
 </html>
