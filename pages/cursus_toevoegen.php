@@ -8,11 +8,11 @@
 
 require_once 'includes/connection.php';
 session_start();
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
 
     $title = htmlentities($_POST['title']);
     $short_info = htmlentities($_POST['short_info']);
-    $info = htmlentities( $_POST['info']);
+    $info = htmlentities($_POST['info']);
 
     $errors = [];
 
@@ -41,13 +41,13 @@ if(isset($_POST['submit'])) {
         $errors[] = $invalidInfo;
     }
 
-if (empty($errors)) {
-    $query = "INSERT INTO `courses`(`title`, `info`, `short_info`) VALUES ('$title', '$info', '$short_info')";
+    if (empty($errors)) {
+        $query = "INSERT INTO `courses`(`title`, `info`, `short_info`) VALUES ('$title', '$info', '$short_info')";
 
-    $result = mysqli_query($db, $query);
-    mysqli_close($db);
-    header('Location: admin_cursus_overzicht.php');
-}
+        $result = mysqli_query($db, $query);
+        mysqli_close($db);
+        header('Location: admin_cursus_overzicht.php');
+    }
 }
 
 ?>
@@ -96,26 +96,26 @@ if (empty($errors)) {
         <br>
         <form action="" method="post" style="display: flex; flex-flow: column; ">
             <label for="title">Titel</label>
-            <input type="text" value="<?=$title ?? ''?>" id="title" name="title" style="width: 15vw;">
+            <input type="text" value="<?= $title ?? '' ?>" id="title" name="title" style="width: 15vw;">
             <p><?= $invalidTitle ?? '' ?></p>
             <br>
             <label for="short_info">Pop-up informatie</label>
-            <textarea id="short_info" name="short_info" oninput="this.style.height" style="height: 50px; padding: 1%; width: 40vw;"><?=$short_info ?? ''?></textarea>
+            <textarea id="short_info" name="short_info" oninput="this.style.height"
+                      style="height: 50px; padding: 1%; width: 40vw;"><?= $short_info ?? '' ?></textarea>
             <p><?= $invalidsinfo ?? '' ?></p>
             <br>
             <label for="info">Informatie</label>
-            <textarea id="info" name="info" oninput="this.style.height" style="height: 150px; padding: 1%;"><?=$info ?? ''?></textarea>
+            <textarea id="info" name="info" oninput="this.style.height"
+                      style="height: 150px; padding: 1%;"><?= $info ?? '' ?></textarea>
             <p><?= $invalidInfo ?? '' ?></p>
             <br>
             <input type="submit" name="submit" value="toevoegen" style="width: 10vw; height: 5vh;">
         </form>
     </div>
 </main>
-<footer class=" bg-footer-top pt-5">
-    <div class="bg-footer columns">
-        <img src="/pages/includes/images/pupp_darkGreen.png" width="100">
-        <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
-    </div>
+<footer>
+    <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
+    <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
 </footer>
 </body>
 </html>

@@ -51,40 +51,38 @@ mysqli_close($db);
     </div>
 </nav>
 <main>
-<?php if (isset($courses)):
-    foreach ($courses as $course):?>
-        <table>
-            <thead>
-            <tr>
-                <th></th>
-                <th>Title</th>
-                <th>info</th>
-            </tr>
-            </thead>
-            <tfoot></tfoot>
-            <tbody>
-            <tr>
-                <th><img src="includes/images/<?= $course['image'] ?>" alt="" width="100px"></th>
-                <td><?= $course['title'] ?></td>
-                <td><?= $course['short_info'] ?></td>
-                <th>
-                    <a href="cursus_aanpassen.php?course_id=<?= $course['course_id']?>">
-                        Aanpassen
-                    </a>
-                </th>
-            </tr>
-            </tbody>
-        </table>
-    <?php
-    endforeach;
-endif; ?>
-<a href="cursus_toevoegen.php">+ Nieuwe cursus toevoegen</a>
+    <?php if (isset($courses)):
+        foreach ($courses as $course):?>
+            <table>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Title</th>
+                    <th>info</th>
+                </tr>
+                </thead>
+                <tfoot></tfoot>
+                <tbody>
+                <tr>
+                    <th><img src="includes/images/<?= $course['image'] ?>" alt="" width="100px"></th>
+                    <td><?= $course['title'] ?></td>
+                    <td><?= $course['short_info'] ?></td>
+                    <th>
+                        <a href="cursus_aanpassen.php?course_id=<?= $course['course_id'] ?>">
+                            Aanpassen
+                        </a>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+        <?php
+        endforeach;
+    endif; ?>
+    <a href="cursus_toevoegen.php">+ Nieuwe cursus toevoegen</a>
 </main>
-<footer class=" bg-footer-top pt-5">
-    <div class="bg-footer columns">
-        <img src="/pages/includes/images/pupp_darkGreen.png" width="100">
-        <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
-    </div>
+<footer>
+    <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
+    <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
 </footer>
 </body>
 </html>

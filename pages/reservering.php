@@ -129,7 +129,7 @@ $days = $dateHandler->getDays();
         </div>
     </div>
 </nav>
-<main class="m-6">
+<main class="py-6">
     <!-- Flex container to align everything vertically -->
     <div class="bg-footer box mx-3">
         <!-- Week navigation -->
@@ -268,11 +268,9 @@ $days = $dateHandler->getDays();
     </div>
 </main>
 
-<footer class=" bg-footer-top pt-5">
-    <div class="bg-footer columns">
-        <img src="includes/images/pupp_darkGreen.png" width="100">
-        <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
-    </div>
+<footer>
+    <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
+    <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
 </footer>
 </body>
 </html>

@@ -1,6 +1,6 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
 
-*{
+* {
     --white: #FFF;
     --lightGrey: #A7A7A7;
     --darkGrey: #8C8C8C;
@@ -27,7 +27,7 @@ body {
     width: 100%;
 }
 
-main, nav, footer{
+main, nav, footer {
     width: 75%;
     margin-left: auto;
     margin-right: auto;
@@ -45,17 +45,17 @@ main {
     background-color: var(--white);
 }
 
-nav{
+nav {
     height: 10%;
 }
 
-.logo{
+.logo {
     height: 12vh;
     width: 6vw;
 }
 
 .navbar {
-    background-color:  var(--darkerGreen);
+    background-color: var(--darkerGreen);
     border-bottom: var(--lightGreen) 10px solid;
 }
 
@@ -87,9 +87,9 @@ section {
     margin-right: 8px;
 }
 
- .article-container {
-     max-width: 350px;
- }
+.article-container {
+    max-width: 350px;
+}
 
 .custom-button {
     background-color: var(--darkestGreen);

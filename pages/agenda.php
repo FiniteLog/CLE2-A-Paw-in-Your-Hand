@@ -125,11 +125,9 @@ $days = $dateHandler->getDays();
     </div>
 </main>
 
-<footer class="bg-footer-top pt-5">
-    <div class="bg-footer columns">
-        <img src="/pages/includes/images/pupp_darkGreen.png" width="100">
-        <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
-    </div>
+<footer>
+    <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
+    <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
 </footer>
 </body>
 </html>

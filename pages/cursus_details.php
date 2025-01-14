@@ -63,7 +63,8 @@ if (isset($courseData)):
     </nav>
     <main>
         <div class="column is-flex is-justify-content-center">
-            <img src="includes/images/<?= $courseData[0]['image'] ?>" alt="<?= $courseData[0]['image'] ?>" class="image is-16by9" width="250px">
+            <img src="includes/images/<?= $courseData[0]['image'] ?>" alt="<?= $courseData[0]['image'] ?>"
+                 class="image is-16by9" width="250px">
         </div>
         <div class="column is-flex is-justify-content-center my-3">
             <h1 class="has-text-centered has-text-weight-bold"><?= $courseData[0]['title'] ?></h1>
@@ -75,11 +76,9 @@ if (isset($courseData)):
             <a href="reservering.php" class="button custom-button">Inschrijven</a>
         </div>
     </main>
-    <footer class="bg-footer-top pt-5">
-        <div class="bg-footer columns">
-            <img src="includes/images/pupp_darkGreen.png" width="100px">
-            <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
-        </div>
+    <footer>
+        <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
+        <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
     </footer>
     </body>
     </html>
