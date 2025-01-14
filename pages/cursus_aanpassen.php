@@ -109,7 +109,7 @@ if (isset($courseData)):
             <h2><?= $title ?? $courseData[0]['title'] ?> aanpassen</h2>
             <section class="columns mt-2">
                 <a href="admin_cursus_overzicht.php" class="box mx-2 column is-2 button is-link">Terug</a>
-                <a class=" box box-last mx-2 column is-2 button is-link">Verwijder cursus</a>
+                <a href="delete.php?id=<?= $courseData[0]['course_id']?>" class="box box-last mx-2 column is-2 button is-link">Verwijder cursus</a>
             </section>
             <br>
             <br>
