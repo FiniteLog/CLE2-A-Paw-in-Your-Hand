@@ -14,17 +14,16 @@
     /*set font sizes*/
 }
 
-html, body {
+html {
     height: 100%;
 }
 
 body {
     display: flex;
     flex-direction: column;
-    background-image: url("bg1.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
+    background-image: url("bg1.jpeg");
+    background-repeat: repeat-y;
+    min-height: 100%;
 }
 
 main, nav, footer {
