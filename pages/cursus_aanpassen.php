@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
     } elseif (strlen($title) >= 50) {
         $invalidTitle = "De titel is te lang!";
         $errors[] = $invalidTitle;
-    } elseif (strlen($title) <= 10){
+    } elseif (strlen($title) <= 10) {
         $invalidTitle = "De titel is te kort!";
         $errors[] = $invalidTitle;
     }
@@ -106,9 +106,11 @@ if (isset($courseData)):
     </nav>
     <main>
         <div style="background-color: white; width: 75%; margin-left: 8vw; height: 100vh; margin-top: -2.5vh; padding: 5%;">
-            <h2><?=$title ?? $courseData[0]['title']?> aanpassen</h2>
-            <a href="admin_cursus_overzicht.php">Terug</a>
-            <a>Verwijder cursus</a>
+            <h2><?= $title ?? $courseData[0]['title'] ?> aanpassen</h2>
+            <section class="columns mt-2">
+                <a href="admin_cursus_overzicht.php" class="box mx-2 column is-2 button is-link">Terug</a>
+                <a class=" box box-last mx-2 column is-2 button is-link">Verwijder cursus</a>
+            </section>
             <br>
             <br>
             <form action="" method="post" style="display: flex; flex-flow: column; ">
