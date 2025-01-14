@@ -22,7 +22,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 
 if (!isset($courseId) || $courseId == "" || !is_numeric($courseId)) {
-    header('Location: gebruiker_cursus_overzicht.php'); //keep an eye on if this is still correct later
+    header('Location: admin_cursus_overzicht.php'); //keep an eye on if this is still correct later
 }
 
 if (isset($_POST['submit'])) {
