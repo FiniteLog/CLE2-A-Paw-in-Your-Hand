@@ -80,26 +80,30 @@ if (isset($courseData)):
         <link rel="stylesheet" href="includes/css/style.css">
         <title><?= $courseData[0]['title']; ?> aanpassen</title>
     </head>
+    <body>
     <nav class="navbar">
-        <div id="navbarBasic" class="navbar-menu my-5 mx-5">
+        <div id="navbarBasic" class="navbar-menu p-5">
             <div class="navbar-start">
-                <a class="navbar-item" href="agenda.php">
+                <a href="index.php" class="navbar-item custom-margin">
+                    Home
+                </a>
+                <a href="agenda.php" class="navbar-item custom-margin">
                     Agenda
                 </a>
-
-                <a class="navbar-item" href="admin_cursus_overzicht.php">
-                    Cursussen overzicht
+                <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin">
+                    Cursusoverzicht
                 </a>
-
+                <a href="" class="navbar-item custom-margin">
+                    Cursisten
+                </a>
             </div>
             <div class="navbar-end">
-                <div class="navbar-item">
+                <div class="navbar-image">
                     <img src="includes/images/pupp_darkGreen.png" height="100px">
                 </div>
             </div>
         </div>
     </nav>
-    <body>
     <main>
         <div style="background-color: white; width: 75%; margin-left: 8vw; height: 100vh; margin-top: -2.5vh; padding: 5%;">
             <h2><?=$title ?? $courseData[0]['title']?> aanpassen</h2>
@@ -123,13 +127,13 @@ if (isset($courseData)):
             </form>
         </div>
     </main>
-    </body>
     <footer class=" bg-footer-top pt-5">
         <div class="bg-footer columns">
             <img src="/pages/includes/images/pupp_darkGreen.png" width="100">
             <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
         </div>
     </footer>
+    </body>
     </html>
 
 <?php endif; ?>

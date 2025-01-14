@@ -35,8 +35,14 @@ mysqli_close($db);
             <a href="reservering.php" class="navbar-item custom-margin">
                 Inschrijven
             </a>
-            <a href="gebruiker_cursus_overzicht.php.php" class="navbar-item custom-margin">
+            <a href="gebruiker_cursus_overzicht.php" class="navbar-item custom-margin">
                 Cursussen
+            </a>
+            <a href="admin_login.php" class="navbar-item custom-margin">
+                Admin Login
+            </a>
+            <a href="agenda.php" class="navbar-item custom-margin">
+                Agenda
             </a>
         </div>
         <div class="navbar-end">

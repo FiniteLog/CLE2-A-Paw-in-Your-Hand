@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="includes/css/style.css">
 </head>
+<body style="background-repeat: no-repeat; background-size: cover;">
 <nav class="navbar">
     <div id="navbarBasic" class="navbar-menu p-5">
         <div class="navbar-start">
@@ -19,8 +20,8 @@
             <a href="gebruiker_cursus_overzicht.php" class="navbar-item custom-margin">
                 Cursussen
             </a>
-            <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin">
-                Admin
+            <a href="admin_login.php" class="navbar-item custom-margin">
+                Admin Login
             </a>
             <a href="agenda.php" class="navbar-item custom-margin">
                 Agenda
@@ -64,4 +65,5 @@
         <p class="column is-align-self-flex-end is-size-3 has-text-weight-semibold">A Paw in Your Hand</p>
     </div>
 </footer>
+</body>
 </html>

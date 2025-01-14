@@ -71,18 +71,29 @@ if (isset($_POST['submit'])) {
     <title>admin login</title>
 </head>
 <body>
-<nav class="navbar is-primary">
-    <div id="navbarBasicExample" class="navbar-menu">
+<nav class="navbar">
+    <div id="navbarBasic" class="navbar-menu p-5">
         <div class="navbar-start">
-            <a class="navbar-item" href="index.php">
+            <a href="index.php" class="navbar-item custom-margin">
                 Home
             </a>
-            <a class="navbar-item" href="reservering.php">
+            <a href="reservering.php" class="navbar-item custom-margin">
                 Inschrijven
             </a>
-            <a class="navbar-item" href="gebruiker_cursus_overzicht.php">
+            <a href="gebruiker_cursus_overzicht.php" class="navbar-item custom-margin">
                 Cursussen
             </a>
+            <a href="admin_login.php" class="navbar-item custom-margin">
+                Admin Login
+            </a>
+            <a href="agenda.php" class="navbar-item custom-margin">
+                Agenda
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-image">
+                <img src="includes/images/pupp_darkGreen.png" height="100px">
+            </div>
         </div>
     </div>
 </nav>

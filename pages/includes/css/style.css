@@ -20,12 +20,14 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    /*background image*/
+    background-image: url("bg1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 main {
     flex: 1; /*????*/
     background-color: var(--white);
-    /*new size for visible background image*/
+    width: 70%;
 }
 
 nav{

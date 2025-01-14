@@ -65,25 +65,30 @@ if (empty($errors)) {
 </head>
 <body>
 <nav class="navbar">
-    <div id="navbarBasic" class="navbar-menu my-5 mx-5">
+    <div id="navbarBasic" class="navbar-menu p-5">
         <div class="navbar-start">
-            <a class="navbar-item">
+            <a href="index.php" class="navbar-item custom-margin">
+                Home
+            </a>
+            <a href="agenda.php" class="navbar-item custom-margin">
                 Agenda
             </a>
-            <a class="navbar-item">
-                Cursussen overzicht
+            <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin">
+                Cursusoverzicht
+            </a>
+            <a href="" class="navbar-item custom-margin">
+                Cursisten
             </a>
         </div>
         <div class="navbar-end">
-            <div class="navbar-item">
-                <img src="includes/images/pupp_darkGreen.png" height="100">
-                <!--Ik mis een unit bij de 100 - image is nu ook heel klein-->
+            <div class="navbar-image">
+                <img src="includes/images/pupp_darkGreen.png" height="100px">
             </div>
         </div>
     </div>
 </nav>
 <main>
-    <body style="background-image: url('includes/images/bg1.png'); background-repeat: no-repeat; background-size: cover;">
+    <body style="background-image: url('includes/css/bg1.png'); background-repeat: no-repeat; background-size: cover;">
     <div style="background-color: white; width: 75%; margin-left: 8vw; height: 100vh; margin-top: -2.5vh; padding: 5%;">
         <h2>Cursus toevoegen</h2>
         <a href="admin_cursus_overzicht.php">Terug</a> <!--history.back()-->
