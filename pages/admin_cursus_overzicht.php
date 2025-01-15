@@ -50,32 +50,33 @@ mysqli_close($db);
 <main>
     <div style="margin-top: 3%;">
         <h1 style="margin-bottom: 3%; text-align: center; color: black; font-size: 2rem; font-weight: bold;">Cursus overzicht</h1>
-    <?php if (isset($courses)):
-        foreach ($courses as $course):?>
+
             <table style="color: black; margin-left: 2%; margin-right: 2%; margin-top: 0.5%; border-right: black solid 2px; border-left: black solid 2px;">
                 <thead>
                 <tr style="border-top: black solid 2px;">
                     <th></th>
-                    <th style="color: var(--black);">Title</th>
-                    <th style="color: var(--black);">info</th>
+                    <th style="color: var(--black); padding: .2%;">Title</th>
+                    <th style="color: var(--black); padding: .2%;">info</th>
                 </tr>
                 </thead>
-                <tfoot></tfoot>
-                <tbody style="border-bottom: black solid 2px;">
-                <tr>
-                    <th><img src="includes/images/<?= $course['image'] ?>" alt="" width="100px"></th>
-                    <td><?= $course['title'] ?></td>
-                    <td><?= $course['short_info'] ?></td>
-                    <th>
+                <tfoot> </tfoot>
+                <tbody style="border-bottom: black solid 2px; border-top: black solid 2px">
+                <?php if (isset($courses)):
+                foreach ($courses as $course):?>
+                <tr style="border-top: black solid 2px;">
+                    <th style="padding: 1%; width: 10%"><img src="includes/images/<?= $course['image'] ?>" alt=""></th>
+                    <td style="padding: 1%; width: 10%"><?= $course['title'] ?></td>
+                    <td style="padding: 1%; width: 70%"><?= $course['short_info'] ?></td>
+                    <th style="padding: 1%;">
                         <a href="cursus_aanpassen.php?course_id=<?= $course['course_id'] ?>">
                             Aanpassen
                         </a>
                     </th>
                 </tr>
+                <?php endforeach; ?>
                 </tbody>
             </table>
         <?php
-        endforeach;
     endif; ?>
         </div>
     <a href="cursus_toevoegen.php" style="margin-left: 2%;">+ Nieuwe cursus toevoegen</a>
