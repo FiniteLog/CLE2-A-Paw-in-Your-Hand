@@ -23,6 +23,7 @@ mysqli_close($db);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="includes/css/style.css">
     <title>Admin - Cursus overzicht - A Paw in Your Hand</title>
 </head>
@@ -47,18 +48,20 @@ mysqli_close($db);
     </div>
 </nav>
 <main>
+    <div style="margin-top: 3%;">
+        <h1 style="margin-bottom: 3%; text-align: center; color: black; font-size: 2rem; font-weight: bold;">Cursus overzicht</h1>
     <?php if (isset($courses)):
         foreach ($courses as $course):?>
-            <table>
+            <table style="color: black; margin-left: 2%; margin-right: 2%; margin-top: 0.5%; border-right: black solid 2px; border-left: black solid 2px;">
                 <thead>
-                <tr>
+                <tr style="border-top: black solid 2px;">
                     <th></th>
-                    <th>Title</th>
-                    <th>info</th>
+                    <th style="color: var(--black);">Title</th>
+                    <th style="color: var(--black);">info</th>
                 </tr>
                 </thead>
                 <tfoot></tfoot>
-                <tbody>
+                <tbody style="border-bottom: black solid 2px;">
                 <tr>
                     <th><img src="includes/images/<?= $course['image'] ?>" alt="" width="100px"></th>
                     <td><?= $course['title'] ?></td>
@@ -74,7 +77,8 @@ mysqli_close($db);
         <?php
         endforeach;
     endif; ?>
-    <a href="cursus_toevoegen.php">+ Nieuwe cursus toevoegen</a>
+        </div>
+    <a href="cursus_toevoegen.php" style="margin-left: 2%;">+ Nieuwe cursus toevoegen</a>
 </main>
 <footer>
     <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">

@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="includes/css/style.css">
-    <title>admin login</title>
+    <title>Admin - Login - A Paw in Your Hand</title>
 </head>
 <body style="background-repeat: no-repeat; background-size: cover;">
 <nav class="navbar">
@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
             <div class="has-text-centered">
                 <label class="has-text-centered mt-6 is-size-4" for="username">Gebruikersnaam</label>
             </div>
-            <div class="columns is-centered my-4">
+            <div class="columns is-centered my-1">
                 <div class="column is-4">
                     <div class="control">
                         <input class="input" id="username" type="text" name="username" placeholder="Gebruikersnaam"
@@ -115,11 +115,10 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
 
-        <div class="">
-            <div class="has-text-centered mt-6 is-size-4">
-                <label class="columns is-centered my-4" for="password">Wachtwoord</label>
+            <div class="has-text-centered is-size-4">
+                <label class="columns is-centered" for="password">Wachtwoord</label>
             </div>
-            <div class="columns is-centered my-4">
+            <div class="columns is-centered ">
                 <div class="column is-4">
                     <div class="control">
                         <input class="input" id="password" type="password" name="password" placeholder="Wachtwoord"/>
@@ -138,9 +137,8 @@ if (isset($_POST['submit'])) {
                     </p>
                 </div>
             </div>
-        </div>
 
-        <div class="columns is-centered my-6">
+        <div class="columns is-centered">
             <button class="button is-large is-responsive column is-3" type="submit" name="submit">
                 Log in
             </button>
