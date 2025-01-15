@@ -141,5 +141,7 @@ images_ind{
     height: 20%;
 }
 
-
-
+/*Cursus details*/
+.information_div{
+    text-align: left
+}
