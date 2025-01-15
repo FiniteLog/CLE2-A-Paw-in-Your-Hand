@@ -162,8 +162,8 @@ $days = $dateHandler->getDays();
 
 
             <!-- The form -->
-            <form class="columns bg-footer box mt-4 is-multiline is-centered" action="" method="post">
-
+            <form class="columns bg-footer mt-4 box" style="display: flex; flex-flow: column;" action="" method="post">
+                <div class="columns mt-4 is-multiline is-centered" style="background-color: transparent">
                 <!-- Dog Amount -->
                 <div class="field box mx-2 column is-3">
                     <label class="label" for="dog_amount">Aantal Honden</label>
@@ -253,11 +253,9 @@ $days = $dateHandler->getDays();
                               placeholder="Stel je vraag hier"><?= htmlentities($question) ?></textarea>
                     </div>
                 </div>
-
-                <!-- Submit -->
-                <div class="field mx-2">
-                    <button class="button is-link is-fullwidth" type="submit" name="submit">Inschrijven</button>
                 </div>
+                <!-- Submit -->
+                <button class="button is-link" style="position:relative; width: 20%; margin: auto; margin-bottom: 1%;" type="submit" name="submit">Inschrijven</button>
 
             </form>
         </div>

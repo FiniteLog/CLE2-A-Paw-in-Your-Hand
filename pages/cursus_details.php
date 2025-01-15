@@ -60,16 +60,16 @@ if (isset($courseData)):
     <main>
         <div class="column is-flex is-justify-content-center">
             <img src="includes/images/<?= $courseData[0]['image'] ?>" alt="<?= $courseData[0]['image'] ?>"
-                 class="image is-16by9" width="250px">
+                 class="image is-16by12" width="250px">
         </div>
-        <div class="column is-flex is-justify-content-center my-3">
-            <h1 class="has-text-centered has-text-weight-bold"><?= $courseData[0]['title'] ?></h1>
+        <div>
+            <h1 class="has-text-centered has-text-weight-bold" style="color: black; font-size: 1.5rem;"><?= $courseData[0]['title'] ?></h1>
         </div>
-        <div class="column is-flex is-justify-content-center m-3">
-            <p class="has-text-centered custom-paragraph"><?= $courseData[0]['info'] ?></p>
+        <div class="information_div" ">
+            <p class="information" style="color: black; margin: 4%; margin-bottom: 2%; margin-top: 2%;"><?= $courseData[0]['info'] ?></p>
         </div>
-        <div class="is-flex is-justify-content-flex-end mt-auto p-4">
-            <a href="reservering.php" class="button custom-button">Inschrijven</a>
+        <div class="is-flex is-justify-content-flex-end" style="margin-right: 10%; margin-bottom: 2%">
+            <a href="reservering.php" class="sign-up-btn button custom-button">Inschrijven</a>
         </div>
     </main>
     <footer>
