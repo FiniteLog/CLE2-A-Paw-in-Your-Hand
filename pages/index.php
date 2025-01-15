@@ -34,10 +34,12 @@
 <main>
     <h1 style="margin-top: 2%;"> Welcome </h1>
     <section class="section_ind columns is-centered is-variable is-8 mx-4" style="margin-top: 5%;">
-        <img src="includes/images/Puppies.jpg" alt="placeholder" class="images_ind" style="width: 20%;"> <!--image is-128x128-->
+        <img src="includes/images/Puppies.jpg" alt="placeholder" class="images_ind" style="width: 20%;">
+        <!--image is-128x128-->
         <div class="column is-flex is-flex-direction-column p-4">
             <h2 style="font-weight: bold;">Article Title</h2>
-            <p style="width: 90%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, dolorem ipsa laborum omnis placeat
+            <p style="width: 90%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, dolorem ipsa
+                laborum omnis placeat
                 quaerat tempora voluptatibus. Ad, amet assumenda deserunt doloremque excepturi exercitationem fugit
                 pariatur porro quod saepe, sapiente.</p>
         </div>
@@ -45,16 +47,18 @@
     <section class="section_ind columns is-centered is-variable is-8 mx-4" style="margin-top: 5%; text-align: right;">
         <div class="column is-flex is-flex-direction-column p-4">
             <h2 style="font-weight: bold;">Article Title</h2>
-            <p style="margin-left: 10%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, dolorem ipsa laborum omnis placeat
+            <p style="margin-left: 10%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, dolorem ipsa
+                laborum omnis placeat
                 quaerat tempora voluptatibus. Ad, amet assumenda deserunt doloremque excepturi exercitationem fugit
                 pariatur porro quod saepe, sapiente.</p>
         </div>
-            <img src="includes/images/DogOnFence.jpg" alt="Placeholder" class="images_ind" style="width: 20%; height: 20%;">
+        <img src="includes/images/DogOnFence.jpg" alt="Placeholder" class="images_ind" style="width: 20%; height: 20%;">
     </section>
 </main>
 <footer>
     <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
     <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
+    <a class="is-flex is-justify-content-right is-align-self-flex-end" href="reviews.php">Reviews</a>
 </footer>
 </body>
 </html>

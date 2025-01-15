@@ -63,10 +63,13 @@ if (isset($courseData)):
                  class="image is-16by12" width="250px">
         </div>
         <div>
-            <h1 class="has-text-centered has-text-weight-bold" style="color: black; font-size: 1.5rem;"><?= $courseData[0]['title'] ?></h1>
+            <h1 class="has-text-centered has-text-weight-bold"
+                style="color: black; font-size: 1.5rem;"><?= $courseData[0]['title'] ?></h1>
         </div>
-        <div class="information_div" ">
-            <p class="information" style="color: black; margin: 4%; margin-bottom: 2%; margin-top: 2%;"><?= $courseData[0]['info'] ?></p>
+        <div class="information_div"
+        ">
+        <p class="information"
+           style="color: black; margin: 4%; margin-bottom: 2%; margin-top: 2%;"><?= $courseData[0]['info'] ?></p>
         </div>
         <div class="is-flex is-justify-content-flex-end" style="margin-right: 10%; margin-bottom: 2%">
             <a href="reservering.php" class="sign-up-btn button custom-button">Inschrijven</a>
@@ -75,6 +78,7 @@ if (isset($courseData)):
     <footer>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
         <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
+        <a class="is-flex is-justify-content-right is-align-self-flex-end" href="reviews.php">Reviews</a>
     </footer>
     </body>
     </html>

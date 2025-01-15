@@ -1,5 +1,18 @@
 <?php
+/** @var mysqli $db */
+include_once "includes/connection.php";
 
+$query = "SELECT * FROM reviews ";
+$result = mysqli_query($db, $query)
+or die('Error ' . mysqli_error($db) . ' with query ' . $query);
+
+$reviews = [];
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $reviews[] = $row;
+}
+
+mysqli_close($db);
 ?>
 <!doctype html>
 <html lang="nl" data-theme="light">
@@ -39,36 +52,26 @@
     <h1 class="is-flex is-size-2 is-justify-content-center has-text-weight-semibold pb-3">
         Reviews
     </h1>
-    <section class="is-flex is-justify-content-space-evenly">
-        <div class="box column is-5">
-            <h2 class="is-size-4">test</h2>
-            <p>test</p>
-        </div>
-        <div class="box box-last column is-5">
-            <h2 class="is-size-4">test</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores aspernatur, at autem enim eum,
-                fugiat
-                minima nisi non porro quod sequi velit. A aut dolorum incidunt ipsam iste, nisi nostrum.</p>
-        </div>
-    </section>
-    <section class="is-flex is-justify-content-space-evenly">
-        <div class="box column is-5">
-            <h2 class="is-size-4">test</h2>
-            <p>test</p>
-        </div>
-        <div class="box box-last column is-5">
-            <h2 class="is-size-4">test</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores aspernatur, at autem enim eum,
-                fugiat
-                minima nisi non porro quod sequi velit. A aut dolorum incidunt ipsam iste, nisi nostrum.</p>
-        </div>
-    </section>
-    <a href="review-create.php" class="is-flex is-justify-content-right">Review schrijven</a>
+
+    <?php foreach (array_chunk($reviews, 2) as $reviewPair) { ?>
+        <section class="is-flex is-justify-content-space-evenly mt-0">
+            <?php foreach ($reviewPair as $review) { ?>
+                <div class="box box-last column is-5">
+                    <h2 class="is-size-4"><?= htmlspecialchars($review['first_name'] . ' ' . $review['last_name']) ?></h2>
+                    <p><?= htmlspecialchars($review['review']) ?></p>
+                </div>
+            <?php } ?>
+        </section>
+    <?php } ?>
+
+
+    <a href="review_create.php" class="is-flex is-justify-content-right">Review schrijven</a>
 
 </main>
 <footer>
     <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
     <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
+    <a class="is-flex is-justify-content-right is-align-self-flex-end" href="reviews.php">Reviews</a>
 </footer>
 </body>
 </html>
