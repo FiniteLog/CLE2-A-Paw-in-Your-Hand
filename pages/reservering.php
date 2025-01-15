@@ -164,98 +164,100 @@ $days = $dateHandler->getDays();
             <!-- The form -->
             <form class="columns bg-footer mt-4 box" style="display: flex; flex-flow: column;" action="" method="post">
                 <div class="columns mt-4 is-multiline is-centered" style="background-color: transparent">
-                <!-- Dog Amount -->
-                <div class="field box mx-2 column is-3">
-                    <label class="label" for="dog_amount">Aantal Honden</label>
+                    <!-- Dog Amount -->
+                    <div class="field box mx-2 column is-3">
+                        <label class="label" for="dog_amount">Aantal Honden</label>
 
-                    <div class="select is-fullwidth">
-                        <select id="dog_amount" name="dog_amount">
-                            <option value="">-- Selecteer het aantal honden --</option>
-                            <option value="1" <?= $dog_amount == 1 ? 'selected' : '' ?>>1</option>
-                            <option value="2" <?= $dog_amount == 2 ? 'selected' : '' ?>>2</option>
-                            <option value="3" <?= $dog_amount == 3 ? 'selected' : '' ?>>3</option>
-                            <option value="4" <?= $dog_amount == 4 ? 'selected' : '' ?>>4</option>
-                        </select>
-                    </div>
-                    <p class="help is-danger"><?= $errors['dog_amount'] ?? '' ?></p>
-                </div>
-
-                <!-- Course -->
-                <div class="field box is-3 column mx-2">
-                    <label class="label" for="course">Cursus</label>
-                    <div class="control">
                         <div class="select is-fullwidth">
-                            <select id="course_id" name="course_id">
-                                <option value="">-- Selecteer een cursus --</option>
-                                <?php while ($course_id = mysqli_fetch_assoc($courses)): ?>
-                                    <option value="<?= $course_id['course_id'] ?>"
-                                        <?= $course_id['course_id'] == $course_id ? 'selected' : '' ?>>
-                                        <?= htmlentities($course_id['title']) ?>
-                                    </option>
-                                <?php endwhile; ?>
+                            <select id="dog_amount" name="dog_amount">
+                                <option value="">-- Selecteer het aantal honden --</option>
+                                <option value="1" <?= $dog_amount == 1 ? 'selected' : '' ?>>1</option>
+                                <option value="2" <?= $dog_amount == 2 ? 'selected' : '' ?>>2</option>
+                                <option value="3" <?= $dog_amount == 3 ? 'selected' : '' ?>>3</option>
+                                <option value="4" <?= $dog_amount == 4 ? 'selected' : '' ?>>4</option>
                             </select>
                         </div>
+                        <p class="help is-danger"><?= $errors['dog_amount'] ?? '' ?></p>
                     </div>
-                    <p class="help is-danger"><?= $errors['course_id'] ?? '' ?></p>
-                </div>
 
-                <!-- Date -->
-                <label class="label" for="date"></label>
-                <div class="control">
-                    <input type="hidden" name="date"
-                           value="<?= isset($_GET['date']) ? htmlentities($_GET['date']) : date('Y-m-d') ?>">
-                </div>
-                <p class="help is-danger"><?= $errors['date'] ?? '' ?></p>
-
-
-                <!--Timeslot -->
-                <div class="field box is-3 column mx-2">
-                    <label class="label" for="timeslot">Tijdslot</label>
-                    <div class="control">
-                        <div class="select is-fullwidth">
-                            <select id="timeslot" name="timeslot">
-                                <option value="">-- Selecteer een tijdslot --</option>
-                                <?php while ($timeslot = mysqli_fetch_assoc($timeslots)): ?>
-                                    <option value="<?= $timeslot['timeslot_id'] ?>">
-                                        <?= htmlentities($timeslot['timeslot_info']) ?>
-                                    </option>
-                                <?php endwhile; ?>
-                            </select>
+                    <!-- Course -->
+                    <div class="field box is-3 column mx-2">
+                        <label class="label" for="course">Cursus</label>
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select id="course_id" name="course_id">
+                                    <option value="">-- Selecteer een cursus --</option>
+                                    <?php while ($course_id = mysqli_fetch_assoc($courses)): ?>
+                                        <option value="<?= $course_id['course_id'] ?>"
+                                            <?= $course_id['course_id'] == $course_id ? 'selected' : '' ?>>
+                                            <?= htmlentities($course_id['title']) ?>
+                                        </option>
+                                    <?php endwhile; ?>
+                                </select>
+                            </div>
                         </div>
+                        <p class="help is-danger"><?= $errors['course_id'] ?? '' ?></p>
                     </div>
-                    <p class="help is-danger"><?= $errors['timeslot'] ?? '' ?></p>
-                </div>
 
-
-                <!-- Name -->
-                <div class="field box column is-3 mx-2">
-                    <label class="label" for="name">Naam</label>
-                    <input class="is-radiusless input" id="name" type="text" name="name"
-                           value="<?= htmlentities($name) ?>"/>
-                    <p class="help is-danger"><?= $errors['name'] ?? '' ?></p>
-                </div>
-
-                <!-- Phone Number -->
-                <div class="field box column is-3 mx-2">
-                    <label class="label" for="phone_number">Telefoonnummer</label>
+                    <!-- Date -->
+                    <label class="label" for="date"></label>
                     <div class="control">
-                        <input class="input" id="phone_number" type="text" name="phone_number"
-                               value="<?= htmlentities($phone_number) ?>" placeholder="06-12345678"/>
+                        <input type="hidden" name="date"
+                               value="<?= isset($_GET['date']) ? htmlentities($_GET['date']) : date('Y-m-d') ?>">
                     </div>
-                    <p class="help is-danger"><?= $errors['phone_number'] ?? '' ?></p>
-                </div>
+                    <p class="help is-danger"><?= $errors['date'] ?? '' ?></p>
 
-                <!-- Question -->
-                <div class="field box column is-6 mx-2 is-centered">
-                    <label class="label" for="question">Vraag</label>
-                    <div class="control">
+
+                    <!--Timeslot -->
+                    <div class="field box is-3 column mx-2">
+                        <label class="label" for="timeslot">Tijdslot</label>
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select id="timeslot" name="timeslot">
+                                    <option value="">-- Selecteer een tijdslot --</option>
+                                    <?php while ($timeslot = mysqli_fetch_assoc($timeslots)): ?>
+                                        <option value="<?= $timeslot['timeslot_id'] ?>">
+                                            <?= htmlentities($timeslot['timeslot_info']) ?>
+                                        </option>
+                                    <?php endwhile; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <p class="help is-danger"><?= $errors['timeslot'] ?? '' ?></p>
+                    </div>
+
+
+                    <!-- Name -->
+                    <div class="field box column is-3 mx-2">
+                        <label class="label" for="name">Naam</label>
+                        <input class="is-radiusless input" id="name" type="text" name="name"
+                               value="<?= htmlentities($name) ?>"/>
+                        <p class="help is-danger"><?= $errors['name'] ?? '' ?></p>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="field box column is-3 mx-2">
+                        <label class="label" for="phone_number">Telefoonnummer</label>
+                        <div class="control">
+                            <input class="input" id="phone_number" type="text" name="phone_number"
+                                   value="<?= htmlentities($phone_number) ?>" placeholder="06-12345678"/>
+                        </div>
+                        <p class="help is-danger"><?= $errors['phone_number'] ?? '' ?></p>
+                    </div>
+
+                    <!-- Question -->
+                    <div class="field box column is-6 mx-2 is-centered">
+                        <label class="label" for="question">Vraag</label>
+                        <div class="control">
                     <textarea class="textarea" id="question" name="question"
                               placeholder="Stel je vraag hier"><?= htmlentities($question) ?></textarea>
+                        </div>
                     </div>
                 </div>
-                </div>
                 <!-- Submit -->
-                <button class="button is-link" style="position:relative; width: 20%; margin: auto; margin-bottom: 1%;" type="submit" name="submit">Inschrijven</button>
+                <button class="button is-link" style="position:relative; width: 20%; margin: auto; margin-bottom: 1%;"
+                        type="submit" name="submit">Inschrijven
+                </button>
 
             </form>
         </div>
@@ -265,6 +267,7 @@ $days = $dateHandler->getDays();
 <footer>
     <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
     <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
+    <a class="is-flex is-justify-content-right is-align-self-flex-end" href="reviews.php">Reviews</a>
 </footer>
 </body>
 </html>

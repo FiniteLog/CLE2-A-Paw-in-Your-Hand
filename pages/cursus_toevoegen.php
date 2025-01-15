@@ -112,6 +112,7 @@ if (isset($_POST['submit'])) {
 <footer>
     <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
     <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
+    <a class="is-flex is-justify-content-right is-align-self-flex-end" href="reviews.php">Reviews</a>
 </footer>
 </body>
 </html>

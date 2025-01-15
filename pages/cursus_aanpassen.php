@@ -105,7 +105,7 @@ if (isset($courseData)):
             <h2><?= $title ?? $courseData[0]['title'] ?> aanpassen</h2>
             <section class="columns mt-2">
                 <a href="admin_cursus_overzicht.php" class="box mx-2 column is-2 button is-link">Terug</a>
-                <a href="delete.php?id=<?= $courseData[0]['course_id'] ?>&name=<?= $courseData[0]['title']?>"
+                <a href="delete.php?id=<?= $courseData[0]['course_id'] ?>&name=<?= $courseData[0]['title'] ?>"
                    class="box box-last mx-2 column is-2 button is-link">Verwijder cursus</a>
             </section>
             <form action="" method="post" style="display: flex; flex-flow: column; ">
@@ -127,6 +127,7 @@ if (isset($courseData)):
     <footer>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
         <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
+        <a class="is-flex is-justify-content-right is-align-self-flex-end" href="reviews.php">Reviews</a>
     </footer>
     </body>
     </html>

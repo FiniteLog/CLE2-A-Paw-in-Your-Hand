@@ -52,8 +52,9 @@ mysqli_close($db);
     <?php if (isset($courses)):
         foreach ($courses as $course):
             ?>
-            <section class="columns is-centered is-variable is-8 mx-2 my-2" style="border: black 2px solid; width: 70%;">
-                    <img src="includes/images/<?= $course['image'] ?>" alt="image" style="width: 40%; margin: 1%;">
+            <section class="columns is-centered is-variable is-8 mx-2 my-2"
+                     style="border: black 2px solid; width: 70%;">
+                <img src="includes/images/<?= $course['image'] ?>" alt="image" style="width: 40%; margin: 1%;">
                 <div class="column is-flex is-flex-direction-column p-4">
                     <h1 class="has-text-weight-bold" style="font-size: 1.2rem;"><?= $course['title'] ?></h1>
                     <div class="article-container">
@@ -72,6 +73,7 @@ mysqli_close($db);
 <footer>
     <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
     <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
+    <a class="is-flex is-justify-content-right is-align-self-flex-end" href="reviews.php">Reviews</a>
 </footer>
 </body>
 </html>
