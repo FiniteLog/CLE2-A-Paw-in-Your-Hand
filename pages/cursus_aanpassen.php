@@ -78,7 +78,7 @@ if (isset($courseData)):
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
         <link rel="stylesheet" href="includes/css/style.css">
-        <title><?= $courseData[0]['title']; ?> aanpassen</title>
+        <title>Admin - <?= $courseData[0]['title']; ?> aanpassen - A Paw in Your Hand</title>
     </head>
     <body style="background-repeat: no-repeat; background-size: cover;">
     <nav class="navbar">
@@ -105,7 +105,7 @@ if (isset($courseData)):
             <h2><?= $title ?? $courseData[0]['title'] ?> aanpassen</h2>
             <section class="columns mt-2">
                 <a href="admin_cursus_overzicht.php" class="box mx-2 column is-2 button is-link">Terug</a>
-                <a href="delete.php?id=<?= $courseData[0]['course_id'] ?>"
+                <a href="delete.php?id=<?= $courseData[0]['course_id'] ?>&name=<?= $courseData[0]['title']?>"
                    class="box box-last mx-2 column is-2 button is-link">Verwijder cursus</a>
             </section>
             <br>

@@ -21,7 +21,7 @@ mysqli_close($db);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Curusoverzicht</title>
+    <title>Cursus aanbod - A Paw in Your Hand</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="includes/css/style.css">
 </head>
@@ -35,7 +35,7 @@ mysqli_close($db);
             <a href="reservering.php" class="navbar-item custom-margin">
                 Inschrijven
             </a>
-            <a href="gebruiker_cursus_overzicht.php" class="navbar-item custom-margin">
+            <a href="gebruiker_cursus_overzicht.php" class="active navbar-item custom-margin">
                 Cursussen
             </a>
             <a href="admin_login.php" class="navbar-item custom-margin">
@@ -52,12 +52,10 @@ mysqli_close($db);
     <?php if (isset($courses)):
         foreach ($courses as $course):
             ?>
-            <section class="box custom-box columns is-centered is-variable is-8 mx-2 my-2">
-                <div class="column is-narrow">
-                    <img src="includes/images/<?= $course['image'] ?>" alt="image" class="image is-128x128">
-                </div>
+            <section class="columns is-centered is-variable is-8 mx-2 my-2" style="border: black 2px solid; width: 70%;">
+                    <img src="includes/images/<?= $course['image'] ?>" alt="image" style="width: 40%; margin: 1%;">
                 <div class="column is-flex is-flex-direction-column p-4">
-                    <h1 class="has-text-weight-bold"><?= $course['title'] ?></h1>
+                    <h1 class="has-text-weight-bold" style="font-size: 1.2rem;"><?= $course['title'] ?></h1>
                     <div class="article-container">
                         <p><?= $course['short_info'] ?></p>
                     </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>Welcome! - A Paw in Your Hand</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="includes/css/style.css">
 </head>
@@ -32,28 +32,24 @@
     </div>
 </nav>
 <main>
-    <h1> Welcome </h1>
-    <section class="box custom-box columns is-centered is-variable is-8 mx-2 my-2">
-        <div class="column is-narrow">
-            <img src="includes/images/Puppies.jpg" alt="placeholder" class="image is-128x128">
-        </div>
+    <h1 style="margin-top: 2%;"> Welcome </h1>
+    <section class="section_ind columns is-centered is-variable is-8 mx-4" style="margin-top: 5%;">
+        <img src="includes/images/Puppies.jpg" alt="placeholder" class="images_ind" style="width: 20%;"> <!--image is-128x128-->
         <div class="column is-flex is-flex-direction-column p-4">
-            <h2>Article Title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, dolorem ipsa laborum omnis placeat
+            <h2 style="font-weight: bold;">Article Title</h2>
+            <p style="width: 90%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, dolorem ipsa laborum omnis placeat
                 quaerat tempora voluptatibus. Ad, amet assumenda deserunt doloremque excepturi exercitationem fugit
                 pariatur porro quod saepe, sapiente.</p>
         </div>
     </section>
-    <section class="box custom-box columns is-centered is-variable is-8 mx-2 ">
+    <section class="section_ind columns is-centered is-variable is-8 mx-4" style="margin-top: 5%; text-align: right;">
         <div class="column is-flex is-flex-direction-column p-4">
-            <h2>Article Title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, dolorem ipsa laborum omnis placeat
+            <h2 style="font-weight: bold;">Article Title</h2>
+            <p style="margin-left: 10%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, dolorem ipsa laborum omnis placeat
                 quaerat tempora voluptatibus. Ad, amet assumenda deserunt doloremque excepturi exercitationem fugit
                 pariatur porro quod saepe, sapiente.</p>
         </div>
-        <div class="column is-narrow">
-            <img src="includes/images/DogOnFence.jpg" alt="Placeholder" class="image is-128x128">
-        </div>
+            <img src="includes/images/DogOnFence.jpg" alt="Placeholder" class="images_ind" style="width: 20%; height: 20%;">
     </section>
 </main>
 <footer>
