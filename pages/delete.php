@@ -2,12 +2,11 @@
 /** @var mysqli $db */
 require_once 'includes/connection.php';
 
-if (isset($_GET['course_id']) && $_GET['course_id'] !== '') {
-    $course_id = mysqli_real_escape_string($db, $_GET['course_id']);
-}
+$course_id = mysqli_escape_string($db, $_GET['id']);
 
+print_r($course_id);
 if (isset($_POST['confirm'])) {
-    if ($_POST['confirm'] === 'yes' && isset($course_id)) {
+    if (isset($course_id)) {
         $query = "DELETE FROM courses WHERE course_id = $course_id";
         $result = mysqli_query($db, $query);
 
