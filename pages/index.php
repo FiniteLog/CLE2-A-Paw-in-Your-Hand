@@ -27,6 +27,9 @@
             <a href="agenda.php" class="navbar-item custom-margin">
                 Agenda
             </a>
+            <a href="reviews.php" class="navbar-item custom-margin">
+                Reviews
+            </a>
         </div>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
 

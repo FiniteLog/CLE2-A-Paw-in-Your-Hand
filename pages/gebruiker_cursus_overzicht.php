@@ -36,7 +36,7 @@ mysqli_close($db);
             <a href="reservering.php" class="navbar-item custom-margin">
                 Inschrijven
             </a>
-            <a href="gebruiker_cursus_overzicht.php" class="active navbar-item custom-margin" style="background-color: #2CDB43; color: black;">
+            <a href="gebruiker_cursus_overzicht.php" class="navbar-item custom-margin" style="background-color: #2CDB43; color: black;">
                 Cursussen
             </a>
             <a href="admin_login.php" class="navbar-item custom-margin">
@@ -45,8 +45,12 @@ mysqli_close($db);
             <a href="agenda.php" class="navbar-item custom-margin">
                 Agenda
             </a>
+            <a href="reviews.php" class="navbar-item custom-margin">
+                Reviews
+            </a>
         </div>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
+
     </div>
 </nav>
 <main class="is-flex is-flex-direction-column is-align-items-center">

@@ -67,7 +67,7 @@ mysqli_close($db);
         <tbody style="border-bottom: black solid 2px; border-top: black solid 2px;">
         <?php if(isset($students)):
         foreach ($students as $student):?>
-        <tr style="border-bottom: black solid 2px;">
+        <tr style="border-bottom: black solid 2px;" class="student-container">
             <th style="padding: 1%; width: 4%; height: 10%;"><img src="includes/images/<?= $student['pfp'] ?>" alt="Pfp"></th>
             <td style="padding: 1%; width: 10%"><?= $student['first_name'] ?></td>
             <td style="padding: 1%; width: 10%"><?= $student['last_name'] ?></td>
