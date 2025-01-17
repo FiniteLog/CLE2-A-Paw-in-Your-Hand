@@ -68,14 +68,13 @@ mysqli_close($db);
         <?php if(isset($students)):
         foreach ($students as $student):?>
         <tr style="border-bottom: black solid 2px;">
-            <th style="padding: 1%; width: 10%"><img src="includes/images/<?= $student['pfp'] ?>" alt="Pfp"></th>
+            <th style="padding: 1%; width: 4%; height: 10%;"><img src="includes/images/<?= $student['pfp'] ?>" alt="Pfp"></th>
             <td style="padding: 1%; width: 10%"><?= $student['first_name'] ?></td>
             <td style="padding: 1%; width: 10%"><?= $student['last_name'] ?></td>
             <td style="width: 9%;"></td>
             <td style="padding: 1%; width: 10%"><?= $student['email'] ?></td>
             <th style="padding: 1%; width: 5%">
-                <a href="" class="button" style="font-size: 0.8rem; margin: 0%; background-color: #23B136; color: black; border: black 1px solid;"> <!--cursus_aanpassen.php?course_id=<?= $student['course_id'] ?>-->
-                <a href=cursist_details.php?cursist_id=" class="button" style="font-size: 0.8rem; margin: 0%; background-color: #23B136; color: black; border: black 1px solid;"> <!--cursus_aanpassen.php?course_id=<?= $student['course_id'] ?>-->
+                <a href="cursist_details.php?cursist_id=<?= $student['cursist_id'] ?>" class="button" style="font-size: 0.8rem; margin: 0%; background-color: #23B136; color: black; border: black 1px solid;">
                     Inschrijvingen
                 </a>
             </th>
