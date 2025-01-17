@@ -42,10 +42,12 @@ mysqli_close($db);
             <td><?= $student['email'] ?></td>
             <td><?= $student['password'] ?></td>
             <td><?= $student['pfp'] ?></td>
+            <td><a href="cursist_details.php?cursist_id=<?= $student['cursist_id']?>">details</a></td>
         </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
+    <a href="cursist_details.php?id"></a>
 </main>
 </body>
 </html>
