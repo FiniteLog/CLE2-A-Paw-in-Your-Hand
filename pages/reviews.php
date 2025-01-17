@@ -45,8 +45,12 @@ mysqli_close($db);
             <a href="agenda.php" class="navbar-item custom-margin">
                 Agenda
             </a>
+            <a href="reviews.php" class="navbar-item custom-margin" style="background-color: #2CDB43; color: black;">
+                Reviews
+            </a>
         </div>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
+
     </div>
 </nav>
 <main>
