@@ -33,8 +33,9 @@ if (isset($courseData)):
         <title><?= $courseData[0]['title'] ?> - A Paw in Your Hand</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
         <link rel="stylesheet" href="includes/css/style.css">
+        <link rel="icon" href="includes/images/pupp_darkGreen.png">
     </head>
-    <body style="background-repeat: no-repeat; background-size: cover;">
+    <body style="background-repeat: no-repeat; background-size: cover; background-image: url('includes/css/bg4.jpg');">
     <nav class="navbar">
         <div id="navbarBasic" class="navbar-menu px-6">
             <div class="navbar-start">
@@ -44,7 +45,7 @@ if (isset($courseData)):
                 <a href="reservering.php" class="navbar-item custom-margin">
                     Inschrijven
                 </a>
-                <a href="gebruiker_cursus_overzicht.php" class="navbar-item custom-margin">
+                <a href="gebruiker_cursus_overzicht.php" class="navbar-item custom-margin" style="background-color: #2CDB43; color: black;">
                     Cursussen
                 </a>
                 <a href="admin_login.php" class="navbar-item custom-margin">
@@ -66,10 +67,9 @@ if (isset($courseData)):
             <h1 class="has-text-centered has-text-weight-bold"
                 style="color: black; font-size: 1.5rem;"><?= $courseData[0]['title'] ?></h1>
         </div>
-        <div class="information_div"
-        ">
-        <p class="information"
-           style="color: black; margin: 4%; margin-bottom: 2%; margin-top: 2%;"><?= $courseData[0]['info'] ?></p>
+        <div class="information_div">
+            <p class="information"
+               style="color: black; margin: 4%; margin-bottom: 2%; margin-top: 2%;"><?= $courseData[0]['info'] ?></p>
         </div>
         <div class="is-flex is-justify-content-flex-end" style="margin-right: 10%; margin-bottom: 2%">
             <a href="reservering.php" class="sign-up-btn button custom-button">Inschrijven</a>
@@ -79,6 +79,10 @@ if (isset($courseData)):
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
         <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
         <a class="is-flex is-justify-content-right is-align-self-flex-end" href="reviews.php">Reviews</a>
+        <div style="display: flex; flex-flow: column; margin-top: 2%; margin-right: 3%;">
+            <a href="mailto:email@example.com" style="color: black; text-decoration: underline;">emaillesgevende@email.com</a>
+            <p>+31 6 12345678</p>
+        </div>
     </footer>
     </body>
     </html>
