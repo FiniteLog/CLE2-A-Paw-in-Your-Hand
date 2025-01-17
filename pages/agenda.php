@@ -68,7 +68,7 @@ $days = $dateHandler->getDays();
             <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin">
                 Cursusoverzicht
             </a>
-            <a href="" class="navbar-item custom-margin">
+            <a href="cursisten_overzicht.php" class="navbar-item custom-margin">
                 Cursisten
             </a>
         </div>

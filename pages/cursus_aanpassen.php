@@ -94,7 +94,7 @@ if (isset($courseData)):
                 <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin" style="background-color: #2CDB43; color: black;">
                     Cursusoverzicht
                 </a>
-                <a href="" class="navbar-item custom-margin">
+                <a href="cursisten_overzicht.php" class="navbar-item custom-margin">
                     Cursisten
                 </a>
             </div>
