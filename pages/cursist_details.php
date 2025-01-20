@@ -15,6 +15,22 @@ while ($row = mysqli_fetch_assoc($result)) {
     $studentData[] = $row;
 }
 
+$reservationQuery = "SELECT cursisten.first_name AS firstNameCursist, cursisten.last_name AS lastNameCursist,
+    reservations.phone_number AS phoneNumber, reservations.timeslot AS timeslot, 
+    reservations.date AS date, courses.title AS courseName
+FROM reservations 
+RIGHT JOIN cursisten ON reservations.cursist_id = cursisten.cursist_id
+RIGHT JOIN courses ON reservations.course_id = courses.course_id
+WHERE cursisten.cursist_id = $studentId";
+
+$reservationResult = mysqli_query($db, $reservationQuery);
+
+$reservationData = [];
+
+while ($row = mysqli_fetch_assoc($reservationResult)) {
+    $reservationData[] = $row;
+}
+
 mysqli_close($db);
 
 if (!isset($studentId) || $studentId == "" || !is_numeric($studentId)) {
@@ -48,8 +64,7 @@ if (isset($studentId)):
                 <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin">
                     Cursusoverzicht
                 </a>
-                <a href="cursisten_overzicht.php" class="navbar-item custom-margin"
-                   style="background-color: #2CDB43; color: black;">
+                <a href="cursisten_overzicht.php" class="navbar-item custom-margin" style="background-color: #2CDB43; color: black;">
                     Cursisten
                 </a>
             </div>
@@ -57,31 +72,47 @@ if (isset($studentId)):
         </div>
     </nav>
     <main style="display: flex; gap: 0%;">
-        <a href="cursisten_overzicht.php"
-           style="color: black; background-color: #23B136; height: 5%; margin-left: 3%; margin-top: 3%;" class="button">Terug</a>
+        <a href="cursisten_overzicht.php" style="color: black; background-color: #23B136; height: 5%; margin-left: 3%; margin-top: 3%;" class="button">Terug</a>
         <div>
             <div style="display: flex; flex-flow: column; margin-left: 45%">
-                <h1 style="color: black; font-weight: bold; font-size: 2rem; margin-top: 5%;"><?= $studentData[0]['first_name'] ?> <?= $studentData[0]['last_name'] ?></h1>
+                <h1 style="color: black; font-weight: bold; font-size: 2rem; margin-top: 5%;"><?= $studentData[0]['first_name']?> <?= $studentData[0]['last_name']?></h1>
                 <div style="width: 30%; margin-left: 15%;">
-                    <img src="includes/images/<?= $studentData[0]['pfp'] ?>">
+                    <img src="includes/images/<?= $studentData[0]['pfp']?>">
                 </div>
             </div>
             <h2 style="color: black; font-weight: bold; font-size: 1.5rem; margin-top: 5%;">Inschrijvingen</h2>
             <div class="inschrijvingen">
-                <!--Put table here-->
-                <p>[ Gebruiker heeft nog geen inschrijvingen ] </p>
+                <?php if (!empty($reservationData)): ?>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Cursus</th>
+                            <th>Telefoonnummer</th>
+                            <th>Datum</th>
+                            <th>Tijd</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($reservationData as $reservation): ?>
+                            <tr>
+                                <td><?= $reservation['courseName']?></td>
+                                <td><?= $reservation['phoneNumber'] ?></td>
+                                <td><?= $reservation['date'] ?></td>
+                                <td><?= $reservation['timeslot'] ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <p>[ Gebruiker heeft nog geen inschrijvingen ]</p>
+                <?php endif; ?>
             </div>
         </div>
     </main>
     <footer>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
         <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
-        <div style="display: flex; flex-flow: column; margin-top: 2%; margin-right: 3%;">
-            <a href="mailto:email@example.com" style="color: black; text-decoration: underline;">emaillesgevende@email.com</a>
-            <p>+31 6 12345678</p>
-        </div>
     </footer>
     </body>
     </html>
-
 <?php endif; ?>
