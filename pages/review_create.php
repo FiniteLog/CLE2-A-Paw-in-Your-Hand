@@ -7,6 +7,8 @@ if (isset($_POST['submit'])) {
     $last_name = $_POST['last_name'];
     $review = $_POST['review'];
     $email = $_POST['email'];
+    $rating = $_POST['rating'];
+
 
     $errors = [];
 
@@ -23,10 +25,14 @@ if (isset($_POST['submit'])) {
     if ($email == '') {
         $errors['email'] = 'E-mail vereist.';
     }
+    if (!isset($_POST['rating']) || $_POST['rating'] < 1 || $_POST['rating'] > 5) {
+        $errors['rating'] = "Select a valid rating between 1 and 5.";
+    }
+
 
     if (empty($errors)) {
-        $query = "INSERT INTO reviews (first_name, last_name, review, email) 
-                    VALUES  ('$first_name', '$last_name', '$review', '$email')";
+        $query = "INSERT INTO reviews (first_name, last_name, review, email, rating) 
+                    VALUES  ('$first_name', '$last_name', '$review', '$email', '$rating')";
         mysqli_query($db, $query);
         mysqli_close($db);
     }
@@ -76,6 +82,30 @@ if (isset($_POST['submit'])) {
         Review schrijven
     </h1>
     <form class="mx-6" method="POST">
+
+        <label class="is-flex is-justify-content-center is-size-3 mb-3">Rating</label>
+        <div class="columns is-centered">
+            <div class="rating-container">
+                <!-- Star Rating Input -->
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5" title="5 stars">★</label>
+
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4" title="4 stars">★</label>
+
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3" title="3 stars">★</label>
+
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2" title="2 stars">★</label>
+
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1" title="1 star">★</label>
+            </div>
+        </div>
+        <p class="help is-danger">
+            <?= $errors['rating'] ?? '' ?>
+        </p>
 
         <label class="is-flex is-justify-content-center is-size-3 mb-3">Voornaam</label>
         <div class="columns is-centered">
