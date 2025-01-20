@@ -91,7 +91,8 @@ if (isset($courseData)):
                 <a href="agenda.php" class="navbar-item custom-margin">
                     Agenda
                 </a>
-                <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin" style="background-color: #2CDB43; color: black;">
+                <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin"
+                   style="background-color: #2CDB43; color: black;">
                     Cursusoverzicht
                 </a>
                 <a href="cursisten_overzicht.php" class="navbar-item custom-margin">
@@ -103,7 +104,8 @@ if (isset($courseData)):
     </nav>
     <main>
         <div style="background-color: white; width: 75%; margin-left: 8vw; height: 100vh; margin-top: -2.5vh; padding: 5%;">
-            <h2 style="color: black; font-size: 2rem; font-weight: bold; margin-bottom: 2%; margin-top: 3%;"><?= $title ?? $courseData[0]['title'] ?> aanpassen</h2>
+            <h2 style="color: black; font-size: 2rem; font-weight: bold; margin-bottom: 2%; margin-top: 3%;"><?= $title ?? $courseData[0]['title'] ?>
+                aanpassen</h2>
             <form action="" method="post" style="display: flex; flex-flow: column; ">
                 <label for="title" style="color: black; margin-top: 4%;">Titel</label>
                 <input type="text" value="<?= $courseData[0]['title']; ?>" id="title" name="title" style="width: 15vw;">
@@ -117,8 +119,10 @@ if (isset($courseData)):
                           style="height: 150px; padding: 1%;"><?= $courseData[0]['info']; ?></textarea>
 
                 <div style="display: flex; flex-flow: row; margin-top: 5%;">
-                    <input type="submit" name="submit" value="Aanpassen" style="width: 10vw; height: 5vh; margin-right: 2%;" class="button">
-                    <a href="admin_cursus_overzicht.php" class="button" style="margin-right: 2%; background-color: #23B136; color: black;">Terug</a>
+                    <input type="submit" name="submit" value="Aanpassen"
+                           style="width: 10vw; height: 5vh; margin-right: 2%;" class="button">
+                    <a href="admin_cursus_overzicht.php" class="button"
+                       style="margin-right: 2%; background-color: #23B136; color: black;">Terug</a>
                     <a href="delete.php?id=<?= $courseData[0]['course_id'] ?>&name=<?= $courseData[0]['title'] ?>&image=<?= $courseData[0]['image'] ?>"
                        class="button" style="background-color: darkred">Verwijder cursus</a>
                 </div>
@@ -128,7 +132,6 @@ if (isset($courseData)):
     <footer>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
         <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
-        <a class="is-flex is-justify-content-right is-align-self-flex-end" href="reviews.php">Reviews</a>
         <div style="display: flex; flex-flow: column; margin-top: 2%; margin-right: 3%;">
             <a href="mailto:email@example.com" style="color: black; text-decoration: underline;">emaillesgevende@email.com</a>
             <p>+31 6 12345678</p>

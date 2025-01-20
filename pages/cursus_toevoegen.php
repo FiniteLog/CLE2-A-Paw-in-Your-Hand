@@ -86,7 +86,8 @@ if (isset($_POST['submit'])) {
 </nav>
 <main>
     <div style="background-color: white; width: 75%; margin-left: 8vw; height: 100vh; margin-top: -2.5vh; padding: 5%;">
-        <h2 style="color: black; font-size: 2rem; font-weight: bold; margin-bottom: 2%; margin-top: 6%;">Cursus toevoegen</h2>
+        <h2 style="color: black; font-size: 2rem; font-weight: bold; margin-bottom: 2%; margin-top: 6%;">Cursus
+            toevoegen</h2>
 
         <form action="" method="post" style="display: flex; flex-flow: column; ">
             <label for="title" style="color: black; margin-top: 4%;">Titel</label>
@@ -101,8 +102,11 @@ if (isset($_POST['submit'])) {
                       style="height: 150px; padding: 1%;"><?= $info ?? '' ?></textarea>
             <p><?= $invalidInfo ?? '' ?></p>
             <div style="display: flex; flex-flow: row;">
-                <input class="button" type="submit" name="submit" value="Toevoegen" style="width: 10vw; height: 5vh; margin-top: 3%;">
-                <a href="admin_cursus_overzicht.php" class="button" style="padding: 1%; font-size: 1rem; background-color: #23B136; color: black; width: 10vw; height: 5vh; margin-left: 3%;  margin-top: 3%;">Terug</a> <!--history.back()-->
+                <input class="button" type="submit" name="submit" value="Toevoegen"
+                       style="width: 10vw; height: 5vh; margin-top: 3%;">
+                <a href="admin_cursus_overzicht.php" class="button"
+                   style="padding: 1%; font-size: 1rem; background-color: #23B136; color: black; width: 10vw; height: 5vh; margin-left: 3%;  margin-top: 3%;">Terug</a>
+                <!--history.back()-->
             </div>
         </form>
     </div>
@@ -110,9 +114,9 @@ if (isset($_POST['submit'])) {
 <footer>
     <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
     <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
-    <a class="is-flex is-justify-content-right is-align-self-flex-end" href="reviews.php">Reviews</a>
     <div style="display: flex; flex-flow: column; margin-top: 2%; margin-right: 3%;">
-        <a href="mailto:email@example.com" style="color: black; text-decoration: underline;">emaillesgevende@email.com</a>
+        <a href="mailto:email@example.com"
+           style="color: black; text-decoration: underline;">emaillesgevende@email.com</a>
         <p>+31 6 12345678</p>
     </div>
 </footer>

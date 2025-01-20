@@ -44,7 +44,7 @@ main {
     background-color: var(--white);
 }
 
-main > h1{
+main > h1 {
     color: var(--black);
     font-weight: bold;
     font-size: 2.5rem;
@@ -61,7 +61,7 @@ section {
     color: var(--black);
 }
 
-section > h2{
+section > h2 {
     font-weight: bold;
 }
 
@@ -131,12 +131,13 @@ button:hover {
     margin-bottom: 1.5rem;
 }
 
-a .active{
+
+a .active {
     background-color: var(--darkerGreen);
 }
 
 /*Index*/
-images_ind{
+images_ind {
     width: 20%;
     height: 20%;
 }

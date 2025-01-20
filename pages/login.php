@@ -11,12 +11,12 @@ $errors = []; // Initialize errors array
 if (isset($_POST['submit'])) {
 
     // Get form data
-    $username = mysqli_real_escape_string($db, $_POST['username'] ?? '');
+    $email = mysqli_real_escape_string($db, $_POST['email'] ?? '');
     $password = mysqli_real_escape_string($db, $_POST['password'] ?? '');
 
     // Server-side validation
-    if ($username === "") {
-        $errors['username'] = "Enter a name";
+    if ($email === "") {
+        $errors['email'] = "Enter a name";
     }
     if ($password === "") {
         $errors['password'] = "Enter a password";
@@ -25,28 +25,28 @@ if (isset($_POST['submit'])) {
     // Proceed only if there are no validation errors
     if (empty($errors)) {
         // SELECT the admin from the database, based on the name
-        $loginQuery = "SELECT * FROM admins WHERE username = ?";
+        $loginQuery = "SELECT * FROM cursisten WHERE email = ?";
         $stmt = $db->prepare($loginQuery);
-        $stmt->bind_param("s", $username);
+        $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
         // Check if the admin exists
         if ($result->num_rows === 1) {
             // Get admin data from result
-            $admin = $result->fetch_assoc();
+            $user = $result->fetch_assoc();
 
             // Check if the provided password matches the stored password in the database
 //            if (password_verify($password, $admin['password'])) {
-            if ($password === $admin['password']) {
+            if ($password === $user['password']) {
 
                 // Password is correct
 
                 // Store the admin in the session
-                $_SESSION['admin'] = $admin; // Assuming admin details are stored in session
+                $_SESSION['user'] = $user; // Assuming admin details are stored in session
 
                 // Redirect to secure page
-                header('Location: agenda.php');
+                header('Location: gebruiker_cursus_overzicht.php');
                 exit;
             } else {
                 // Password is incorrect
@@ -99,17 +99,17 @@ if (isset($_POST['submit'])) {
 
         <div class="">
             <div class="has-text-centered">
-                <label class="has-text-centered mt-6 is-size-4" for="username">Gebruikersnaam</label>
+                <label class="has-text-centered mt-6 is-size-4" for="username">E-mail</label>
             </div>
             <div class="columns is-centered my-1">
                 <div class="column is-4">
                     <div class="control">
-                        <input class="input" id="username" type="text" name="username" placeholder="Gebruikersnaam"
-                               value="<?= $username ?? '' ?>"/>
+                        <input class="input" id="username" type="text" name="username" placeholder="E-mail"
+                               value="<?= $email ?? '' ?>"/>
                         <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                     </div>
                     <p class="help is-danger">
-                        <?= $errors['username'] ?? '' ?>
+                        <?= $errors['email'] ?? '' ?>
                     </p>
                 </div>
             </div>

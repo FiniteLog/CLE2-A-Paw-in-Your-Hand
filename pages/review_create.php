@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
     <div id="navbarBasic" class="navbar-menu px-6">
         <div class="navbar-start">
             <a href="index.php" class="navbar-item custom-margin"">
-                Home
+            Home
             </a>
             <a href="reservering.php" class="navbar-item custom-margin">
                 Inschrijven
@@ -121,9 +121,9 @@ if (isset($_POST['submit'])) {
 <footer>
     <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
     <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
-    <a class="is-flex is-justify-content-right is-align-self-flex-end" href="reviews.php">Reviews</a>
     <div style="display: flex; flex-flow: column; margin-top: 2%; margin-right: 3%;">
-        <a href="mailto:email@example.com" style="color: black; text-decoration: underline;">emaillesgevende@email.com</a>
+        <a href="mailto:email@example.com"
+           style="color: black; text-decoration: underline;">emaillesgevende@email.com</a>
         <p>+31 6 12345678</p>
     </div>
 </footer>

@@ -38,7 +38,8 @@ mysqli_close($db);
             <a href="agenda.php" class="navbar-item custom-margin">
                 Agenda
             </a>
-            <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin" style="background-color: #2CDB43; color: black;">
+            <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin"
+               style="background-color: #2CDB43; color: black;">
                 Cursusoverzicht
             </a>
             <a href="cursisten_overzicht.php" class="navbar-item custom-margin">
@@ -50,7 +51,8 @@ mysqli_close($db);
 </nav>
 <main>
     <div style="margin-top: 3%;">
-        <h1 style="margin-bottom: 3%; text-align: center; color: black; font-size: 2rem; font-weight: bold;">Cursus overzicht</h1>
+        <h1 style="margin-bottom: 3%; text-align: center; color: black; font-size: 2rem; font-weight: bold;">Cursus
+            overzicht</h1>
 
         <table style="color: black; margin-left: 2%; margin-right: 2%; margin-top: 0.5%; border-right: black solid 2px; border-left: black solid 2px; ">
             <thead>
@@ -60,7 +62,7 @@ mysqli_close($db);
                 <th style="color: var(--black); padding: .2%;">info</th>
             </tr>
             </thead>
-            <tfoot> </tfoot>
+            <tfoot></tfoot>
             <tbody style="border-bottom: black solid 2px; border-top: black solid 2px;">
             <?php if (isset($courses)):
             foreach ($courses as $course):?>
@@ -85,9 +87,9 @@ mysqli_close($db);
 <footer>
     <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
     <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
-    <a class="is-flex is-justify-content-right is-align-self-flex-end" href="reviews.php">Reviews</a>
     <div style="display: flex; flex-flow: column; margin-top: 2%; margin-right: 3%;">
-        <a href="mailto:email@example.com" style="color: black; text-decoration: underline;">emaillesgevende@email.com</a>
+        <a href="mailto:email@example.com"
+           style="color: black; text-decoration: underline;">emaillesgevende@email.com</a>
         <p>+31 6 12345678</p>
     </div>
 </footer>
