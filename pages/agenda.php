@@ -96,7 +96,7 @@ $days = $dateHandler->getDays();
 
         <!-- Display the selected week's dates and reservations -->
         <div id="days" class="box">
-            <div class="columns is-flex is-justify-content-space-between is-mobile">
+            <div class="columns is-flex is-justify-content-space-between is-mobile is-multiline">
                 <?php foreach ($days as $day): ?>
                     <div class=" column box box-last is-radiusless">
                         <h3 class="title is-5"><?= date('D, M d', strtotime($day)) ?></h3>
