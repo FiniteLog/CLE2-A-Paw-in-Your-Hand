@@ -8,10 +8,10 @@ $query = "SELECT * FROM cursisten";
 $result = mysqli_query($db, $query)
 or die('Error' . mysqli_error($db) . 'with query' . $query);
 
-$students = [];
+$cursisten = [];
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $students[] = $row;
+    $cursisten[] = $row;
 }
 
 mysqli_close($db);
@@ -66,17 +66,17 @@ mysqli_close($db);
             </thead>
 
             <tbody style="border-bottom: black solid 2px; border-top: black solid 2px;">
-            <?php if (isset($students)):
-            foreach ($students as $student):?>
+            <?php if (isset($cursisten)):
+            foreach ($cursisten as $cursist):?>
                 <tr style="border-bottom: black solid 2px;" class="student-container">
-                    <th style="padding: 1%; width: 4%; height: 10%;"><img src="includes/images/<?= $student['pfp'] ?>"
+                    <th style="padding: 1%; width: 4%; height: 10%;"><img src="includes/images/<?= $cursist['pfp'] ?>"
                                                                           alt="Pfp"></th>
-                    <td style="padding: 1%; width: 10%"><?= $student['first_name'] ?></td>
-                    <td style="padding: 1%; width: 10%"><?= $student['last_name'] ?></td>
+                    <td style="padding: 1%; width: 10%"><?= $cursist['first_name'] ?></td>
+                    <td style="padding: 1%; width: 10%"><?= $cursist['last_name'] ?></td>
                     <td style="width: 9%;"></td>
-                    <td style="padding: 1%; width: 10%"><?= $student['email'] ?></td>
+                    <td style="padding: 1%; width: 10%"><?= $cursist['email'] ?></td>
                     <th style="padding: 1%; width: 5%">
-                        <a href="cursist_details.php?cursist_id=<?= $student['cursist_id'] ?>" class="button"
+                        <a href="cursist_details.php?cursist_id=<?= $cursist['cursist_id'] ?>" class="button"
                            style="font-size: 0.8rem; margin: 0%; background-color: #23B136; color: black; border: black 1px solid;">
                             Inschrijvingen
                         </a>

@@ -8,6 +8,13 @@ session_start();
 $errors = [];
 $name = $date = $timeslot = $dog_amount = $phone_number = $course_id = $question = '';
 
+// Fetch reservations with course information
+$query = "
+    SELECT cursisten.cursist_id, cursisten.phone_number
+    FROM cursisten
+";
+$result = mysqli_query($db, $query) or die('Error: ' . mysqli_error($db) . ' with query ' . $query);
+
 // Handle form submission
 if (isset($_POST['submit'])) {
     // Sanitize inputs
@@ -18,7 +25,7 @@ if (isset($_POST['submit'])) {
     $phone_number = mysqli_real_escape_string($db, $_POST['phone_number']);
     $course_id = mysqli_real_escape_string($db, $_POST['course_id']);
     $question = mysqli_real_escape_string($db, $_POST['question']);
-    $userId = $_SESSION['admin']['id'] ?? null; // Retrieve logged-in admin's ID
+    $userId = $_SESSION['users']['id'] ?? null; // Retrieve logged-in users ID
 
     // Validation
     if ($name === "") {
@@ -35,6 +42,20 @@ if (isset($_POST['submit'])) {
     }
     if ($phone_number === "") {
         $errors['phone_number'] = "Vul alstublieft een telefoonnummer in.";
+    } //if phone_number is in $result $userId = 'cursist_id'
+    else {
+        // Loop through the result to find a match for the phone number
+        foreach ($result as $row) {
+            if ($row['phone_number'] === $phone_number) {
+                $userId = $row['cursist_id'];
+                break;
+            }
+        }
+
+        // If no match is found, $userId will remain null or an error can be set if needed
+        if (!isset($userId)) {
+            $errors['phone_number'] = "Geen gebruiker gevonden met dit telefoonnummer.";
+        }
     }
     if ($course_id === "") {
         $errors['course'] = "Kies alstublieft een cursus.";
@@ -43,8 +64,8 @@ if (isset($_POST['submit'])) {
     // If no errors, insert data
     if (empty($errors)) {
         $insertQuery = "
-        INSERT INTO reservations (name, date, timeslot, dog_amount, phone_number, course_id, question) 
-        VALUES ('$name', '$date', '$timeslot', '$dog_amount', '$phone_number', '$course_id', '$question')";
+        INSERT INTO reservations (name, date, timeslot, dog_amount, phone_number, course_id, question, cursist_id) 
+        VALUES ('$name', '$date', '$timeslot', '$dog_amount', '$phone_number', '$course_id', '$question', '$userId')";
 
         if (mysqli_query($db, $insertQuery)) {
             header('Location: index.php');
