@@ -75,7 +75,7 @@ if (isset($studentId)):
     <main style="display: flex; gap: 0%;">
         <a href="cursisten_overzicht.php"
            style="color: black; background-color: #23B136; height: 5%; margin-left: 3%; margin-top: 3%;" class="button">Terug</a>
-        <div>
+        <div style="width: 100vw">
             <div style="display: flex; flex-flow: column; margin-left: 45%">
                 <h1 style="color: black; font-weight: bold; font-size: 2rem; margin-top: 5%;"><?= $studentData[0]['first_name'] ?> <?= $studentData[0]['last_name'] ?></h1>
                 <div style="width: 30%; margin-left: 15%;">
