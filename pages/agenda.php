@@ -96,26 +96,23 @@ $days = $dateHandler->getDays();
 
         <!-- Display the selected week's dates and reservations -->
         <div id="days" class="box">
-            <div class="columns is-flex is-justify-content-space-between is-mobile">
+            <div class="columns is-flex is-justify-content-space-between is-mobile is-multiline">
                 <?php foreach ($days as $day): ?>
-                    <div class="column">
-                        <div class="box">
-                            <h3 class="title is-5"><?= date('D, M d', strtotime($day)) ?></h3>
-
-                            <?php if (isset($reservationsByDate[$day])): ?>
-                                <?php foreach ($reservationsByDate[$day] as $reservation): ?>
-                                    <form method="get" action="reservation_details.php" class="mb-2">
-                                        <input type="hidden" name="id" value="<?= $reservation['reservation_id'] ?>">
-                                        <button class="button is-info is-fullwidth">
-                                            <?= htmlspecialchars($reservation['timeslot']) ?>
-                                            <?= htmlspecialchars($reservation['title']) ?>
-                                        </button>
-                                    </form>
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <p>No reservations</p>
-                            <?php endif; ?>
-                        </div>
+                    <div class=" column box box-last is-radiusless">
+                        <h3 class="title is-5"><?= date('D, M d', strtotime($day)) ?></h3>
+                        <?php if (isset($reservationsByDate[$day])): ?>
+                            <?php foreach ($reservationsByDate[$day] as $reservation): ?>
+                                <form method="get" action="reservation_details.php" class="mb-2">
+                                    <input type="hidden" name="id" value="<?= $reservation['reservation_id'] ?>">
+                                    <button class="button is-info is-fullwidth">
+                                        <?= htmlspecialchars($reservation['timeslot']) ?>
+                                        <?= htmlspecialchars($reservation['title']) ?>
+                                    </button>
+                                </form>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p>No reservations</p>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -126,11 +123,6 @@ $days = $dateHandler->getDays();
 <footer>
     <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
     <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
-    <div style="display: flex; flex-flow: column; margin-top: 2%; margin-right: 3%;">
-        <a href="mailto:email@example.com"
-           style="color: black; text-decoration: underline;">emaillesgevende@email.com</a>
-        <p>+31 6 12345678</p>
-    </div>
 </footer>
 </body>
 </html>
