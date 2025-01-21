@@ -51,11 +51,6 @@ if (isset($_POST['submit'])) {
                 break;
             }
         }
-
-        // If no match is found, $userId will remain null or an error can be set if needed
-        if (!isset($userId)) {
-            $errors['phone_number'] = "Geen gebruiker gevonden met dit telefoonnummer.";
-        }
     }
     if ($course_id === "") {
         $errors['course'] = "Kies alstublieft een cursus.";
