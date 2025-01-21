@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="includes/css/style.css">
-    <title>Admin - Login - A Paw in Your Hand</title>
+    <title>Login - A Paw in Your Hand</title>
 </head>
 <body style="background-repeat: no-repeat; background-size: cover;">
 <nav class="navbar">
