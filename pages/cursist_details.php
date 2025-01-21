@@ -64,7 +64,8 @@ if (isset($studentId)):
                 <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin">
                     Cursusoverzicht
                 </a>
-                <a href="cursisten_overzicht.php" class="navbar-item custom-margin" style="background-color: #2CDB43; color: black;">
+                <a href="cursisten_overzicht.php" class="navbar-item custom-margin"
+                   style="background-color: #2CDB43; color: black;">
                     Cursisten
                 </a>
             </div>
@@ -72,16 +73,20 @@ if (isset($studentId)):
         </div>
     </nav>
     <main style="display: flex; gap: 0%;">
-        <a href="cursisten_overzicht.php" style="color: black; background-color: #23B136; height: 5%; margin-left: 3%; margin-top: 3%;" class="button">Terug</a>
-        <div>
-            <div style="display: flex; flex-flow: column; margin-left: 45%">
-                <h1 style="color: black; font-weight: bold; font-size: 2rem; margin-top: 5%;"><?= $studentData[0]['first_name']?> <?= $studentData[0]['last_name']?></h1>
-                <div style="width: 30%; margin-left: 15%;">
-                    <img src="includes/images/<?= $studentData[0]['pfp']?>">
+        <div class="column">
+            <a href="cursisten_overzicht.php"
+               style="color: black; background-color: #23B136;"
+               class="button">Terug</a>
+            <div class="">
+                <h1 style="color: black; font-weight: bold; font-size: 2rem; margin-top: 5%;"
+                    class="has-text-centered"><?= $studentData[0]['first_name'] ?> <?= $studentData[0]['last_name'] ?></h1>
+                <div class="has-text-centered">
+                    <img src="includes/images/<?= $studentData[0]['pfp'] ?>">
                 </div>
             </div>
-            <h2 style="color: black; font-weight: bold; font-size: 1.5rem; margin-top: 5%;">Inschrijvingen</h2>
-            <div class="inschrijvingen">
+            <h2 style="color: black; font-weight: bold; font-size: 1.5rem; margin-top: 5%;" class="has-text-centered">
+                Inschrijvingen</h2>
+            <div class="inschrijvingen has-text-centered">
                 <?php if (!empty($reservationData)): ?>
                     <table>
                         <thead>
@@ -95,7 +100,7 @@ if (isset($studentId)):
                         <tbody>
                         <?php foreach ($reservationData as $reservation): ?>
                             <tr>
-                                <td><?= $reservation['courseName']?></td>
+                                <td><?= $reservation['courseName'] ?></td>
                                 <td><?= $reservation['phoneNumber'] ?></td>
                                 <td><?= $reservation['date'] ?></td>
                                 <td><?= $reservation['timeslot'] ?></td>
