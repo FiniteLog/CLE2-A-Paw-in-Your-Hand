@@ -3,41 +3,34 @@
 require_once 'includes/connection.php';
 session_start();
 
-$studentId = $_GET['cursist_id'];
+$cursist_id = $_GET['cursist_id'];
 
-$query = "SELECT * FROM cursisten WHERE cursist_id=$studentId";
-
-$result = mysqli_query($db, $query);
-
-$studentData = [];
-
-while ($row = mysqli_fetch_assoc($result)) {
-    $studentData[] = $row;
+if (!isset($cursist_id) || $cursist_id == "" || !is_numeric($cursist_id)) {
+    header('Location: cursisten_overzicht.php');
+    exit;
 }
 
-$reservationQuery = "SELECT cursisten.first_name AS firstNameCursist, cursisten.last_name AS lastNameCursist,
-    reservations.phone_number AS phoneNumber, reservations.timeslot AS timeslot, 
-    reservations.date AS date, courses.title AS courseName
-FROM reservations 
-RIGHT JOIN cursisten ON reservations.cursist_id = cursisten.cursist_id
-RIGHT JOIN courses ON reservations.course_id = courses.course_id
-WHERE cursisten.cursist_id = $studentId";
+// Fetch cursist details
+$query = "SELECT * FROM cursisten WHERE cursist_id='$cursist_id'";
+$result = mysqli_query($db, $query);
+$cursistData = mysqli_fetch_assoc($result);
 
+// Fetch reservations for this cursist
+$reservationQuery = "
+    SELECT r.*, c.title AS course_title, t.timeslot_info 
+    FROM reservations r
+    LEFT JOIN courses c ON r.course_id = c.course_id
+    LEFT JOIN timeslots t ON r.timeslot = t.timeslot_id
+    WHERE r.cursist_id = '$cursist_id'
+";
 $reservationResult = mysqli_query($db, $reservationQuery);
-
-$reservationData = [];
+$reservations = [];
 
 while ($row = mysqli_fetch_assoc($reservationResult)) {
-    $reservationData[] = $row;
+    $reservations[] = $row;
 }
 
 mysqli_close($db);
-
-if (!isset($studentId) || $studentId == "" || !is_numeric($studentId)) {
-    header('Location: cursisten_overzicht.php');
-}
-
-if (isset($studentId)):
     ?>
     <!doctype html>
     <html lang="nl">
@@ -55,15 +48,9 @@ if (isset($studentId)):
     <nav class="navbar">
         <div id="navbarBasic" class="navbar-menu px-6">
             <div class="navbar-start">
-                <a href="index.php" class="navbar-item custom-margin">
-                    Home
-                </a>
-                <a href="agenda.php" class="navbar-item custom-margin">
-                    Agenda
-                </a>
-                <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin">
-                    Cursusoverzicht
-                </a>
+                <a href="index.php" class="navbar-item custom-margin">Home</a>
+                <a href="agenda.php" class="navbar-item custom-margin">Agenda</a>
+                <a href="admin_cursus_overzicht.php" class="navbar-item custom-margin">Cursusoverzicht</a>
                 <a href="cursisten_overzicht.php" class="navbar-item custom-margin"
                    style="background-color: #2CDB43; color: black;">
                     Cursisten
@@ -73,24 +60,21 @@ if (isset($studentId)):
         </div>
     </nav>
     <main style="display: flex; gap: 0%;">
-        <div class="column">
-            <a href="cursisten_overzicht.php"
-               style="color: black; background-color: #23B136;"
-               class="button">Terug</a>
-            <div class="">
-                <h1 style="color: black; font-weight: bold; font-size: 2rem; margin-top: 5%;"
-                    class="has-text-centered"><?= $studentData[0]['first_name'] ?> <?= $studentData[0]['last_name'] ?></h1>
-                <div class="has-text-centered">
-                    <img src="includes/images/<?= $studentData[0]['pfp'] ?>">
+        <a href="cursisten_overzicht.php" style="color: black; background-color: #23B136; height: 5%; margin-left: 3%; margin-top: 3%;" class="button">Terug</a>
+        <div>
+            <div style="display: flex; flex-flow: column; margin-left: 45%">
+                <h1 style="color: black; font-weight: bold; font-size: 2rem; margin-top: 5%;"><?= $cursistData['first_name']?> <?= $cursistData['last_name']?></h1>
+                <div style="width: 30%; margin-left: 15%;">
+                    <img src="includes/images/<?= $cursistData['pfp']?>">
                 </div>
             </div>
-            <h2 style="color: black; font-weight: bold; font-size: 1.5rem; margin-top: 5%;" class="has-text-centered">
-                Inschrijvingen</h2>
-            <div class="inschrijvingen has-text-centered">
-                <?php if (!empty($reservationData)): ?>
+            <h2 style="color: black; font-weight: bold; font-size: 1.5rem; margin-top: 5%;">Inschrijvingen</h2>
+            <div class="inschrijvingen">
+                <?php if (count($reservations) > 0): ?>
                     <table>
                         <thead>
                         <tr>
+                            <th>#</th>
                             <th>Cursus</th>
                             <th>Telefoonnummer</th>
                             <th>Datum</th>
@@ -98,12 +82,13 @@ if (isset($studentId)):
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($reservationData as $reservation): ?>
+                        <?php foreach ($reservations as $index => $reservation): ?>
                             <tr>
-                                <td><?= $reservation['courseName'] ?></td>
-                                <td><?= $reservation['phoneNumber'] ?></td>
-                                <td><?= $reservation['date'] ?></td>
-                                <td><?= $reservation['timeslot'] ?></td>
+                                <td><?= $index + 1 ?></td>
+                                <td><?= htmlentities($reservation['date']) ?></td>
+                                <td><?= htmlentities($reservation['timeslot_info']) ?></td>
+                                <td><?= htmlentities($reservation['course_title']) ?></td>
+                                <td><?= htmlentities($reservation['question']) ?></td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>
@@ -117,6 +102,9 @@ if (isset($studentId)):
     <footer>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
         <p class="column is-align-self-flex-end is-size-4 has-text-weight-semibold">A Paw in Your Hand</p>
+        <div style="display: flex; flex-flow: column; margin-top: 2%; margin-right: 3%;">
+            <a href="mailto:email@example.com"
+               style="color: black; text-decoration: underline;">emaillesgevende@email.com</a>
     </footer>
     </body>
     </html>
