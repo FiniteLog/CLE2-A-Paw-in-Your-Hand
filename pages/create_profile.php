@@ -44,6 +44,7 @@ if (isset($_POST['submit'])) {
                 $errors['phone_number'] = "Dit telefoonnummer is al in gebruik.";
             }
         }
+        header('Location: index.php');
     }
 }
 ?>
