@@ -72,15 +72,14 @@ if (isset($studentId)):
             <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
         </div>
     </nav>
-    <main style="display: flex; gap: 0%;">
+    <main style="display: flex; gap: 0%; flex-direction: column">
         <a href="cursisten_overzicht.php"
-           style="color: black; background-color: #23B136; height: 5%; margin-left: 3%; margin-top: 3%;" class="button">Terug</a>
-        <div style="width: 100vw">
-            <div style="display: flex; flex-flow: column; margin-left: 45%">
-                <h1 style="color: black; font-weight: bold; font-size: 2rem; margin-top: 5%;"><?= $studentData[0]['first_name'] ?> <?= $studentData[0]['last_name'] ?></h1>
-                <div style="width: 30%; margin-left: 15%;">
-                    <img src="includes/images/<?= $studentData[0]['pfp'] ?>">
-                </div>
+           style="color: black; background-color: #23B136; height: 5%; margin-left: 3%; margin-top: 3%; width: 8%"
+           class="button">Terug</a>
+        <div style="display: flex; flex-direction: column; align-items: center">
+            <h1 style="color: black; font-weight: bold; font-size: 2rem;"><?= $studentData[0]['first_name'] ?> <?= $studentData[0]['last_name'] ?></h1>
+            <div style="width: 30%;">
+                <img src="includes/images/<?= $studentData[0]['pfp'] ?>">
             </div>
             <h2 style="color: black; font-weight: bold; font-size: 1.5rem; margin-top: 5%;">Inschrijvingen</h2>
             <div class="inschrijvingen">
