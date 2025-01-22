@@ -3,11 +3,20 @@
 require_once 'includes/connection.php';
 session_start();
 
-$studentId = $_GET['cursist_id'];
+$studentId = isset($_GET['cursist_id']) ? mysqli_real_escape_string($db, $_GET['cursist_id']) : null;
 
-$query = "SELECT * FROM cursisten WHERE cursist_id=$studentId";
+if (!$studentId || !is_numeric($studentId)) {
+    echo "Invalid student ID.";
+    exit();
+}
 
+$query = "SELECT * FROM cursisten WHERE cursist_id = $studentId";
 $result = mysqli_query($db, $query);
+
+if (!$result) {
+    echo "Error: " . mysqli_error($db);
+    exit();
+}
 
 $studentData = [];
 
@@ -15,15 +24,21 @@ while ($row = mysqli_fetch_assoc($result)) {
     $studentData[] = $row;
 }
 
-$reservationQuery = "SELECT cursisten.first_name AS firstNameCursist, cursisten.last_name AS lastNameCursist,
-    reservations.phone_number AS phoneNumber, reservations.timeslot AS timeslot, 
-    reservations.date AS date, courses.title AS courseName
-FROM reservations 
-RIGHT JOIN cursisten ON reservations.cursist_id = cursisten.cursist_id
-RIGHT JOIN courses ON reservations.course_id = courses.course_id
-WHERE cursisten.cursist_id = $studentId";
+$reservationQuery = "SELECT c.first_name AS firstNameCursist, c.last_name AS lastNameCursist, 
+    r.reservation_id AS reservation_id,
+    r.phone_number AS phoneNumber, r.timeslot AS timeslot, 
+    r.date AS date, cr.title AS courseName
+FROM reservations r
+RIGHT JOIN cursisten c ON r.cursist_id = c.cursist_id
+RIGHT JOIN courses cr ON r.course_id = cr.course_id
+WHERE c.cursist_id = $studentId";
 
 $reservationResult = mysqli_query($db, $reservationQuery);
+
+if (!$reservationResult) {
+    echo "Error: " . mysqli_error($db);
+    exit();
+}
 
 $reservationData = [];
 
@@ -99,6 +114,7 @@ if (isset($studentId)):
                                 <td><?= $reservation['phoneNumber'] ?></td>
                                 <td><?= $reservation['date'] ?></td>
                                 <td><?= $reservation['timeslot'] ?></td>
+                                <td><a href="delete_cursist_reservation.php?reservation_id=<?= $reservation['reservation_id'] ?>&cursist_id=<?= $studentId ?>">Verwijder</a></td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

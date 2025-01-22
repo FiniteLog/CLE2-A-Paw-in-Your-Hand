@@ -30,6 +30,9 @@
             <a href="reviews.php" class="navbar-item custom-margin">
                 Reviews
             </a>
+            <a href="create_profile.php" class="navbar-item custom-margin">
+                Registreer
+            </a>
         </div>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
 
