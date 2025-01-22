@@ -50,9 +50,8 @@ if (isset($studentId)):
         <link rel="stylesheet" href="includes/css/style.css">
         <link rel="icon" href="includes/images/pupp_darkGreen.png">
         <title>Cursist Details</title>
-    </head>
-    <body>
-    <nav class="navbar">
+    <body style="background-repeat: no-repeat; background-size: cover; background-image: url('includes/css/bg4.jpg');">
+    <nav class="navbar  ">
         <div id="navbarBasic" class="navbar-menu px-6">
             <div class="navbar-start">
                 <a href="index.php" class="navbar-item custom-margin">
