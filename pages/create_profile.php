@@ -27,14 +27,23 @@ if (isset($_POST['submit'])) {
         $errors['phone_number'] = 'Telefoonnummer vereist.';
     }
 
+
     if (empty($errors)) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO cursisten (first_name, last_name, email, password, phone_number) 
-                    VALUES  ('$first_name', '$last_name', '$email', '$hashed_password','$phone_number')";
-        mysqli_query($db, $query);
-        mysqli_close($db);
-        header('location: login.php');
+        try {
+            $query = "INSERT INTO cursisten (first_name, last_name, email, password, phone_number) 
+                VALUES  ('$first_name', '$last_name', '$email', '$hashed_password','$phone_number')";
+            mysqli_query($db, $query);
+            mysqli_close($db);
+        } catch (mysqli_sql_exception $exception) {
+            // Check for unique constraint errors
+            if (strpos($exception->getMessage(), 'email') !== false) {
+                $errors['email'] = "Dit email addres is al in gebruik.";
+            } elseif (strpos($exception->getMessage(), 'phone_number') !== false) {
+                $errors['phone_number'] = "Dit telefoonnummer is al in gebruik.";
+            }
+        }
     }
 }
 ?>
