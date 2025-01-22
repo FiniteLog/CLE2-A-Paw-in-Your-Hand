@@ -151,7 +151,6 @@ images_ind {
     direction: rtl; /* Align stars from right to left */
     display: inline-flex;
     gap: 5px;
-    margin-left: 5%;
 }
 
 .rating-container input {

@@ -41,7 +41,7 @@ $averagePercentage = ($averageRating / 5) * 100;
         });
     </script>
 </head>
-<body>
+<body style="background-repeat: no-repeat; background-size: cover; background-image: url('includes/css/bg4.jpg');">
 <nav class="navbar">
     <div id="navbarBasic" class="navbar-menu px-6">
         <div class="navbar-start">
