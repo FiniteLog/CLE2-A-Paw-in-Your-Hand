@@ -21,18 +21,20 @@ if (isset($_POST['submit'])) {
         $errors['email'] = 'E-mail vereist.';
     }
     if ($password == '') {
-        $errors['password'] = 'Review vereist.';
+        $errors['password'] = 'Wachtwoord vereist.';
     }
-    if ($phone_number = '') {
-        $errors['phone_number'] = 'telefoonnummer vereist.';
+    if ($phone_number == '') {
+        $errors['phone_number'] = 'Telefoonnummer vereist.';
     }
-
 
     if (empty($errors)) {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
         $query = "INSERT INTO cursisten (first_name, last_name, email, password, phone_number) 
-                    VALUES  ('$first_name', '$last_name', '$email', '$password','$phone_number')";
+                    VALUES  ('$first_name', '$last_name', '$email', '$hashed_password','$phone_number')";
         mysqli_query($db, $query);
         mysqli_close($db);
+        header('location: login.php');
     }
 }
 ?>
@@ -77,11 +79,7 @@ if (isset($_POST['submit'])) {
         Account aanmaken
     </h1>
     <form class="mx-6" method="POST">
-        <div class="columns is-centered">
-        </div>
-        <p class="help is-danger">
-            <?= $errors['rating'] ?? '' ?>
-        </p>
+
 
         <label class="is-flex is-justify-content-center is-size-3 mb-3">Voornaam</label>
         <div class="columns is-centered">
@@ -110,7 +108,7 @@ if (isset($_POST['submit'])) {
             <input type="number" class="custom-box is-size-6 column is-4" name="phone_number" id="phone_number">
         </div>
         <p class="help is-danger">
-            <?= $errors['email'] ?? '' ?>
+            <?= $errors['phone_number'] ?? '' ?>
         </p>
         <label class="is-flex is-justify-content-center is-size-3 mb-3">Wachtwoord</label>
         <div class="columns is-centered is-3">
@@ -122,7 +120,7 @@ if (isset($_POST['submit'])) {
         </p>
         <br>
         <div class="columns is-centered mb-6">
-            <button class="button is-link" type="submit" name="create"> Create</button>
+            <button class="button is-link" type="submit" name="submit"> Create</button>
         </div>
     </form>
 </main>
