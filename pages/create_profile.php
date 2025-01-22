@@ -32,8 +32,8 @@ if (isset($_POST['submit'])) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         try {
-            $query = "INSERT INTO cursisten (first_name, last_name, email, password, phone_number) 
-                VALUES  ('$first_name', '$last_name', '$email', '$hashed_password','$phone_number')";
+            $query = "INSERT INTO cursisten (first_name, last_name, email, password, phone_number, pfp) 
+                VALUES  ('$first_name', '$last_name', '$email', '$hashed_password','$phone_number', 'defaultphp,jpg')";
             mysqli_query($db, $query);
             mysqli_close($db);
         } catch (mysqli_sql_exception $exception) {
