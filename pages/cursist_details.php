@@ -3,11 +3,20 @@
 require_once 'includes/connection.php';
 session_start();
 
-$studentId = $_GET['cursist_id'];
+$studentId = isset($_GET['cursist_id']) ? mysqli_real_escape_string($db, $_GET['cursist_id']) : null;
 
-$query = "SELECT * FROM cursisten WHERE cursist_id=$studentId";
+if (!$studentId || !is_numeric($studentId)) {
+    echo "Invalid student ID.";
+    exit();
+}
 
+$query = "SELECT * FROM cursisten WHERE cursist_id = $studentId";
 $result = mysqli_query($db, $query);
+
+if (!$result) {
+    echo "Error: " . mysqli_error($db);
+    exit();
+}
 
 $studentData = [];
 
@@ -15,15 +24,21 @@ while ($row = mysqli_fetch_assoc($result)) {
     $studentData[] = $row;
 }
 
-$reservationQuery = "SELECT cursisten.first_name AS firstNameCursist, cursisten.last_name AS lastNameCursist,
-    reservations.phone_number AS phoneNumber, reservations.timeslot AS timeslot, 
-    reservations.date AS date, courses.title AS courseName
-FROM reservations 
-RIGHT JOIN cursisten ON reservations.cursist_id = cursisten.cursist_id
-RIGHT JOIN courses ON reservations.course_id = courses.course_id
-WHERE cursisten.cursist_id = $studentId";
+$reservationQuery = "SELECT c.first_name AS firstNameCursist, c.last_name AS lastNameCursist, 
+    r.reservation_id AS reservation_id,
+    r.phone_number AS phoneNumber, r.timeslot AS timeslot, 
+    r.date AS date, cr.title AS courseName
+FROM reservations r
+RIGHT JOIN cursisten c ON r.cursist_id = c.cursist_id
+RIGHT JOIN courses cr ON r.course_id = cr.course_id
+WHERE c.cursist_id = $studentId";
 
 $reservationResult = mysqli_query($db, $reservationQuery);
+
+if (!$reservationResult) {
+    echo "Error: " . mysqli_error($db);
+    exit();
+}
 
 $reservationData = [];
 
@@ -51,7 +66,7 @@ if (isset($studentId)):
         <link rel="icon" href="includes/images/pupp_darkGreen.png">
         <title>Cursist Details</title>
     </head>
-    <body>
+    <body style="background-repeat: no-repeat; background-size: cover; background-image: url('includes/css/bg4.jpg');">
     <nav class="navbar">
         <div id="navbarBasic" class="navbar-menu px-6">
             <div class="navbar-start">
@@ -68,39 +83,41 @@ if (isset($studentId)):
                    style="background-color: #2CDB43; color: black;">
                     Cursisten
                 </a>
+                <a href="logout.php" class="navbar-item custom-margin">Log out</a>
             </div>
             <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
         </div>
     </nav>
-    <main style="display: flex; gap: 0%;">
+    <main style="display: flex; gap: 0%; flex-direction: column">
         <a href="cursisten_overzicht.php"
-           style="color: black; background-color: #23B136; height: 5%; margin-left: 3%; margin-top: 3%;" class="button">Terug</a>
-        <div>
-            <div style="display: flex; flex-flow: column; margin-left: 45%">
-                <h1 style="color: black; font-weight: bold; font-size: 2rem; margin-top: 5%;"><?= $studentData[0]['first_name'] ?> <?= $studentData[0]['last_name'] ?></h1>
-                <div style="width: 30%; margin-left: 15%;">
-                    <img src="includes/images/<?= $studentData[0]['pfp'] ?>">
-                </div>
+           style="color: black; background-color: #23B136; height: 5%; margin-left: 3%; margin-top: 3%; width: 8%"
+           class="button">Terug</a>
+        <div style="display: flex; flex-direction: column; align-items: center">
+            <h1 style="color: black; font-weight: bold; font-size: 2rem;"><?= $studentData[0]['first_name'] ?> <?= $studentData[0]['last_name'] ?></h1>
+            <div style="width: 30%;">
+                <img src="includes/images/<?= $studentData[0]['pfp'] ?>">
             </div>
             <h2 style="color: black; font-weight: bold; font-size: 1.5rem; margin-top: 5%;">Inschrijvingen</h2>
             <div class="inschrijvingen">
                 <?php if (!empty($reservationData)): ?>
-                    <table>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
                         <thead>
                         <tr>
-                            <th>Cursus</th>
-                            <th>Telefoonnummer</th>
-                            <th>Datum</th>
-                            <th>Tijd</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold; color: black">Cursus</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold; color: black">Telefoonnummer</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold; color: black">Datum</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold; color: black">Tijd</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold; color: black">Verwijder</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($reservationData as $reservation): ?>
-                            <tr>
-                                <td><?= $reservation['courseName'] ?></td>
-                                <td><?= $reservation['phoneNumber'] ?></td>
-                                <td><?= $reservation['date'] ?></td>
-                                <td><?= $reservation['timeslot'] ?></td>
+                        <?php foreach ($reservationData as $index => $reservation): ?>
+                            <tr style="background-color: <?= $index % 2 == 0 ? '#f9f9f9' : 'transparent'; ?>;">
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><?= $reservation['courseName'] ?></td>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><?= $reservation['phoneNumber'] ?></td>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><?= $reservation['date'] ?></td>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><?= $reservation['timeslot'] ?></td>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><a href="delete_cursist_reservation.php?reservation_id=<?= $reservation['reservation_id'] ?>&cursist_id=<?= $studentId ?>">Verwijder</a></td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

@@ -45,6 +45,7 @@ mysqli_close($db);
             <a href="cursisten_overzicht.php" class="navbar-item custom-margin">
                 Cursisten
             </a>
+            <a href="logout.php" class="navbar-item custom-margin">Log out</a>
         </div>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
     </div>

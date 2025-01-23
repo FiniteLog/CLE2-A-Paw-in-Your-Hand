@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="includes/css/style.css">
     <link rel="icon" href="includes/images/pupp_darkGreen.png">
 </head>
-<body>
+<body style="background-repeat: no-repeat; background-size: cover; background-image: url('includes/css/bg4.jpg');">
 <nav class="navbar">
     <div id="navbarBasic" class="navbar-menu px-6">
         <div class="navbar-start">
@@ -66,12 +66,13 @@ if (isset($_POST['submit'])) {
             <a href="admin_login.php" class="navbar-item custom-margin">
                 Admin Login
             </a>
-            <a href="agenda.php" class="navbar-item custom-margin">
-                Agenda
-            </a>
             <a href="reviews.php" class="navbar-item custom-margin" style="background-color: #2CDB43; color: black;">
                 Reviews
             </a>
+            <a href="create_profile.php" class="navbar-item custom-margin">
+                Registreer
+            </a>
+            <a href="logout.php" class="navbar-item custom-margin">Log out</a>
         </div>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
 

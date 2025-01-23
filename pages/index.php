@@ -24,12 +24,13 @@
             <a href="admin_login.php" class="navbar-item custom-margin">
                 Admin Login
             </a>
-            <a href="agenda.php" class="navbar-item custom-margin">
-                Agenda
-            </a>
             <a href="reviews.php" class="navbar-item custom-margin">
                 Reviews
             </a>
+            <a href="create_profile.php" class="navbar-item custom-margin">
+                Registreer
+            </a>
+            <a href="logout.php" class="navbar-item custom-margin">Log out</a>
         </div>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
 
@@ -38,23 +39,22 @@
 <main>
     <h1 style="margin-top: 2%;"> Welcome </h1>
     <section class="section_ind columns is-centered is-variable is-8 mx-4" style="margin-top: 5%;">
-        <img src="includes/images/bordercollie.png" alt="placeholder" class="images_ind" style="width: 20%;">
+        <img src="includes/images/group_of_dogs.jpg" alt="placeholder" class="images_ind" style="width: 20%; object-fit: cover;">
         <!--image is-128x128-->
         <div class="column is-flex is-flex-direction-column p-4">
-            <h2 style="font-weight: bold;">Article Title</h2>
-            <p style="width: 90%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, dolorem ipsa
-                laborum omnis placeat
-                quaerat tempora voluptatibus. Ad, amet assumenda deserunt doloremque excepturi exercitationem fugit
-                pariatur porro quod saepe, sapiente.</p>
+            <h2 style="font-weight: bold;">Liefde voor alle honden</h2>
+            <p style="width: 90%;">Geen enkele hond is hetzelfde en het opvoeden van een hond vereist nu eenmaal veel kennis
+                van de hondentaal, begrip, aandacht en bovenal veel liefde voor jouw viervoeter. De laatste twee
+                elementen komen we gelukkig overal tegen, maar wat betreft begrip en kennis van de hondentaal kunnen
+                kan je hier terecht.</p>
         </div>
     </section>
     <section class="section_ind columns is-centered is-variable is-8 mx-4" style="margin-top: 5%; text-align: right;">
         <div class="column is-flex is-flex-direction-column p-4">
-            <h2 style="font-weight: bold;">Article Title</h2>
-            <p style="margin-left: 10%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, dolorem ipsa
-                laborum omnis placeat
-                quaerat tempora voluptatibus. Ad, amet assumenda deserunt doloremque excepturi exercitationem fugit
-                pariatur porro quod saepe, sapiente.</p>
+            <h2 style="font-weight: bold;">Op spelende wijs leren</h2>
+            <p style="margin-left: 10%;">Bij de training in groepsverband word de groep klein gehouden, en word er geconcentreerd op het
+                spelenderwijs leren van de opvoeding, zodat er alle aandacht is voor jou en jouw trouwe
+                viervoeter. Een relatie die niet voor eventjes is, maar voor altijd. Nou ja, voor bijna altijd</p>
         </div>
         <img src="includes/images/DogOnFence.jpg" alt="Placeholder" class="images_ind" style="width: 20%; height: 20%;">
     </section>

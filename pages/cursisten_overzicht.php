@@ -46,6 +46,7 @@ mysqli_close($db);
                style="background-color: #2CDB43; color: black;">
                 Cursisten
             </a>
+            <a href="logout.php" class="navbar-item custom-margin">Log out</a>
         </div>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
     </div>

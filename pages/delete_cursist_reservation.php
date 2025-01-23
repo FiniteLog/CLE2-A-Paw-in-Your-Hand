@@ -10,18 +10,25 @@ if (isset($_GET['reservation_id']) && is_numeric($_GET['reservation_id'])) {
     exit();
 }
 
+if (isset($_GET['cursist_id']) && is_numeric($_GET['cursist_id'])) {
+    $studentId = mysqli_real_escape_string($db, $_GET['cursist_id']);
+} else {
+    echo "Invalid student ID.";
+    exit();
+}
+
 if (isset($_POST['confirm'])) {
     $query = "DELETE FROM reservations WHERE reservation_id = $reservation_id";
     $result = mysqli_query($db, $query);
     if ($result) {
-        header('location: cursist_details.php?cursist_id=' . 'cursist_id');
+        header('location: cursist_details.php?cursist_id=' . $studentId);
         exit();
     } else {
         $deleteError = 'Deletion was not successful, please try again';
         echo "Error: " . mysqli_error($db);
     }
 } else if (isset($_POST['cancel'])) {
-    header('location: cursist_details.php?cursist_id=' . 'cursist_id');
+    header('location: cursist_details.php?cursist_id=' . $studentId);
     exit();
 }
 ?>

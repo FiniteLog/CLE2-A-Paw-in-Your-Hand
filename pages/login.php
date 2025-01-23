@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="includes/css/style.css">
-    <title>Admin - Login - A Paw in Your Hand</title>
+    <title>Login - A Paw in Your Hand</title>
 </head>
 <body style="background-repeat: no-repeat; background-size: cover;">
 <nav class="navbar">
@@ -86,9 +86,13 @@ if (isset($_POST['submit'])) {
             <a href="admin_login.php" class="navbar-item custom-margin">
                 Admin Login
             </a>
-            <a href="agenda.php" class="navbar-item custom-margin">
-                Agenda
+            <a href="reviews.php" class="navbar-item custom-margin" style="background-color: #2CDB43; color: black;">
+                Reviews
             </a>
+            <a href="create_profile.php" class="navbar-item custom-margin">
+                Registreer
+            </a>
+            <a href="logout.php" class="navbar-item custom-margin">Log out</a>
         </div>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
     </div>
