@@ -77,7 +77,7 @@ mysqli_close($db);
         <h1 class="title">Reservation Details</h1>
         <p><strong>Course:</strong> <?= htmlspecialchars($reservation['title']) ?></p>
         <p><strong>Date:</strong> <?= htmlspecialchars($reservation['date']) ?></p>
-        <p><strong>Time:</strong> <?= htmlspecialchars($reservation['timeslot_info']) ?></p> <!-- Updated field -->
+        <p><strong>Time:</strong> <?= htmlspecialchars($reservation['timeslot_info']) ?></p>
         <p><strong>Client Name:</strong> <?= htmlspecialchars($reservation['name']) ?></p>
         <p><strong>Dog Amount:</strong> <?= htmlspecialchars($reservation['dog_amount']) ?></p>
         <p><strong>Phone Number:</strong> <?= htmlspecialchars($reservation['phone_number']) ?></p>

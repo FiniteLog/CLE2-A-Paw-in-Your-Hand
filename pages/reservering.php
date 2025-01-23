@@ -8,7 +8,6 @@ session_start();
 $errors = [];
 $name = $date = $timeslot = $dog_amount = $phone_number = $course_id = $question = '';
 
-// Fetch reservations with course information
 $query = "
     SELECT cursisten.cursist_id, cursisten.phone_number
     FROM cursisten
@@ -42,9 +41,7 @@ if (isset($_POST['submit'])) {
     }
     if ($phone_number === "") {
         $errors['phone_number'] = "Vul alstublieft een telefoonnummer in.";
-    } //if phone_number is in $result $userId = 'cursist_id'
-    else {
-        // Loop through the result to find a match for the phone number
+    } else {
         foreach ($result as $row) {
             if ($row['phone_number'] === $phone_number) {
                 $userId = $row['cursist_id'];
@@ -56,7 +53,6 @@ if (isset($_POST['submit'])) {
         $errors['course'] = "Kies alstublieft een cursus.";
     }
 
-    // If no errors, insert data
     if (empty($errors)) {
         $insertQuery = "
         INSERT INTO reservations (name, date, timeslot, dog_amount, phone_number, course_id, question, cursist_id) 
@@ -147,7 +143,6 @@ $days = $dateHandler->getDays();
     </div>
 </nav>
 <main class="py-6">
-    <!-- Flex container to align everything vertically -->
     <div class="bg-footer box mx-3">
         <!-- Week navigation -->
         <div id="weeks" class="columns mx-6">
