@@ -77,7 +77,6 @@ $days = $dateHandler->getDays();
     </div>
 </nav>
 <main class="pt-6">
-    <!-- Flex container to align everything vertically -->
     <div class="columns mx-6 is-flex is-flex-direction-column">
         <!-- Week navigation -->
         <div id="weeks" class="columns is-flex is-flex-direction-row is-justify-content-space-between">
