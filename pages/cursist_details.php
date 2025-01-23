@@ -65,8 +65,9 @@ if (isset($studentId)):
         <link rel="stylesheet" href="includes/css/style.css">
         <link rel="icon" href="includes/images/pupp_darkGreen.png">
         <title>Cursist Details</title>
+    </head>
     <body style="background-repeat: no-repeat; background-size: cover; background-image: url('includes/css/bg4.jpg');">
-    <nav class="navbar  ">
+    <nav class="navbar">
         <div id="navbarBasic" class="navbar-menu px-6">
             <div class="navbar-start">
                 <a href="index.php" class="navbar-item custom-margin">
@@ -82,6 +83,7 @@ if (isset($studentId)):
                    style="background-color: #2CDB43; color: black;">
                     Cursisten
                 </a>
+                <a href="logout.php" class="navbar-item custom-margin">Log out</a>
             </div>
             <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
         </div>
@@ -98,23 +100,24 @@ if (isset($studentId)):
             <h2 style="color: black; font-weight: bold; font-size: 1.5rem; margin-top: 5%;">Inschrijvingen</h2>
             <div class="inschrijvingen">
                 <?php if (!empty($reservationData)): ?>
-                    <table>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
                         <thead>
                         <tr>
-                            <th>Cursus</th>
-                            <th>Telefoonnummer</th>
-                            <th>Datum</th>
-                            <th>Tijd</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold; color: black">Cursus</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold; color: black">Telefoonnummer</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold; color: black">Datum</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold; color: black">Tijd</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold; color: black">Verwijder</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($reservationData as $reservation): ?>
-                            <tr>
-                                <td><?= $reservation['courseName'] ?></td>
-                                <td><?= $reservation['phoneNumber'] ?></td>
-                                <td><?= $reservation['date'] ?></td>
-                                <td><?= $reservation['timeslot'] ?></td>
-                                <td><a href="delete_cursist_reservation.php?reservation_id=<?= $reservation['reservation_id'] ?>&cursist_id=<?= $studentId ?>">Verwijder</a></td>
+                        <?php foreach ($reservationData as $index => $reservation): ?>
+                            <tr style="background-color: <?= $index % 2 == 0 ? '#f9f9f9' : 'transparent'; ?>;">
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><?= $reservation['courseName'] ?></td>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><?= $reservation['phoneNumber'] ?></td>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><?= $reservation['date'] ?></td>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><?= $reservation['timeslot'] ?></td>
+                                <td style="border: 1px solid #ddd; padding: 8px; text-align: left;"><a href="delete_cursist_reservation.php?reservation_id=<?= $reservation['reservation_id'] ?>&cursist_id=<?= $studentId ?>">Verwijder</a></td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

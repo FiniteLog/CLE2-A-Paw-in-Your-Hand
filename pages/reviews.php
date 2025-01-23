@@ -45,16 +45,28 @@ $averagePercentage = ($averageRating / 5) * 100;
 <nav class="navbar">
     <div id="navbarBasic" class="navbar-menu px-6">
         <div class="navbar-start">
-            <a href="index.php" class="navbar-item custom-margin">Home</a>
-            <a href="reservering.php" class="navbar-item custom-margin">Inschrijven</a>
-            <a href="gebruiker_cursus_overzicht.php" class="navbar-item custom-margin">Cursussen</a>
-            <a href="admin_login.php" class="navbar-item custom-margin">Admin Login</a>
-            <a href="agenda.php" class="navbar-item custom-margin">Agenda</a>
+            <a href="index.php" class="navbar-item custom-margin"">
+                Home
+            </a>
+            <a href="reservering.php" class="navbar-item custom-margin">
+                Inschrijven
+            </a>
+            <a href="gebruiker_cursus_overzicht.php" class="navbar-item custom-margin">
+                Cursussen
+            </a>
+            <a href="admin_login.php" class="navbar-item custom-margin">
+                Admin Login
+            </a>
             <a href="reviews.php" class="navbar-item custom-margin" style="background-color: #2CDB43; color: black;">
                 Reviews
             </a>
+            <a href="create_profile.php" class="navbar-item custom-margin">
+                Registreer
+            </a>
+            <a href="logout.php" class="navbar-item custom-margin">Log out</a>
         </div>
         <img src="includes/images/pupp_darkGreen.png" width="100px" class="logo">
+
     </div>
 </nav>
 <main>
